@@ -2,7 +2,7 @@
 
 ## Dev Team
 
-* Bourmeaux Michaël
+* Bourmeau Michaël
 * Coyard Florentin
 * Raymond Fabien
 * Thomas Mathieu
