@@ -1,5 +1,6 @@
 import React from "react";
 import BackgroundHistoric from "../img/greenred.png"
+import "./HistoricTable.css"
 
 import {
   ListGroup,
@@ -91,7 +92,6 @@ const HistoricTable = () => (
               src={BackgroundHistoric}
               alt="greenred"
               height="90"
-              rotate="180"
             />
             <CardImgOverlay>
               <CardTitle>{battleData.date}</CardTitle>
