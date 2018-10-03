@@ -4,14 +4,14 @@ import "./Footer.css";
 import { Col, Row } from "reactstrap";
 
 const Footer = () => (
-  <footer className="mt-3">
+  <footer className="mt-5">
     <Row className="">
       <Col className="d-flex justify-content-center">
         <div className="d-flex">
           <a href="#" className="d-block mr-2">
             <i className="fab fa-facebook" />
           </a>
-          <a href="#" className="d-block mr-2">
+          <a href="#" className="d-block mr-5">
             <i className="fab fa-twitter-square" />
           </a>
         </div>

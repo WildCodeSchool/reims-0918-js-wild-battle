@@ -9,7 +9,7 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="p-0">
         <Header />
         <HomeNav />
         <Footer />

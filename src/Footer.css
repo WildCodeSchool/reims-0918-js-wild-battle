@@ -1,3 +1,13 @@
 footer a i {
   font-size: 16px;
 }
+
+footer a,
+footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  background-color: black;
+}

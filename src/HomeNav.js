@@ -3,9 +3,7 @@ import "./HomeNav.css";
 
 import {
   Col,
-  Row,
   Card,
-  CardImg,
   CardTitle,
   CardDeck,
   CardSubtitle,
@@ -13,41 +11,41 @@ import {
 } from "reactstrap";
 
 const HomeNav = () => (
-  <nav>
-    <CardDeck className="justify-content-center mx-auto">
-      <Col xs={{ size: 4 }}>
+  <nav className="navHome">
+    <CardDeck className="justify-content-center mx-auto mt-5">
+      <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
             <div className="mt-3 d-flex justify-content-center">
               <i className="fas fa-bolt" />
             </div>
-            <CardBody>
+            <CardBody className="m-3">
               <CardTitle>Start a Battle</CardTitle>
               <CardSubtitle>Find a Friend & Win!</CardSubtitle>
             </CardBody>
           </Card>
         </a>
       </Col>
-      <Col xs={{ size: 4 }}>
+      <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
             <div className="mt-3 d-flex justify-content-center">
               <i className="fas fa-list" />
             </div>
-            <CardBody>
+            <CardBody className="m-3">
               <CardTitle>Stats</CardTitle>
-              <CardSubtitle>Your History & Rankings</CardSubtitle>
+              <CardSubtitle>History & Rankings</CardSubtitle>
             </CardBody>
           </Card>
         </a>
       </Col>
-      <Col xs={{ size: 4 }}>
+      <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
             <div className="mt-3 d-flex justify-content-center">
               <i className="fas fa-user-friends" />
             </div>
-            <CardBody>
+            <CardBody className="m-3">
               <CardTitle>Heroes List</CardTitle>
               <CardSubtitle>About your Heroes</CardSubtitle>
             </CardBody>
