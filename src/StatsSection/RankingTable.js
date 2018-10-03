@@ -13,35 +13,59 @@ const RankingTable = () => (
     <ListGroup className="text-center">
       <ListGroupItem>
         <ListGroupItemHeading>Florentin</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>Nova</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>MathIeu</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>xX FaBien Xx</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>My name's Charles</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>King Quentin</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>Pseudoless</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
       <ListGroupItem>
         <ListGroupItemHeading>Dark Noob</ListGroupItemHeading>
-        <ListGroupItemText>Win: 7 / Lose: 3</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Win: 7</ListGroupItemText>
+          <ListGroupItemText>Lose: 3</ListGroupItemText>
+        </div>
       </ListGroupItem>
     </ListGroup>
   </div>
