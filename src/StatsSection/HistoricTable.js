@@ -92,6 +92,7 @@ const HistoricTable = () => (
               src={BackgroundHistoric}
               alt="greenred"
               height="90"
+              className={(battleData.player1Score === "Lose") ? "rotateImg" : ""}
             />
             <CardImgOverlay>
               <CardTitle>{battleData.date}</CardTitle>
