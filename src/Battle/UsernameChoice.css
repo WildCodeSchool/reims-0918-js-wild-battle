@@ -1,0 +1,9 @@
+.btnNickname {
+  transition: 0.5s;
+  border-radius: 50%;
+  color: green;
+}
+.btnNickname:hover {
+  color: white;
+  background-color: green;
+}
