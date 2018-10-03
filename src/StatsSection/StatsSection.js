@@ -7,10 +7,10 @@ import HistoricTable from "./HistoricTable";
 const StatsSection = () => (
   <div>
     <Row>
-      <Col sm={{ size: 3, offset: 2 }}>
+      <Col sm={{ size: 4, offset: 1 }}>
         <RankingTable />
       </Col>
-      <Col sm={{ size: 3, offset: 2 }}>
+      <Col sm={{ size: 4, offset: 2 }}>
         <HistoricTable />
       </Col>
     </Row>
