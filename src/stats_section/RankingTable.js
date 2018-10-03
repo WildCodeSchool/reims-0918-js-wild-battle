@@ -10,7 +10,7 @@ import {
 const ranking = [
   {
     name: "Florentin",
-    win: "3",
+    win: "42",
     lose: "0"
   },
   {
