@@ -91,7 +91,7 @@ const HistoricTable = () => (
               width="100%"
               src={BackgroundHistoric}
               alt="greenred"
-              height="90"
+              height="95"
               className={(battleData.player1Score === "Lose") ? "rotateImg" : ""}
             />
             <CardImgOverlay>
