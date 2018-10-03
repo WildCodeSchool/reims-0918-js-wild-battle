@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import StatsSection from "./StatsSection/StatsSection";
+import StatsSection from "./statsSection/StatsSection";
 
 class App extends Component {
   render() {
