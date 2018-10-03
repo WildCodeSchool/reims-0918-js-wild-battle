@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Form, FormGroup, Input } from "reactstrap";
+import CardListFrame from "./CardListFrame";
 import CardModel from "../CardModel";
 
 const CardsListing = () => (
@@ -16,31 +17,36 @@ const CardsListing = () => (
           />
         </FormGroup>
       </Form>
+    </Row>{" "}
+    <Row>
+      <Col xs="6">
+        <CardModel />
+      </Col>
     </Row>
     <Row>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
       <Col xs="4" md="3" lg="2">
-        <CardModel />
+        <CardListFrame />
       </Col>
     </Row>
   </section>
