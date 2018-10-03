@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import CardsListing from "./CardsListing/CardsListing";
+import CardsListing from "./cardsListing/CardsListing";
 
 class App extends Component {
   render() {

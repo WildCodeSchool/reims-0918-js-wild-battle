@@ -1,5 +1,4 @@
 import React from "react";
-import { ListGroup, ListGroupItem, ListGroupItemHeading, p } from "reactstrap";
 
 const CardBiography = () => (
   <div>
