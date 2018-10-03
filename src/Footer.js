@@ -4,17 +4,24 @@ import "./Footer.css";
 import { Col, Row } from "reactstrap";
 
 const Footer = () => (
-  <footer>
-    <Row>
-      <Col xs={{ size: 4, offset: 1 }}>
-        <a href="#" className="d-block">
-          <i className="fab fa-facebook" />
-        </a>
-        <a href="#" className="d-block">
-          <i className="fab fa-twitter-square" />
-        </a>
+  <footer className="mt-3">
+    <Row className="">
+      <Col className="d-flex justify-content-center">
+        <div className="d-flex">
+          <a href="#" className="d-block mr-2">
+            <i className="fab fa-facebook" />
+          </a>
+          <a href="#" className="d-block mr-2">
+            <i className="fab fa-twitter-square" />
+          </a>
+        </div>
+        <div>
+          <a href="#" className="mr-2">
+            About
+          </a>
+          <a href="#">Legal Mentions</a>
+        </div>
       </Col>
-      <Col xs={{ size: 4, offset: 4 }} />
     </Row>
   </footer>
 );
