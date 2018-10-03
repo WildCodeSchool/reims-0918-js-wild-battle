@@ -5,8 +5,6 @@ import "./HistoricTable.css"
 import {
   ListGroup,
   ListGroupItem,
-//   ListGroupItemHeading,
-//   ListGroupItemText,
   Card,
   CardTitle,
   CardText,
