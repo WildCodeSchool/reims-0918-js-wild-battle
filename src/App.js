@@ -5,7 +5,7 @@ import StatsSection from "./StatsSection/StatsSection";
 class App extends Component {
   render() {
     return (
-      <Container>
+      <Container fluid>
         <StatsSection />
       </Container>
     );

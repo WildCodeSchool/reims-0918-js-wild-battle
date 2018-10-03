@@ -10,38 +10,62 @@ import {
 const HistoricTable = () => (
   <div>
     <h1 className="text-center">HISTORIC</h1>
-    <ListGroup className="text-center">
-      <ListGroupItem>
+    <ListGroup className="text-center h5">
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
-      <ListGroupItem>
+      <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <ListGroupItemText>Florentin: Win / Mathieu: Lose</ListGroupItemText>
+        <div className="d-flex justify-content-around">
+          <ListGroupItemText>Florentin: Win</ListGroupItemText>
+          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
+        </div>
       </ListGroupItem>
     </ListGroup>
   </div>
