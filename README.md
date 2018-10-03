@@ -6,7 +6,7 @@ The **Wild Battle** is a WebApp programmed in **React**. You can play with your 
 
 ## Dev Team
 
-* Bourmeau Michaël
-* Coyard Florentin
-* Raymond Fabien
-* Thomas Mathieu
+- Bourmeau Michaël
+- Coyard Florentin
+- Raymond Fabien
+- Thomas Mathieu
