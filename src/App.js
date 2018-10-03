@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import UsernameChoice from "./Battle/UsernameChoice";
+import UsernameChoice from "./battle/UsernameChoice";
 
 class App extends Component {
   render() {
