@@ -16,7 +16,7 @@ const HomeNav = () => (
       <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
-            <div className="mt-3 d-flex justify-content-center">
+            <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-bolt" />
             </div>
             <CardBody className="m-3">
@@ -29,7 +29,7 @@ const HomeNav = () => (
       <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
-            <div className="mt-3 d-flex justify-content-center">
+            <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-list" />
             </div>
             <CardBody className="m-3">
@@ -42,7 +42,7 @@ const HomeNav = () => (
       <Col md="5" lg="3" className="mb-2">
         <a href="#">
           <Card>
-            <div className="mt-3 d-flex justify-content-center">
+            <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-user-friends" />
             </div>
             <CardBody className="m-3">
