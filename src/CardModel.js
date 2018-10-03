@@ -6,8 +6,7 @@ import {
   CardImg,
   CardDeck,
   CardBody,
-  CardTitle,
-  CardText
+  CardTitle
 } from "reactstrap";
 
 const CardModel = () => (
@@ -22,26 +21,24 @@ const CardModel = () => (
           alt="Card image cap"
         />
         <CardBody>
-          <CardText>
-            <Row>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-dumbbell" />
-                <p>46</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-bolt" />
-                <p>46</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-book" />
-                <p>46</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-shield-alt" />
-                <p>46</p>
-              </Col>
-            </Row>
-          </CardText>
+          <Row>
+            <Col xs="3" className="text-center">
+              <i className="fas fa-dumbbell" />
+              <p>46</p>
+            </Col>
+            <Col xs="3" className="text-center">
+              <i className="fas fa-bolt" />
+              <p>46</p>
+            </Col>
+            <Col xs="3" className="text-center">
+              <i className="fas fa-book" />
+              <p>46</p>
+            </Col>
+            <Col xs="3" className="text-center">
+              <i className="fas fa-shield-alt" />
+              <p>46</p>
+            </Col>
+          </Row>
         </CardBody>
       </Card>
     </CardDeck>

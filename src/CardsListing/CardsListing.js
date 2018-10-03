@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Form, FormGroup, Input } from "reactstrap";
 import CardListFrame from "./CardListFrame";
 import CardModel from "../CardModel";
+import CardBiography from "./CardBiography";
 
 const CardsListing = () => (
   <section>
@@ -11,9 +12,9 @@ const CardsListing = () => (
         <FormGroup>
           <Input
             type="search"
-            name="search"
+            name="searchCard"
             id="exampleSearch"
-            placeholder="search placeholder"
+            placeholder="Search a card"
           />
         </FormGroup>
       </Form>
@@ -21,6 +22,9 @@ const CardsListing = () => (
     <Row>
       <Col xs="6">
         <CardModel />
+      </Col>
+      <Col xs="6">
+        <CardBiography />
       </Col>
     </Row>
     <Row>
