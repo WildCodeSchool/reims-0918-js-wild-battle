@@ -4,7 +4,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import { Container } from "reactstrap";
-import "./App.css";
+import UsernameChoice from "./battle/UsernameChoice";
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
         <Header />
         <HomeNav />
         <Footer />
+        <UsernameChoice />
       </Container>
     );
   }
