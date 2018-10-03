@@ -4,7 +4,8 @@ import {
   ListGroup,
   ListGroupItem,
   ListGroupItemHeading,
-  ListGroupItemText
+  ListGroupItemText,
+  Progress
 } from "reactstrap";
 
 const HistoricTable = () => (
@@ -13,10 +14,14 @@ const HistoricTable = () => (
     <ListGroup className="text-center h5">
       <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
-        <div className="d-flex justify-content-around">
-          <ListGroupItemText>Florentin: Win</ListGroupItemText>
-          <ListGroupItemText>Mathieu: Lose</ListGroupItemText>
-        </div>
+        <Progress multi>
+          <Progress color="success" value="50">
+            Florentin: Win
+          </Progress>
+          <Progress color="info" value="50">
+            Mathieu: Lose
+          </Progress>
+        </Progress>
       </ListGroupItem>
       <ListGroupItem className="border-dark">
         <ListGroupItemHeading>Date: 03/10/2018 11:15</ListGroupItemHeading>
