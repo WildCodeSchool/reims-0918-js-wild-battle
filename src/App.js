@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import { Container } from "reactstrap";
 
+import StatsSection from "./StatsSection/StatsSection";
 import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
-import { Container } from "reactstrap";
 import UsernameChoice from "./battle/UsernameChoice";
 
 class App extends Component {
   render() {
     return (
       <Container fluid className="p-0">
+        <StatsSection />
         <Header />
         <HomeNav />
         <Footer />
