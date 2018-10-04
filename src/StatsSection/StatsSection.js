@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Row, Col } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import RankingTable from "./RankingTable";
 import HistoricTable from "./HistoricTable";
 
 const StatsSection = () => (
-  <div>
+  <Container fluid id="statsSection">
     <Row>
       <Col sm={{ size: 4, offset: 1 }}>
         <RankingTable />
@@ -14,7 +14,7 @@ const StatsSection = () => (
         <HistoricTable />
       </Col>
     </Row>
-  </div>
+  </Container>
 );
 
 export default StatsSection;
