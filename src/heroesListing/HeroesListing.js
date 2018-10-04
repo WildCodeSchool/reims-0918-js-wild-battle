@@ -21,7 +21,7 @@ class HeroesListing extends Component {
     return (
       <section id="heroesListSection">
         <Row>
-          <h2>Heroes's List</h2>
+          <h2>Heroes List</h2>
           <Form>
             <FormGroup>
               <Input
