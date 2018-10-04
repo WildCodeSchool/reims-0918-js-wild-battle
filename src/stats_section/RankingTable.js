@@ -50,7 +50,7 @@ const ranking = [
   },
   {
     name: "Michaël",
-    win: "0",
+    win: "50",
     lose: "2"
   }
 ];
