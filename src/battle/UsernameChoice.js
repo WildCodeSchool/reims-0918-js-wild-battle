@@ -21,7 +21,7 @@ class UsernameChoice extends Component {
       <Container fluid id="usernameSection">
         <Row Style="height: 100vh;">
           <Col xs={{ size: 4, offset: 1 }} className="my-auto">
-            <h3>Player 1 {`: ${this.state.player_1}`}</h3>
+            <h3>Player 1: {this.state.player_1}</h3>
             <Form>
               <FormGroup className="d-flex">
                 <Input
@@ -37,7 +37,7 @@ class UsernameChoice extends Component {
             </Form>
           </Col>
           <Col xs={{ size: 4, offset: 2 }} className="my-auto">
-            <h3>Player 2 {`: ${this.state.player_2}`}</h3>
+            <h3>Player 2: {this.state.player_2}</h3>
             <Form>
               <FormGroup className="d-flex">
                 <Input
