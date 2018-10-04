@@ -13,12 +13,14 @@ class UsernameChoice extends Component {
   }
 
   handleChangeNickname(event) {
-    this.setState({ [event.target.id]: event.target.value });
+    this.setState({
+      [event.target.id]: event.target.value.replace(/[ ]+/, "")
+    });
   }
 
   render() {
     return (
-      <Row Style="height: 100vh;">
+      <Row style={{ height: "100vh" }}>
         <Col xs={{ size: 4, offset: 1 }} className="my-auto">
           <h3>Player 1 {`: ${this.state.player_1}`}</h3>
           <Form>
@@ -30,6 +32,7 @@ class UsernameChoice extends Component {
                 placeholder="Enter Your Nickname"
                 className="mr-2"
                 onChange={this.handleChangeNickname}
+                value={this.state.player_1}
               />
               <span
                 className={
@@ -52,8 +55,15 @@ class UsernameChoice extends Component {
                 placeholder="Enter Your Nickname"
                 className="mr-2"
                 onChange={this.handleChangeNickname}
+                value={this.state.player_2}
               />
-              <i className="far fa-check-circle fa-2x btnNickname" />
+              <span
+                className={
+                  this.state.player_2.length > 2 ? "d-inline" : "d-none"
+                }
+              >
+                <i className="far fa-check-circle fa-2x btnNickname" />
+              </span>
             </FormGroup>
           </Form>
         </Col>
