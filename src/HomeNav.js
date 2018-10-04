@@ -40,7 +40,7 @@ const HomeNav = () => (
         </a>
       </Col>
       <Col md="5" lg="3" className="mb-2">
-        <a href="heroesListSection">
+        <a href="#heroesListSection">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-user-friends" />
