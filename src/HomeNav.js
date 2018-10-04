@@ -21,7 +21,7 @@ const HomeNav = () => (
             </div>
             <CardBody className="m-3">
               <CardTitle>Start a Battle</CardTitle>
-              <CardSubtitle>Find a Friend & Win!</CardSubtitle>
+              <CardSubtitle>Find a Friend &amp; Win!</CardSubtitle>
             </CardBody>
           </Card>
         </a>
@@ -34,7 +34,7 @@ const HomeNav = () => (
             </div>
             <CardBody className="m-3">
               <CardTitle>Stats</CardTitle>
-              <CardSubtitle>History & Rankings</CardSubtitle>
+              <CardSubtitle>History &amp; Rankings</CardSubtitle>
             </CardBody>
           </Card>
         </a>
