@@ -31,7 +31,13 @@ class UsernameChoice extends Component {
                 className="mr-2"
                 onChange={this.handleChangeNickname}
               />
-              <i className="far fa-check-circle fa-2x btnNickname" />
+              <span
+                className={
+                  this.state.player_1.length > 2 ? "d-inline" : "d-none"
+                }
+              >
+                <i className="far fa-check-circle fa-2x btnNickname" />
+              </span>
             </FormGroup>
           </Form>
         </Col>
