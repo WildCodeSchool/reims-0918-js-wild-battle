@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import CardsListing from "./cardsListing/CardsListing";
+import HeroesListing from "./heroesListing/HeroesListing";
 
 import StatsSection from "./StatsSection/StatsSection";
 import Header from "./Header";
@@ -15,7 +15,7 @@ class App extends Component {
         <Header />
         <HomeNav />
         <Footer />
-        <CardsListing />
+        <HeroesListing />
         <StatsSection />
         <UsernameChoice />
       </Container>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Row, Col, Form, FormGroup, Input, Collapse } from "reactstrap";
-import CardListFrame from "./CardListFrame";
-import CardModel from "../CardModel";
-import CardBiography from "./CardBiography";
+import HeroListFrame from "./HeroListFrame";
+import HeroCard from "../HeroCard";
+import HeroBiography from "./HeroBiography";
 
-class CardsListing extends Component {
+class HeroesListing extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -19,7 +19,7 @@ class CardsListing extends Component {
 
   render() {
     return (
-      <section>
+      <section id="heroesListSection">
         <Row>
           <h2>Heroes's List</h2>
           <Form>
@@ -35,37 +35,37 @@ class CardsListing extends Component {
         <Collapse isOpen={this.state.collapse}>
           <Row>
             <Col xs="6">
-              <CardModel />
+              <HeroCard />
             </Col>
             <Col xs="6">
-              <CardBiography />
+              <HeroBiography />
             </Col>
           </Row>
         </Collapse>
         <Row>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
           <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-            <CardListFrame />
+            <HeroListFrame />
           </Col>
         </Row>
       </section>
@@ -73,4 +73,4 @@ class CardsListing extends Component {
   }
 }
 
-export default CardsListing;
+export default HeroesListing;

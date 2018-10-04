@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardBiography = () => (
+const HeroBiography = () => (
   <div>
     <h3>Batman</h3>
     <p>
@@ -40,4 +40,4 @@ const CardBiography = () => (
   </div>
 );
 
-export default CardBiography;
+export default HeroBiography;
