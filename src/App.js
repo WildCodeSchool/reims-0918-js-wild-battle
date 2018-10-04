@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import HeroesListing from "./heroesListing/HeroesListing";
 
-import StatsSection from "./StatsSection/StatsSection";
+import StatsSection from "./stats_section/StatsSection";
+import HeroesListing from "./heroesListing/HeroesListing";
 import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";

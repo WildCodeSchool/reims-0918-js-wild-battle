@@ -10,7 +10,7 @@ import {
 const ranking = [
   {
     name: "Florentin",
-    win: "3",
+    win: "42",
     lose: "0"
   },
   {
@@ -25,7 +25,7 @@ const ranking = [
   },
   {
     name: "Corentin",
-    win: "1",
+    win: "4",
     lose: "0"
   },
   {
@@ -40,7 +40,7 @@ const ranking = [
   },
   {
     name: "Quentin",
-    win: "0",
+    win: "5",
     lose: "1"
   },
   {
@@ -50,21 +50,24 @@ const ranking = [
   },
   {
     name: "Michaël",
-    win: "0",
+    win: "50",
     lose: "2"
   }
 ];
+
+const rank_sort = ranking =>
+  ranking.sort((person1, person2) => person2.win - person1.win);
 
 const RankingTable = () => (
   <div>
     <h1 className="text-center">RANKING</h1>
     <ListGroup className="text-center h5">
-      {ranking.map(rank => (
+      {rank_sort(ranking).map(person => (
         <ListGroupItem className="border-dark">
-          <ListGroupItemHeading>{rank.name}</ListGroupItemHeading>
+          <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
           <div className="d-flex justify-content-around">
-            <ListGroupItemText>Win: {rank.win}</ListGroupItemText>
-            <ListGroupItemText>Lose: {rank.lose}</ListGroupItemText>
+            <ListGroupItemText>Win: {person.win}</ListGroupItemText>
+            <ListGroupItemText>Lose: {person.lose}</ListGroupItemText>
           </div>
         </ListGroupItem>
       ))}
