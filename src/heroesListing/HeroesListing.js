@@ -34,7 +34,7 @@ class HeroesListing extends Component {
         </Row>
         <Collapse isOpen={this.state.collapse}>
           <Row>
-            <Col xs="6">
+            <Col sm="12" md={{ size: 3, offset: 2 }}>
               <HeroCard
                 nameHero="Batman"
                 imageHero="https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"
@@ -42,9 +42,10 @@ class HeroesListing extends Component {
                 wise="100"
                 speed="27"
                 durability="50"
+                id="demo"
               />
             </Col>
-            <Col xs="6">
+            <Col sm="12" md={{ size: 6, offset: 1 }}>
               <HeroBiography />
             </Col>
           </Row>
