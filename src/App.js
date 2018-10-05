@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import "./App.css";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -11,14 +12,16 @@ import UsernameChoice from "./battle/UsernameChoice";
 class App extends Component {
   render() {
     return (
-      <Container fluid className="">
+      <div>
         <Header />
-        <HomeNav />
+        <Container fluid>
+          <HomeNav />
+          <UsernameChoice />
+          <HeroesListing />
+          <StatsSection />
+        </Container>
         <Footer />
-        <HeroesListing />
-        <StatsSection />
-        <UsernameChoice />
-      </Container>
+      </div>
     );
   }
 }
