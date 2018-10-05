@@ -36,6 +36,7 @@ class UsernameChoice extends Component {
                 placeholder="Enter Your Nickname"
                 className="mr-2"
                 onChange={this.handleChangeNickname}
+                value={this.state.player_1}
               />
               <span
                 className={
@@ -56,6 +57,7 @@ class UsernameChoice extends Component {
                 placeholder="Enter Your Nickname"
                 className="mr-2"
                 onChange={this.handleChangeNickname}
+                value={this.state.player_2}
               />
               <span
                 className={
