@@ -1,33 +1,28 @@
 import React from "react";
 import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 
-const HeroCard = () => (
+const HeroCard = ({ nameHero, imageHero, str, wise, speed, durability }) => (
   <div>
     <Card className="p-2">
-      <CardTitle className="text-center">Super Hero Name</CardTitle>
-      <CardImg
-        top
-        width="100%"
-        src="https://via.placeholder.com/150x150"
-        alt="Card image cap"
-      />
+      <CardTitle className="text-center">{nameHero}</CardTitle>
+      <CardImg top width="100%" src={imageHero} alt="Card image cap" />
       <CardBody>
         <Row>
           <Col xs="3" className="text-center">
             <i className="fas fa-dumbbell" />
-            <p>46</p>
+            <p>{str}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-bolt" />
-            <p>46</p>
+            <p>{wise}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-book" />
-            <p>46</p>
+            <p>{speed}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-shield-alt" />
-            <p>46</p>
+            <p>{durability}</p>
           </Col>
         </Row>
       </CardBody>
