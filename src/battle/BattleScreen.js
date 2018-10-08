@@ -2,7 +2,7 @@ import React from "react";
 
 import { Form, FormGroup, Button } from "reactstrap";
 
-const BattleScreen = ({round, whoPlayedRound, finishRoom}) => (
+const BattleScreen = ({ round, whoPlayedRound, finishRoom }) => (
   <div>
     <h3>Round: {round}</h3>
 
@@ -10,7 +10,7 @@ const BattleScreen = ({round, whoPlayedRound, finishRoom}) => (
       <h3>{whoPlayedRound}</h3>
       <FormGroup className="d-flex">
         {/* <Input type="text" className="mr-2" /> */}
-        <Button onClick={() => finishRoom("Player 1")}>Finish</Button>
+        <Button onClick={() => finishRoom("Finish 1")}>Finish</Button>
       </FormGroup>
     </Form>
   </div>

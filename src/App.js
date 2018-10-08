@@ -18,7 +18,7 @@ class App extends Component {
       battleScreen: {
         whoPlayedRound: "Player 1",
         player1: "Player 1",
-        player2: "Player 2",
+        player2: "Player 2",  
         round: 1
       }
     };
@@ -26,17 +26,16 @@ class App extends Component {
   }
 
   finishRoom(whoPlayed) {
-    if (whoPlayed === this.state.player1) {
-      this.setState({ whoPlayedRound: this.state.player2 });
-    } else {
-      this.setState({
-        whoPlayedRound: this.state.player1,
-        round:
-          this.state.whoPlayedRound === this.state.player1
-            ? this.state.round
-            : this.state.round + 1
-      });
-    }
+    whoPlayed === this.state.player1
+      ? this.setState({ whoPlayedRound: this.state.player2 })
+      : this.setState({
+          whoPlayedRound: this.state.player1,
+          round:
+            this.state.whoPlayedRound === this.state.player1
+              ? this.state.round
+              : this.state.round + 1
+        });
+    console.log(whoPlayed);
   }
 
   render() {
@@ -46,7 +45,10 @@ class App extends Component {
         <Container fluid>
           <HomeNav />
           <UsernameChoice />
-          <BattleScreen {...this.state.battleScreen} />
+          <BattleScreen
+            {...this.state.battleScreen}
+            finishRoom={this.finishRoom}
+          />
           <HeroesListing />
           <StatsSection />
           <CombatInit />
