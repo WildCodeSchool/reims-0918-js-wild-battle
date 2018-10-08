@@ -2,7 +2,7 @@ import React from "react";
 
 import { Form, FormGroup, Button } from "reactstrap";
 
-const BattleScreen = ({round, whoPlayedRound, finishRoom}) => (
+const BattleScreen = ({ round, whoPlayedRound, finishRoom }) => (
   <div>
     <h3>Round: {round}</h3>
 

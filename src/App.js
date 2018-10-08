@@ -8,7 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
-import BattleScreen from "./BattleScreen";
+import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
@@ -26,17 +26,16 @@ class App extends Component {
   }
 
   finishRoom(whoPlayed) {
-    if (whoPlayed === this.state.player1) {
-      this.setState({ whoPlayedRound: this.state.player2 });
-    } else {
-      this.setState({
-        whoPlayedRound: this.state.player1,
-        round:
-          this.state.whoPlayedRound === this.state.player1
-            ? this.state.round
-            : this.state.round + 1
-      });
-    }
+    whoPlayed === this.state.player1
+      ? this.setState({ whoPlayedRound: this.state.player2 })
+      : this.setState({
+          whoPlayedRound: this.state.player1,
+          round:
+            this.state.whoPlayedRound === this.state.player1
+              ? this.state.round
+              : this.state.round + 1
+        });
+    console.log(whoPlayed);
   }
 
   render() {
@@ -46,7 +45,10 @@ class App extends Component {
         <Container fluid>
           <HomeNav />
           <UsernameChoice />
-          <BattleScreen {...this.state.battleScreen} />
+          <BattleScreen
+            {...this.state.battleScreen}
+            finishRoom={this.finishRoom}
+          />
           <HeroesListing />
           <StatsSection />
           <CombatInit />
