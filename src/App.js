@@ -8,6 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
+import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <UsernameChoice />
           <HeroesListing />
           <StatsSection />
+          <CombatInit />
         </Container>
         <Footer />
       </div>

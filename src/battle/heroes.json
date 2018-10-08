@@ -1,0 +1,47 @@
+[
+  {
+    "nameHero": "Batman",
+    "imageHero": "https://www.superherodb.com/pictures2/portraits/10/100/639.jpg",
+    "str": "26",
+    "wise": "100",
+    "speed": "27",
+    "durability": "50",
+    "id": 1
+  },
+  {
+    "nameHero": "Deadpool",
+    "imageHero": "https://www.superherodb.com/pictures2/portraits/10/100/835.jpg",
+    "str": "35",
+    "wise": "85",
+    "speed": "50",
+    "durability": "100",
+    "id": 2
+  },
+  {
+    "nameHero": "SpiderMan",
+    "imageHero": "https://www.superherodb.com/pictures2/portraits/10/100/133.jpg",
+    "str": "55",
+    "wise": "100",
+    "speed": "70",
+    "durability": "75",
+    "id": 3
+  },
+  {
+    "nameHero": "Captain America",
+    "imageHero": "https://www.superherodb.com/pictures2/portraits/10/100/274.jpg",
+    "str": "20",
+    "wise": "85",
+    "speed": "40",
+    "durability": "55",
+    "id": 4
+  },
+  {
+    "nameHero": "Wolverine",
+    "imageHero": "https://www.superherodb.com/pictures2/portraits/10/100/161.jpg",
+    "str": "35",
+    "wise": "85",
+    "speed": "50",
+    "durability": "100",
+    "id": 5
+  }
+]
