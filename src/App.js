@@ -8,7 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
-import BattleScreen from "./BattleScreen";
+import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
