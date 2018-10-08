@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
         <Particles
-          className="test"
+          className="bgParticle"
           params={{
             particles: {
               number: {
