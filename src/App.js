@@ -18,63 +18,54 @@ class App extends Component {
           className="test"
           params={{
             particles: {
-              number: { value: 80, density: { enable: true, value_area: 800 } },
-              color: { value: "#fff" },
-              shape: {
-                stroke: { width: 0, color: "#fff" },
-                polygon: { nb_sides: 5 }
-              },
-              type: "triangle",
-              opacity: {
-                value: 0.5,
-                random: false,
-                anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+              number: {
+                value: 160,
+                density: {
+                  enable: false
+                }
               },
               size: {
                 value: 3,
                 random: true,
-                anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
+                anim: {
+                  speed: 4,
+                  size_min: 0.3
+                }
               },
               line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#fff",
-                opacity: 0.4,
-                width: 1
+                enable: false
               },
               move: {
-                enable: true,
-                speed: 6,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                random: true,
+                speed: 1,
+                direction: "top",
+                out_mode: "out"
               }
             },
             interactivity: {
-              detect_on: "canvas",
               events: {
-                onhover: { enable: true, mode: "repulse" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
+                onhover: {
+                  enable: true,
+                  mode: "bubble"
+                },
+                onclick: {
+                  enable: true,
+                  mode: "repulse"
+                }
               },
               modes: {
-                grab: { distance: 400, line_linked: { opacity: 1 } },
                 bubble: {
-                  distance: 400,
-                  size: 40,
+                  distance: 250,
                   duration: 2,
-                  opacity: 8,
-                  speed: 3
+                  size: 0,
+                  opacity: 0
                 },
-                repulse: { distance: 200, duration: 0.4 },
-                push: { particles_nb: 4 },
-                remove: { particles_nb: 2 }
+                repulse: {
+                  distance: 400,
+                  duration: 4
+                }
               }
-            },
-            retina_detect: true
+            }
           }}
         />
         <Header />
