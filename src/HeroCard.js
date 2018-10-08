@@ -1,7 +1,24 @@
 import React from "react";
-import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
+import {
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  Button
+} from "reactstrap";
 
-const HeroCard = ({ nameHero, imageHero, str, wise, speed, durability }) => (
+const HeroCard = ({
+  nameHero,
+  imageHero,
+  str,
+  wise,
+  speed,
+  durability,
+  selectHero,
+  id
+}) => (
   <div>
     <Card className="p-2">
       <CardTitle className="text-center">{nameHero}</CardTitle>
@@ -24,6 +41,11 @@ const HeroCard = ({ nameHero, imageHero, str, wise, speed, durability }) => (
             <i className="fas fa-shield-alt" />
             <p>{durability}</p>
           </Col>
+        </Row>
+        <Row>
+          <span onClick={() => selectHero(id)} className="btn">
+            <Button>SELECT HERO</Button>
+          </span>
         </Row>
       </CardBody>
     </Card>

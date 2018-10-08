@@ -9,6 +9,7 @@ import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./BattleScreen";
+import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
           <BattleScreen {...this.state.battleScreen} />
           <HeroesListing />
           <StatsSection />
+          <CombatInit />
         </Container>
         <Footer />
       </div>

@@ -11,13 +11,13 @@ import {
 } from "reactstrap";
 
 const HomeNav = () => (
-  <nav className="navHome 100vh">
+  <nav className="navHome" style={{ height: "100vh" }}>
     <CardDeck className="justify-content-center mx-auto mt-5">
       <Col md="5" lg="3" className="mb-2">
         <a href="#usernameSection">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
-              <i className="fas fa-bolt" />
+              <i className="fas fa-bolt fa-9x" />
             </div>
             <CardBody className="m-3">
               <CardTitle>Start a Battle</CardTitle>
@@ -30,7 +30,7 @@ const HomeNav = () => (
         <a href="#statsSection">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
-              <i className="fas fa-list" />
+              <i className="fas fa-list fa-9x" />
             </div>
             <CardBody className="m-3">
               <CardTitle>Stats</CardTitle>
@@ -43,7 +43,7 @@ const HomeNav = () => (
         <a href="#heroesListSection">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
-              <i className="fas fa-user-friends" />
+              <i className="fas fa-user-friends fa-9x" />
             </div>
             <CardBody className="m-3">
               <CardTitle>Heroes List</CardTitle>
