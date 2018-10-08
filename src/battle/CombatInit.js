@@ -19,7 +19,7 @@ class CombatInit extends Component {
       <Container fluid>
         <Row className="mt-5 justify-content-center">
           {this.state.heroes.map(hero => (
-            <Col xs="2" onClick={this.selectCard}>
+            <Col xs="2" onClick={this.selectCard} key={hero.id}>
               <HeroCard
                 nameHero={hero.nameHero}
                 imageHero={hero.imageHero}
