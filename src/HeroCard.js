@@ -1,24 +1,7 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  Button
-} from "reactstrap";
+import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 
-const HeroCard = ({
-  nameHero,
-  imageHero,
-  str,
-  wise,
-  speed,
-  durability,
-  selectHero,
-  id
-}) => (
+const HeroCard = ({ nameHero, imageHero, str, wise, speed, durability }) => (
   <div>
     <Card className="p-2">
       <CardTitle className="text-center">{nameHero}</CardTitle>
@@ -42,11 +25,7 @@ const HeroCard = ({
             <p>{durability}</p>
           </Col>
         </Row>
-        <Row>
-          <span onClick={() => selectHero(id)} className="btn">
-            <Button>SELECT HERO</Button>
-          </span>
-        </Row>
+        <Row />
       </CardBody>
     </Card>
   </div>
