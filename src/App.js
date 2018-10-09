@@ -11,6 +11,50 @@ import UsernameChoice from "./battle/UsernameChoice";
 import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      battle: {
+        player_1: {
+          nickname: "",
+          nicknameCheck: false
+        },
+        player_2: {
+          nickname: "",
+          nicknameCheck: false
+        },
+        round: {
+          roundNumber: 1,
+          roundStats: ""
+        }
+      }
+    };
+    this.handleChangeNickname = this.handleChangeNickname.bind(this);
+  }
+
+  handleChangeNickname = (event, name) => {
+    let updateBattle = this.state.battle;
+    if (name === "Player_1") {
+      updateBattle.player_1.nickname = event.target.value;
+    } else if (name === "Player_2") {
+      updateBattle.player_2.nickname = event.target.value;
+    }
+    this.setState({
+      battle: updateBattle
+    });
+  };
+
+  submitCheck = name => {
+    let updateBattle = this.state.battle;
+    if (name === "Player_1") {
+      updateBattle.player_1.nicknameCheck = true;
+    } else if (name === "Player_2") {
+      updateBattle.player_2.nicknameCheck = true;
+    }
+    this.setState({
+      battle: updateBattle
+    });
+  };
 
   render() {
     return (
@@ -18,7 +62,11 @@ class App extends Component {
         <Header />
         <Container fluid>
           <HomeNav />
-          <UsernameChoice />
+          <UsernameChoice
+            battle={this.state.battle}
+            handleChangeNickname={this.handleChangeNickname}
+            submitCheck={this.submitCheck}
+          />
           <HeroesListing />
           <StatsSection />
           <CombatInit />

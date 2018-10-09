@@ -4,42 +4,22 @@ import { Row, Container } from "reactstrap";
 import "./UsernameChoice.css";
 
 class UsernameChoice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      player_1: "",
-      player_2: ""
-    };
-    this.handleChangeNickname = this.handleChangeNickname.bind(this);
-    this.submitCheck = this.submitCheck.bind(this);
-  }
-
-  handleChangeNickname(event) {
-    this.setState({
-      [event.target.id]: event.target.value.replace(/[ ]+/, "")
-    });
-  }
-
-  submitCheck = id => {
-    alert(id);
-  };
-
   render() {
+    const { battle, handleChangeNickname, submitCheck } = this.props;
     return (
       <Container fluid id="usernameSection">
-        <Row Style="height: 100vh;">
+        <Row style={{ height: "100vh" }}>
           <ChoiceNickname
-            result={this.state.player_1}
-            id="player_1"
-            name="Player 1"
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
+            result={battle.player_1.nickname}
+            name="Player_1"
+            handleChangeNickname={handleChangeNickname}
+            submitCheck={submitCheck}
           />
           <ChoiceNickname
-            result={this.state.player_2}
-            id="player_2"
-            name="Player 2"
-            handleChangeNickname={this.handleChangeNickname}
+            result={battle.player_2.nickname}
+            name="Player_2"
+            handleChangeNickname={handleChangeNickname}
+            submitCheck={submitCheck}
           />
         </Row>
       </Container>
