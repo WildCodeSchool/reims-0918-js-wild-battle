@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Row, Col, Form, FormGroup, Input, Container } from "reactstrap";
+import ChoiceNickname from "./ChoiceNickname";
+import { Row, Container } from "reactstrap";
 import "./UsernameChoice.css";
 
 class UsernameChoice extends Component {
@@ -10,6 +11,7 @@ class UsernameChoice extends Component {
       player_2: ""
     };
     this.handleChangeNickname = this.handleChangeNickname.bind(this);
+    this.submitCheck = this.submitCheck.bind(this);
   }
 
   handleChangeNickname(event) {
@@ -18,56 +20,27 @@ class UsernameChoice extends Component {
     });
   }
 
-  submitCheck(event) {
-    alert("test");
-  }
+  submitCheck = id => {
+    alert(id);
+  };
 
   render() {
     return (
       <Container fluid id="usernameSection">
         <Row Style="height: 100vh;">
-          <Col xs={{ size: 4, offset: 1 }} className="my-auto">
-            <h3>Player 1: {this.state.player_1}</h3>
-            <div className="d-flex">
-              <Input
-                type="text"
-                name="nickname_player_1"
-                id="player_1"
-                placeholder="Enter Your Nickname"
-                className="mr-2"
-                onChange={this.handleChangeNickname}
-                value={this.state.player_1}
-              />
-              <span
-                className={
-                  this.state.player_1.length > 2 ? "d-inline" : "d-none"
-                }
-              >
-                <i className="far fa-check-circle fa-2x btnNickname" />
-              </span>
-            </div>
-          </Col>
-          <Col xs={{ size: 4, offset: 2 }} className="my-auto">
-            <h3>Player 2: {this.state.player_2}</h3>
-            <div className="d-flex">
-              <Input
-                type="text"
-                name="nickname_player_2"
-                id="player_2"
-                placeholder="Enter Your Nickname"
-                className="mr-2"
-                onChange={this.handleChangeNickname}
-                value={this.state.player_2}
-              />
-              <span
-                className={
-                  this.state.player_2.length > 2 ? "d-inline" : "d-none"
-                }
-              >
-                <i className="far fa-check-circle fa-2x btnNickname" />
-              </span>
-            </div>
-          </Col>
+          <ChoiceNickname
+            result={this.state.player_1}
+            id="player_1"
+            name="Player 1"
+            handleChangeNickname={this.handleChangeNickname}
+            submitCheck={this.submitCheck}
+          />
+          <ChoiceNickname
+            result={this.state.player_2}
+            id="player_2"
+            name="Player 2"
+            handleChangeNickname={this.handleChangeNickname}
+          />
         </Row>
       </Container>
     );
