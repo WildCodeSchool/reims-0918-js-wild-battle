@@ -11,6 +11,7 @@ import UsernameChoice from "./battle/UsernameChoice";
 import CombatInit from "./battle/CombatInit";
 
 class App extends Component {
+
   render() {
     return (
       <div>
