@@ -14,12 +14,14 @@ class UsernameChoice extends Component {
             name="Player_1"
             handleChangeNickname={handleChangeNickname}
             submitCheck={submitCheck}
+            isChecked={battle.player_1.nicknameCheck}
           />
           <ChoiceNickname
             result={battle.player_2.nickname}
             name="Player_2"
             handleChangeNickname={handleChangeNickname}
             submitCheck={submitCheck}
+            isChecked={battle.player_2.nicknameCheck}
           />
         </Row>
       </Container>
