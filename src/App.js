@@ -15,28 +15,36 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      battleScreen: {
-        whoPlayedRound: "Player 1",
-        player1: "Player 1",
-        player2: "Player 2",
-        round: 1,
-        currentPlayer: "Player 1"
+      battle:{
+        player_1:{
+          nickname: "Mathieu"
+        },
+        player_2:{
+          nickname: "Mickaël"
+        },
+        round:{
+          roundNumber: 1,
+          currentPlayer: "Mathieu"
+        }
       }
     };
     this.finishRoom = this.finishRoom.bind(this);
   }
 
-  finishRoom(whoPlayed) {
+  finishRoom(currentPlayer) {
+    let updateBattle = this.state.battle
+
+    if(currentPlayer === this.state.battle.player_1.nickname){
+      updateBattle.round.currentPlayer = this.state.battle.player_2.nickname
+    } else if (currentPlayer === this.state.battle.player_2.nickname){
+      updateBattle.round.currentPlayer = this.state.battle.player_1.nickname
+      updateBattle.round.roundNumber++
+    }
+
     this.setState({
-      whoPlayedRound:
-        whoPlayed === this.state.player1
-          ? this.state.player2
-          : this.state.player1,
-      round:
-        this.state.whoPlayedRound === this.state.player1
-          ? this.state.round
-          : this.state.round + 1 
-    });
+      battle: updateBattle
+    })
+
   }
 
   render() {
@@ -47,9 +55,8 @@ class App extends Component {
           <HomeNav />
           <UsernameChoice />
           <BattleScreen
-            {...this.state.battleScreen}
+            {...this.state.battle}
             finishRoom={this.finishRoom}
-            currentPlayer={this.state.currentPlayer}
           />
           <HeroesListing />
           <StatsSection />

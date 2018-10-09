@@ -1,19 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { Form, FormGroup, Button } from "reactstrap";
 
-const BattleScreen = ({ round, whoPlayedRound, finishRoom, currentPlayer } ) => (
-  <div>
-    <h3>Round: {round}</h3>
-
-    <Form>
-      <h3>{whoPlayedRound}</h3>
-      <FormGroup className="d-flex">
-        {/* <Input type="text" className="mr-2" /> */}
-        <Button onClick={() => finishRoom({currentPlayer})}>Finish</Button>
-      </FormGroup>
-    </Form>
-  </div>
-);
-
+class BattleScreen extends Component {
+  render() {
+    const { round, finishRoom } = this.props
+    return (
+      <div>
+        {round.roundNumber < 6 ? (
+          <div>
+            <h3>Round: {round.roundNumber}</h3>
+            <Form>
+              <h3>Current player : {round.currentPlayer}</h3>
+              <FormGroup className="d-flex">
+                <Button onClick={() => finishRoom(round.currentPlayer)}>
+                  Finish
+                </Button>
+              </FormGroup>
+            </Form>
+          </div>
+        ) : (
+          <h3>Battle Finish</h3>
+        )}
+      </div>
+    );
+  }
+}
 export default BattleScreen;
