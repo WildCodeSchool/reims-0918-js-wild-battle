@@ -32,8 +32,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      collapse: false,
       heroes: []
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
   callApiSuperHeroes() {
@@ -52,6 +55,10 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
+  toggle(event) {
+    this.setState({ collapse: true });
+  }
+
   render() {
     return (
       <div>
@@ -59,7 +66,7 @@ class App extends Component {
         <Container fluid>
           <HomeNav />
           <UsernameChoice />
-          <HeroesListing />
+          <HeroesListing {...this.state} toggle={this.toggle} />
           <StatsSection />
           <CombatInit />
         </Container>
