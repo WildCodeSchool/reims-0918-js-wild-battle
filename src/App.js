@@ -35,9 +35,8 @@ class App extends Component {
       round:
         this.state.whoPlayedRound === this.state.player1
           ? this.state.round
-          : this.state.round + 1
+          : this.state.round + 1 
     });
-    console.log(whoPlayed);
   }
 
   render() {
