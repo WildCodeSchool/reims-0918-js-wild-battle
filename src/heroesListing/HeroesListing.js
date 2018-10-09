@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import { Row, Col, Form, FormGroup, Input, Collapse } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Collapse
+} from "reactstrap";
 import HeroListFrame from "./HeroListFrame";
 import HeroCard from "../HeroCard";
 import HeroBiography from "./HeroBiography";
+import "./HeroesListing.css";
 
 const heroesDB = [
   {
@@ -130,58 +139,77 @@ class HeroesListing extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      collapse: false
+      collapse: false,
+      currentHeroId: "1"
     };
+    this.getSelectedHero = this.getSelectedHero.bind(this);
   }
 
   toggle(event) {
+    const {
+      target: { value }
+    } = event;
     this.setState({ collapse: true });
+  }
+
+  getSelectedHero() {
+    this.setState({ currentHeroId: { id } });
   }
 
   render() {
     return (
       <section id="heroesListSection">
-        <Row>
-          <h2>Heroes List</h2>
-          <Form>
-            <FormGroup>
-              <Input
-                type="search"
-                name="searchCard"
-                placeholder="Search a card"
-              />
-            </FormGroup>
-          </Form>
-        </Row>
-        <Collapse isOpen={this.state.collapse}>
+        <Container fluid>
           <Row>
-            <Col sm="12" md={{ size: 3, offset: 2 }}>
-              <HeroCard
-                nameHero="Batman"
-                imageHero="https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"
-                str="26"
-                wise="100"
-                speed="27"
-                durability="50"
-                id="demo"
-              />
-            </Col>
-            <Col sm="12" md={{ size: 6, offset: 1 }}>
-              <HeroBiography />
-            </Col>
+            <h2>Heroes List</h2>
+            <Form>
+              <FormGroup>
+                <Input
+                  className="ml-3"
+                  type="search"
+                  name="searchCard"
+                  placeholder="Search a card"
+                />
+              </FormGroup>
+            </Form>
           </Row>
-        </Collapse>
-        <Row>
-          {heroesDB.map(hero => (
-            <Col onClick={this.toggle} className="my-3" xs="4" md="3" lg="2">
-              <HeroListFrame
-                id={hero.id}
-                imageHero={hero.imageHero}
-                nameHero={hero.nameHero}
-              />
-            </Col>
-          ))}
-        </Row>
+          <Collapse id={this.state.currentHeroId} isOpen={this.state.collapse}>
+            <Row>
+              <Col sm="12" md={{ size: 3, offset: 2 }}>
+                <HeroCard
+                  nameHero="Batman"
+                  imageHero="https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"
+                  str="26"
+                  wise="100"
+                  speed="27"
+                  durability="50"
+                  id="demo"
+                />
+              </Col>
+              <Col sm="12" md={{ size: 6, offset: 1 }}>
+                <HeroBiography id={this.toggle.id} />
+              </Col>
+            </Row>
+          </Collapse>
+          <Row>
+            {heroesDB.map(hero => (
+              <Col
+                onClick={(this.toggle, this.getSelectedHero)}
+                className="heroFrameAngle my-3"
+                xs="4"
+                md="3"
+                lg="2"
+              >
+                <HeroListFrame
+                  getSelectedHero={this.getSelectedHero}
+                  key={hero.id}
+                  imageHero={hero.imageHero}
+                  nameHero={hero.nameHero}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </section>
     );
   }
