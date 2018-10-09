@@ -60,9 +60,6 @@ class App extends Component {
           <HomeNav />
           <UsernameChoice />
           <HeroesListing />
-          <button onClick={() => this.callApiSuperHeroes()}>
-            JE GROSSIS LE BOUTON
-          </button>
           <StatsSection />
           <CombatInit />
         </Container>
