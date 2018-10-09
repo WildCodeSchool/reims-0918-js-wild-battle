@@ -137,7 +137,6 @@ const heroesDB = [
 class HeroesListing extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
       collapse: false,
       currentHeroId: "1"
@@ -145,15 +144,8 @@ class HeroesListing extends Component {
     this.getSelectedHero = this.getSelectedHero.bind(this);
   }
 
-  toggle(event) {
-    const {
-      target: { value }
-    } = event;
-    this.setState({ collapse: true });
-  }
-
-  getSelectedHero() {
-    this.setState({ currentHeroId: { id } });
+  getSelectedHero(id) {
+    this.setState({ collapse: true, currentHeroId: id });
   }
 
   render() {
@@ -187,21 +179,20 @@ class HeroesListing extends Component {
                 />
               </Col>
               <Col sm="12" md={{ size: 6, offset: 1 }}>
-                <HeroBiography id={this.toggle.id} />
+                <HeroBiography id={this.getSelectedHero.id} />
               </Col>
             </Row>
           </Collapse>
           <Row>
             {heroesDB.map(hero => (
               <Col
-                onClick={(this.toggle, this.getSelectedHero)}
+                onClick={() => this.getSelectedHero(hero.id)}
                 className="heroFrameAngle my-3"
                 xs="4"
                 md="3"
                 lg="2"
               >
                 <HeroListFrame
-                  getSelectedHero={this.getSelectedHero}
                   key={hero.id}
                   imageHero={hero.imageHero}
                   nameHero={hero.nameHero}
