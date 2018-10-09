@@ -188,12 +188,12 @@ class HeroesListing extends Component {
               <Col
                 onClick={() => this.getSelectedHero(hero.id)}
                 className="heroFrameAngle my-3"
+                key={hero.name}
                 xs="4"
                 md="3"
                 lg="2"
               >
                 <HeroListFrame
-                  key={hero.id}
                   imageHero={hero.imageHero}
                   nameHero={hero.nameHero}
                 />

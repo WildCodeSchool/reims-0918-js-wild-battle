@@ -63,7 +63,7 @@ const RankingTable = () => (
     <h1 className="text-center">RANKING</h1>
     <ListGroup className="text-center h5">
       {rank_sort(ranking).map(person => (
-        <ListGroupItem className="border-dark">
+        <ListGroupItem key={ranking.name} className="border-dark">
           <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
           <div className="d-flex justify-content-around">
             <ListGroupItemText>Win: {person.win}</ListGroupItemText>
