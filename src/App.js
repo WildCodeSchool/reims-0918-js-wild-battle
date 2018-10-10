@@ -32,12 +32,51 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      battle: {
+        player_1: {
+          nickname: "",
+          nicknameCheck: false
+        },
+        player_2: {
+          nickname: "",
+          nicknameCheck: false
+        },
+        round: {
+          roundNumber: 1,
+          roundStats: ""
+        }
+      },
       collapse: false,
       heroes: []
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleChangeNickname = this.handleChangeNickname.bind(this);
   }
+
+  handleChangeNickname = (event, name) => {
+    let updateBattle = this.state.battle;
+    if (name === "Player_1") {
+      updateBattle.player_1.nickname = event.target.value;
+    } else if (name === "Player_2") {
+      updateBattle.player_2.nickname = event.target.value;
+    }
+    this.setState({
+      battle: updateBattle
+    });
+  };
+
+  submitCheck = name => {
+    let updateBattle = this.state.battle;
+    if (name === "Player_1") {
+      updateBattle.player_1.nicknameCheck = true;
+    } else if (name === "Player_2") {
+      updateBattle.player_2.nicknameCheck = true;
+    }
+    this.setState({
+      battle: updateBattle
+    });
+  };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
@@ -65,7 +104,11 @@ class App extends Component {
         <Header />
         <Container fluid>
           <HomeNav />
-          <UsernameChoice />
+          <UsernameChoice
+            battle={this.state.battle}
+            handleChangeNickname={this.handleChangeNickname}
+            submitCheck={this.submitCheck}
+          />
           <HeroesListing {...this.state} toggle={this.toggle} />
           <StatsSection />
           <CombatInit />
