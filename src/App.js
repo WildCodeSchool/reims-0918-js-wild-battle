@@ -8,6 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
+import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
 const listHeroes = [
@@ -43,7 +44,8 @@ class App extends Component {
         },
         round: {
           roundNumber: 1,
-          roundStats: ""
+          roundStats: "",
+          currentPlayer: "Mathieu"
         }
       },
       collapse: false,
@@ -52,6 +54,7 @@ class App extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.handleChangeNickname = this.handleChangeNickname.bind(this);
+    this.finishRoom = this.finishRoom.bind(this);
   }
 
   handleChangeNickname = (event, name) => {
@@ -90,6 +93,21 @@ class App extends Component {
     }
   }
 
+  finishRoom(currentPlayer) {
+    let updateBattle = this.state.battle;
+
+    if (currentPlayer === this.state.battle.player_1.nickname) {
+      updateBattle.round.currentPlayer = this.state.battle.player_2.nickname;
+    } else if (currentPlayer === this.state.battle.player_2.nickname) {
+      updateBattle.round.currentPlayer = this.state.battle.player_1.nickname;
+      updateBattle.round.roundNumber++;
+    }
+
+    this.setState({
+      battle: updateBattle
+    });
+  }
+
   componentDidMount() {
     this.callApiSuperHeroes();
   }
@@ -104,6 +122,8 @@ class App extends Component {
         <Header />
         <Container fluid>
           <HomeNav />
+          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
+          <HeroesListing />
           <UsernameChoice
             battle={this.state.battle}
             handleChangeNickname={this.handleChangeNickname}
