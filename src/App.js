@@ -33,6 +33,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      collapse: false,
+      heroes: [],
       battle: {
         player_1: {
           nickname: "",
@@ -47,9 +49,7 @@ class App extends Component {
           roundStats: "",
           currentPlayer: "Mathieu"
         }
-      },
-      collapse: false,
-      heroes: []
+      }
     };
 
     this.toggle = this.toggle.bind(this);
@@ -112,7 +112,7 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle(event) {
+  toggle() {
     this.setState({ collapse: true });
   }
 
@@ -123,13 +123,16 @@ class App extends Component {
         <Container fluid>
           <HomeNav />
           <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <HeroesListing />
           <UsernameChoice
             battle={this.state.battle}
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
-          <HeroesListing {...this.state} toggle={this.toggle} />
+          <HeroesListing
+            heroes={this.state.heroes}
+            collapse={this.state.collapse}
+            toggle={this.toggle}
+          />
           <StatsSection />
           <CombatInit />
         </Container>

@@ -34,7 +34,14 @@ const HeroesListing = ({ heroes, collapse, toggle }) => (
     </Collapse>
     <Row>
       {heroes.sort((a, b) => a.name.localeCompare(b.name)).map(hero => (
-        <Col onClick={toggle} className="my-3" xs="4" md="3" lg="2">
+        <Col
+          key={hero.id}
+          onClick={toggle}
+          className="my-3"
+          xs="4"
+          md="3"
+          lg="2"
+        >
           <HeroListFrame
             id={hero.id}
             imageHero={hero.image.url}
