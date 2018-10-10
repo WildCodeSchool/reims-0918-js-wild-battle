@@ -3,10 +3,15 @@ import { Row, Col, Container } from "reactstrap";
 import HeroCard from "../HeroCard";
 import heroes from "./heroes.json";
 
+const stats = ["Strength", "Intelligence", "Speed", "Durability"];
+
 class CombatInit extends Component {
   constructor(props) {
     super(props);
-    this.state = { heroes };
+    this.state = {
+      heroes,
+      randomStat: ""
+    };
     this.selectHero = this.selectHero.bind(this);
   }
 
@@ -18,11 +23,21 @@ class CombatInit extends Component {
     });
   };
 
+  getRandomInt = () => {
+    const randomInt = Math.floor(Math.random() * Math.floor(stats.length));
+    this.setState({
+      randomStat: randomInt
+    });
+  };
+
   render() {
     const selectedHero = this.state.selectedHero;
 
     return (
       <Container fluid>
+        <div onClick={() => this.getRandomInt()}>
+          Fight on: {stats[this.state.randomStat]}
+        </div>
         <Row className="mt-5 justify-content-center">
           {this.state.heroes.map(hero => (
             <Col xs="2" onClick={() => this.selectHero(hero.id)} key={hero.id}>
@@ -50,6 +65,17 @@ class CombatInit extends Component {
                 speed={selectedHero[0].speed}
                 durability={selectedHero[0].durability}
                 id={selectedHero[0].id}
+              />
+            </Col>
+            <Col xs="2">
+              <HeroCard
+                nameHero={this.state.heroes[0].nameHero}
+                imageHero={this.state.heroes[0].imageHero}
+                str={this.state.heroes[0].str}
+                wise={this.state.heroes[0].wise}
+                speed={this.state.heroes[0].speed}
+                durability={this.state.heroes[0].durability}
+                id={this.state.heroes[0].id}
               />
             </Col>
           </Row>
