@@ -10,6 +10,24 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import CombatInit from "./battle/CombatInit";
 
+const listHeroes = [
+  30,
+  69,
+  165,
+  207,
+  222,
+  263,
+  310,
+  313,
+  322,
+  341,
+  346,
+  354,
+  514,
+  620,
+  644
+];
+
 class App extends Component {
   constructor() {
     super();
@@ -27,8 +45,12 @@ class App extends Component {
           roundNumber: 1,
           roundStats: ""
         }
-      }
+      },
+      collapse: false,
+      heroes: []
     };
+
+    this.toggle = this.toggle.bind(this);
     this.handleChangeNickname = this.handleChangeNickname.bind(this);
   }
 
@@ -56,6 +78,26 @@ class App extends Component {
     });
   };
 
+  callApiSuperHeroes() {
+    for (let i = 0; i < listHeroes.length; i++) {
+      fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
+        .then(results => results.json()) // conversion du résultat en JSON
+        .then(data => {
+          this.setState({
+            heroes: [...this.state.heroes, data]
+          });
+        });
+    }
+  }
+
+  componentDidMount() {
+    this.callApiSuperHeroes();
+  }
+
+  toggle(event) {
+    this.setState({ collapse: true });
+  }
+
   render() {
     return (
       <div>
@@ -67,7 +109,7 @@ class App extends Component {
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
-          <HeroesListing />
+          <HeroesListing {...this.state} toggle={this.toggle} />
           <StatsSection />
           <CombatInit />
         </Container>
