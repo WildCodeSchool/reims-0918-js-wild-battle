@@ -50,7 +50,7 @@ class App extends Component {
           currentPlayer: "Mathieu"
         }
       },
-      selectedHeroOfList: "test"
+      selectedHeroOfList: {}
     };
 
     this.toggle = this.toggle.bind(this);
@@ -113,12 +113,11 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle(event) {
+  toggle(id) {
     this.setState({
       collapse: true,
-      selectedHeroOfList: event.target.key
+      selectedHeroOfList: id
     });
-    console.log(event.target);
   }
 
   render() {
@@ -140,7 +139,7 @@ class App extends Component {
             selectedHeroOfList={this.state.selectedHeroOfList}
           />
           <StatsSection />
-          <CombatInit />
+          {/* <CombatInit /> */}
         </Container>
         <Footer />
       </div>

@@ -1,43 +1,43 @@
 import React from "react";
 
-const HeroBiography = () => (
-  <div>
-    <h3>Batman</h3>
-    <p>
-      <span className="itemTitleBiography">Full Name : </span>
-      Bruce Wayne
+const HeroBiography = ({ selectedHeroOfList }) => (
+    <div>
+        <h3>{selectedHeroOfList.name}</h3>
+        <p>
+            <span className="itemTitleBiography">Full Name : </span>
+            {console.log(selectedHeroOfList.biography)}
+        </p>
+
+        <p>
+            <span className="itemTitleBiography">Alter-Egos : </span>
+            a corriger
     </p>
 
-    <p>
-      <span className="itemTitleBiography">Alter-Egos : </span>
-      No Alter egos found
+        <p>
+            <span className="itemTitleBiography">Aliases : </span>
+            {selectedHeroOfList.biography.aliases.map(hero => `${hero} - `)}
+        </p>
+
+        <p>
+            <span className="itemTitleBiography">Place of Birth : </span>
+            a corriger
     </p>
 
-    <p>
-      <span className="itemTitleBiography">Aliases : </span>
-      Insider - Matches Malone
+        <p>
+            <span className="itemTitleBiography">First appearance : </span>
+            a corriger
     </p>
 
-    <p>
-      <span className="itemTitleBiography">Place of Birth : </span>
-      Crest Hill, Bristol Township, Gotham City
-    </p>
+        <p>
+            <span className="itemTitleBiography">Publisher : </span>
+            {selectedHeroOfList.biography.publisher}
+        </p>
 
-    <p>
-      <span className="itemTitleBiography">First appearance : </span>
-      Detective Comics #27
-    </p>
-
-    <p>
-      <span className="itemTitleBiography">Publisher : </span>
-      DC Comics
-    </p>
-
-    <p>
-      <span className="itemTitleBiography">Alignement : </span>
-      Good
-    </p>
-  </div>
+        <p>
+            <span className="itemTitleBiography">Alignement : </span>
+            {selectedHeroOfList.biography.alignment}
+        </p>
+    </div>
 );
 
 export default HeroBiography;
