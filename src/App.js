@@ -134,7 +134,7 @@ class App extends Component {
             toggle={this.toggle}
           />
           <StatsSection />
-          <CombatInit />
+          <CombatInit heroes={this.state.heroes} />
         </Container>
         <Footer />
       </div>
