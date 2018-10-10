@@ -112,7 +112,7 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle(event) {
+  toggle() {
     this.setState({ collapse: true });
   }
 
