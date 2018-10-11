@@ -1,15 +1,16 @@
 import React from "react";
 import { Card, CardImg, CardBody, CardTitle } from "reactstrap";
+import Scrollchor from 'react-scrollchor';
 
 const HeroListFrame = ({ imageHero, nameHero, toggle, heroData }) => (
-  <a onClick={() => toggle(heroData)} href="#demo">
+  <Scrollchor to="#heroesListSection" onClick={() => toggle(heroData)}>
     <Card>
       <CardImg top width="100%" src={imageHero} alt="Card image cap" />
       <CardBody>
         <CardTitle>{nameHero} </CardTitle>
       </CardBody>
     </Card>
-  </a>
+  </Scrollchor>
 );
 
 export default HeroListFrame;

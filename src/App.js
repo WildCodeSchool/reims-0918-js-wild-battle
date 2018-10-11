@@ -11,6 +11,7 @@ import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
+
 const listHeroes = [
   30,
   69,
@@ -132,6 +133,7 @@ class App extends Component {
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
+
           <HeroesListing
             heroes={this.state.heroes}
             collapse={this.state.collapse}

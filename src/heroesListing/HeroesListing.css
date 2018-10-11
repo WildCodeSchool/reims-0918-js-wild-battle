@@ -1,3 +1,4 @@
-.heroFrameAngle {
+.heroFrameAngle > a {
   transform: skew(-5deg);
+  display: block;
 }
