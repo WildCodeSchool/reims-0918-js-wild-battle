@@ -142,7 +142,7 @@ class App extends Component {
             selectedHeroOfList={this.state.selectedHeroOfList}
           />
           <StatsSection />
-          <CombatInit />
+          <CombatInit heroes={this.state.heroes} />
         </Container>
         <Footer />
       </div>
