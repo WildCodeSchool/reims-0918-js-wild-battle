@@ -20,11 +20,11 @@ const HeroCard = ({ selectedHeroOfList }) => (
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-bolt" />
-            <p>{selectedHeroOfList.powerstats.intelligence}</p>
+            <p>{selectedHeroOfList.powerstats.speed}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-book" />
-            <p>{selectedHeroOfList.powerstats.speed}</p>
+            <p>{selectedHeroOfList.powerstats.intelligence}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-shield-alt" />

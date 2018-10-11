@@ -17,8 +17,10 @@ const listHeroes = [
   30,
   69,
   165,
+  176,
   207,
   222,
+  226,
   263,
   310,
   313,
@@ -26,6 +28,9 @@ const listHeroes = [
   341,
   346,
   354,
+  361,
+  386,
+  485,
   514,
   620,
   644
@@ -52,10 +57,12 @@ class App extends Component {
           currentPlayer: "Mathieu"
         }
       },
-      selectedHeroOfList: {}
+      selectedHeroOfList: {},
+      searchInputHeroList: ""
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleSearchListChange = this.handleSearchListChange.bind(this);
     this.handleChangeNickname = this.handleChangeNickname.bind(this);
     this.finishRoom = this.finishRoom.bind(this);
   }
@@ -122,6 +129,10 @@ class App extends Component {
     });
   }
 
+  handleSearchListChange(event) {
+    this.setState({ searchInputHeroList: event.target.value, collapse: false })
+  }
+
   render() {
     return (
       <div>
@@ -141,6 +152,8 @@ class App extends Component {
             collapse={this.state.collapse}
             toggle={this.toggle}
             selectedHeroOfList={this.state.selectedHeroOfList}
+            searchInputHeroList={this.state.searchInputHeroList}
+            handleSearchListChange={this.handleSearchListChange}
           />
           <StatsSection />
           {/* <CombatInit /> */}

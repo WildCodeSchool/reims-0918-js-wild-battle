@@ -5,14 +5,14 @@ import HeroCard from "../HeroCard";
 import HeroBiography from "./HeroBiography";
 import "./HeroesListing.css"
 
-const HeroesListing = ({ heroes, collapse, toggle, selectedHeroOfList }) => (
+const HeroesListing = ({ heroes, collapse, toggle, selectedHeroOfList, searchInputHeroList, handleSearchListChange }) => (
     <section id="heroesListSection">
         <Container fluid>
             <Row>
                 <h2 className="mr-3">Heroes List</h2>
                 <Form>
                     <FormGroup>
-                        <Input type="search" name="searchCard" placeholder="Search a card" />
+                        <Input onChange={handleSearchListChange} value={searchInputHeroList} type="search" name="searchCard" placeholder="Search a card" />
                     </FormGroup>
                 </Form>
             </Row>
@@ -31,7 +31,7 @@ const HeroesListing = ({ heroes, collapse, toggle, selectedHeroOfList }) => (
 
             )}
             <Row>
-                {heroes.sort((a, b) => a.name.localeCompare(b.name)).map(hero => (
+                {heroes.filter(hero => hero.name.toLowerCase().includes(searchInputHeroList.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name)).map(hero => (
                     <Col key={hero.id} className="heroFrameAngle my-3" xs="4" md="3" lg="2">
                         <HeroListFrame
                             toggle={toggle}
