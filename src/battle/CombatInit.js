@@ -62,10 +62,10 @@ class CombatInit extends Component {
           )}{" "}
           <br />
           <button onClick={() => this.getRandomInt()}>Fight on:</button>{" "}
-          {stats[this.state.randomStat]}
+          <span className="text-light">{stats[this.state.randomStat]}</span>
         </div>
         {this.state.deck.length > 0 && (
-          <Row className="mt-5 justify-content-center">
+          <Row className="mt-5 pt-5 border-top border-light justify-content-center">
             {this.state.deck.map(hero => (
               <Col
                 xs="2"
@@ -78,7 +78,7 @@ class CombatInit extends Component {
           </Row>
         )}
         {selectedHero ? (
-          <Row className="mt-5">
+          <Row className="pt-5 mt-5 border-top border-light">
             <Col xs="2">
               <HeroCard selectedHeroOfList={selectedHero[0]} />
             </Col>
