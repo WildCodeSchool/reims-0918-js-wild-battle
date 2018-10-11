@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import "./App.css";
+import ParticlesJS from "./ParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -49,7 +50,8 @@ class App extends Component {
           roundStats: "",
           currentPlayer: "Mathieu"
         }
-      }
+      },
+      selectedHeroOfList: {}
     };
 
     this.toggle = this.toggle.bind(this);
@@ -112,13 +114,17 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle() {
-    this.setState({ collapse: true });
+  toggle(id) {
+    this.setState({
+      collapse: true,
+      selectedHeroOfList: id
+    });
   }
 
   render() {
     return (
       <div>
+        <ParticlesJS />
         <Header />
         <Container fluid>
           <HomeNav />
@@ -128,13 +134,15 @@ class App extends Component {
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
-          {/* <HeroesListing
+
+          <HeroesListing
             heroes={this.state.heroes}
             collapse={this.state.collapse}
             toggle={this.toggle}
-          /> */}
+            selectedHeroOfList={this.state.selectedHeroOfList}
+          />
           <StatsSection />
-          <CombatInit heroes={this.state.heroes} />
+          <CombatInit />
         </Container>
         <Footer />
       </div>
