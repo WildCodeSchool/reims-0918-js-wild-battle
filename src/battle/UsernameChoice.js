@@ -1,32 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import ChoiceNickname from "./ChoiceNickname";
+import CountDown from "./CountDown";
 import { Row, Container } from "reactstrap";
 import "./UsernameChoice.css";
 
-class UsernameChoice extends Component {
-  render() {
-    const { battle, handleChangeNickname, submitCheck } = this.props;
-    return (
-      <Container fluid id="usernameSection">
+import BattleContext from "../battle_context/BattleContext";
+
+const UsernameChoice = () => (
+  <Container fluid id="usernameSection">
+    <BattleContext.Consumer>
+      {context => (
         <Row style={{ height: "100vh" }}>
-          <ChoiceNickname
-            result={battle.player_1.nickname}
-            name="Player_1"
-            handleChangeNickname={handleChangeNickname}
-            submitCheck={submitCheck}
-            isChecked={battle.player_1.nicknameCheck}
-          />
-          <ChoiceNickname
-            result={battle.player_2.nickname}
-            name="Player_2"
-            handleChangeNickname={handleChangeNickname}
-            submitCheck={submitCheck}
-            isChecked={battle.player_2.nicknameCheck}
-          />
+          <ChoiceNickname name="player_1" />
+          <ChoiceNickname name="player_2" />
+          {context.state.battle.player_1.nicknameChecked &&
+            context.state.battle.player_2.nicknameChecked && <CountDown />}
         </Row>
-      </Container>
-    );
-  }
-}
+      )}
+    </BattleContext.Consumer>
+  </Container>
+);
 
 export default UsernameChoice;

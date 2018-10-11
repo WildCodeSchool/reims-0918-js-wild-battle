@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
-import ParticlesJS from "./ParticleJS";
+import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -11,7 +12,6 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
-
 
 const listHeroes = [
   30,
@@ -46,7 +46,7 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameCheck: false
+          nicknameChec: false
         },
         player_2: {
           nickname: "",
@@ -60,7 +60,6 @@ class App extends Component {
       },
       selectedHeroOfList: [],
       searchInputHeroList: ""
-
     };
 
     this.toggle = this.toggle.bind(this);
@@ -70,14 +69,14 @@ class App extends Component {
   }
 
   handleChangeNickname = (event, name) => {
-    let updateBattle = this.state.battle;
-    if (name === "Player_1") {
-      updateBattle.player_1.nickname = event.target.value;
-    } else if (name === "Player_2") {
-      updateBattle.player_2.nickname = event.target.value;
-    }
     this.setState({
-      battle: updateBattle
+      battle: {
+        ...this.state.battle,
+        [name]: {
+          ...this.state.battle[name],
+          nickname: event.target.value
+        }
+      }
     });
   };
 
@@ -133,36 +132,34 @@ class App extends Component {
   }
 
   handleSearchListChange(event) {
-    this.setState({ searchInputHeroList: event.target.value, collapse: false })
+    this.setState({ searchInputHeroList: event.target.value, collapse: false });
   }
 
   render() {
     return (
       <div>
-        <ParticlesJS />
-        <Header />
-        <Container fluid>
-          <HomeNav />
-          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <UsernameChoice
-            battle={this.state.battle}
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
-          />
+        <BattleProvider>
+          <BgParticlesJS />
+          <Header />
+          <Container fluid>
+            <HomeNav />
+            <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
+            <UsernameChoice />
 
-          <HeroesListing
-            heroes={this.state.heroes}
-            collapse={this.state.collapse}
-            toggle={this.toggle}
-            selectedHeroOfList={this.state.selectedHeroOfList}
-            searchInputHeroList={this.state.searchInputHeroList}
-            handleSearchListChange={this.handleSearchListChange}
-            isCollapse={this.state.isCollapse}
-          />
-          <StatsSection />
-          {/* <CombatInit /> */}
-        </Container>
-        <Footer />
+            <HeroesListing
+              heroes={this.state.heroes}
+              collapse={this.state.collapse}
+              toggle={this.toggle}
+              selectedHeroOfList={this.state.selectedHeroOfList}
+              searchInputHeroList={this.state.searchInputHeroList}
+              handleSearchListChange={this.handleSearchListChange}
+              isCollapse={this.state.isCollapse}
+            />
+            <StatsSection />
+            <CombatInit heroes={this.state.heroes} />
+          </Container>
+          <Footer />
+        </BattleProvider>
       </div>
     );
   }
