@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
 import BgParticlesJS from "./BgParticleJS";
@@ -39,7 +40,7 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameCheck: false
+          nicknameChec: false
         },
         player_2: {
           nickname: "",
@@ -124,27 +125,26 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BgParticlesJS />
-        <Header />
-        <Container fluid>
-          <HomeNav />
-          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <UsernameChoice
-            battle={this.state.battle}
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
-          />
+        <BattleProvider>
+          <BgParticlesJS />
+          <Header />
+          <Container fluid>
+            <HomeNav />
+            <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
+            <UsernameChoice />
 
-          <HeroesListing
-            heroes={this.state.heroes}
-            collapse={this.state.collapse}
-            toggle={this.toggle}
-            selectedHeroOfList={this.state.selectedHeroOfList}
-          />
-          <StatsSection />
-          <CombatInit heroes={this.state.heroes} />
-        </Container>
-        <Footer />
+            <HeroesListing
+              heroes={this.state.heroes}
+              collapse={this.state.collapse}
+              toggle={this.toggle}
+              selectedHeroOfList={this.state.selectedHeroOfList}
+            />
+            <StatsSection />
+            <CombatInit heroes={this.state.heroes} />
+          </Container>
+          <Footer />
+        </BattleProvider>
+        
       </div>
     );
   }

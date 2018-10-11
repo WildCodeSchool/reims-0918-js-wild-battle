@@ -1,41 +1,36 @@
-import React, { Component } from "react";
+import React from "react";
 import { Col, Input } from "reactstrap";
+import BattleContext from "../battle_context/BattleContext";
 
-class ChoiceNickname extends Component {
-  render() {
-    const {
-      result,
-      handleChangeNickname,
-      name,
-      submitCheck,
-      isChecked
-    } = this.props;
-    const moreThreeCharacters = result.length > 2;
-    return (
-      <Col xs={{ size: 4, offset: 1 }} className="my-auto">
-        <h3>
-          {name}: {result}
-        </h3>
-        {!isChecked && (
-          <div className="d-flex">
-            <Input
-              type="text"
-              name={name}
-              placeholder="Enter Your Nickname"
-              className="mr-2"
-              onChange={event => handleChangeNickname(event, name)}
-              value={result}
-            />
-            {moreThreeCharacters && (
-              <span onClick={() => submitCheck(name)}>
-                <i className="far fa-check-circle fa-2x btnNickname" />
-              </span>
-            )}
-          </div>
-        )}
-      </Col>
-    );
-  }
-}
+const ChoiceNickname = ({ name }) => (
+  <Col xs={{ size: 4, offset: 1 }} className="my-auto">
+    <BattleContext.Consumer>
+      {context => (
+        <React.Fragment>
+          <h3>
+            {name}: {context.state.battle[name].nickname}
+          </h3>
+          {!context.state.battle[name].nicknameChecked && (
+            <div className="d-flex">
+              <Input
+                type="text"
+                name={name}
+                placeholder="Enter Your Nickname"
+                className="mr-2"
+                onChange={event => context.handleChangeNickname(event, name)}
+                value={context.state.battle[name].nickname}
+              />
+              {context.state.battle[name].nickname.length > 2 && (
+                <span onClick={() => context.submitCheck(name)}>
+                  <i className="far fa-check-circle fa-2x btnNickname" />
+                </span>
+              )}
+            </div>
+          )}
+        </React.Fragment>
+      )}
+    </BattleContext.Consumer>
+  </Col>
+);
 
 export default ChoiceNickname;

@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import BattleContext from "./Battlecontext";
+import BattleContext from "./BattleContext";
 
-class BattleContext extends Component {
+class BattleProvider extends Component {
   state = {
     battle: {
       player_1: {
         nickname: "",
-        nicknameCheck: false
+        nicknameChecked: false
       },
       player_2: {
         nickname: "",
-        nicknameCheck: false
+        nicknameChecked: false
       },
       round: {
         roundNumber: 1,
@@ -18,13 +18,40 @@ class BattleContext extends Component {
         currentPlayer: "Mathieu"
       }
     }
-  }
+  };
 
-  render(){
-    return(
-
-    )
+  render() {
+    return (
+      <BattleContext.Provider
+        value={{
+          state: this.state,
+          handleChangeNickname: (event, name) =>
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                [name]: {
+                  ...this.state.battle[name],
+                  nickname: event.target.value
+                }
+              }
+            }),
+          submitCheck: name => {
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                [name]: {
+                  ...this.state.battle[name],
+                  nicknameChecked: true
+                }
+              }
+            });
+          }
+        }}
+      >
+        {this.props.children}
+      </BattleContext.Provider>
+    );
   }
 }
 
-export default BattleContext;
+export default BattleProvider;
