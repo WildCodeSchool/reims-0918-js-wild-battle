@@ -26,7 +26,7 @@ const listHeroes = [
   354,
   514,
   620,
-  644
+  644,
 ];
 
 class App extends Component {
@@ -36,20 +36,20 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameCheck: false
+          nicknameCheck: false,
         },
         player_2: {
           nickname: "",
-          nicknameCheck: false
+          nicknameCheck: false,
         },
         round: {
           roundNumber: 1,
           roundStats: "",
-          currentPlayer: "Mathieu"
-        }
+          currentPlayer: "Mathieu",
+        },
       },
       collapse: false,
-      heroes: []
+      heroes: [],
     };
 
     this.toggle = this.toggle.bind(this);
@@ -65,11 +65,11 @@ class App extends Component {
       updateBattle.player_2.nickname = event.target.value;
     }
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   };
 
-  submitCheck = name => {
+  submitCheck = (name) => {
     let updateBattle = this.state.battle;
     if (name === "Player_1") {
       updateBattle.player_1.nicknameCheck = true;
@@ -77,17 +77,17 @@ class App extends Component {
       updateBattle.player_2.nicknameCheck = true;
     }
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
       fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
-        .then(results => results.json()) // conversion du résultat en JSON
-        .then(data => {
+        .then((results) => results.json()) // conversion du résultat en JSON
+        .then((data) => {
           this.setState({
-            heroes: [...this.state.heroes, data]
+            heroes: [...this.state.heroes, data],
           });
         });
     }
@@ -104,7 +104,7 @@ class App extends Component {
     }
 
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   }
 

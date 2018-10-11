@@ -33,7 +33,7 @@ const HeroesListing = ({ heroes, collapse, toggle }) => (
       </Row>
     </Collapse>
     <Row>
-      {heroes.sort((a, b) => a.name.localeCompare(b.name)).map(hero => (
+      {heroes.sort((a, b) => a.name.localeCompare(b.name)).map((hero) => (
         <Col onClick={toggle} className="my-3" xs="4" md="3" lg="2">
           <HeroListFrame
             id={hero.id}
