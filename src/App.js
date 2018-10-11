@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
-import ParticlesJS from "./ParticleJS";
+import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -126,7 +126,7 @@ class App extends Component {
     return (
       <div>
         <BattleProvider>
-          <ParticlesJS />
+          <BgParticlesJS />
           <Header />
           <Container fluid>
             <HomeNav />
@@ -140,10 +140,11 @@ class App extends Component {
               selectedHeroOfList={this.state.selectedHeroOfList}
             />
             <StatsSection />
-            {/* <CombatInit /> */}
+            <CombatInit heroes={this.state.heroes} />
           </Container>
           <Footer />
         </BattleProvider>
+        
       </div>
     );
   }
