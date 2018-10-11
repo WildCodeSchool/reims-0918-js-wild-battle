@@ -17,7 +17,6 @@ const listHeroes = [
   30,
   69,
   165,
-  176,
   207,
   222,
   226,
@@ -143,9 +142,7 @@ class App extends Component {
           <Header />
           <Container fluid>
             <HomeNav />
-            <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
             <UsernameChoice />
-
             <HeroesListing
               heroes={this.state.heroes}
               collapse={this.state.collapse}
