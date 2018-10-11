@@ -11,6 +11,7 @@ import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
+
 const listHeroes = [
   30,
   69,
@@ -49,7 +50,8 @@ class App extends Component {
           roundStats: "",
           currentPlayer: "Mathieu"
         }
-      }
+      },
+      selectedHeroOfList: {}
     };
 
     this.toggle = this.toggle.bind(this);
@@ -112,8 +114,11 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle() {
-    this.setState({ collapse: true });
+  toggle(id) {
+    this.setState({
+      collapse: true,
+      selectedHeroOfList: id
+    });
   }
 
   render() {
@@ -128,13 +133,15 @@ class App extends Component {
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
+
           <HeroesListing
             heroes={this.state.heroes}
             collapse={this.state.collapse}
             toggle={this.toggle}
+            selectedHeroOfList={this.state.selectedHeroOfList}
           />
           <StatsSection />
-          <CombatInit />
+          {/* <CombatInit /> */}
         </Container>
         <Footer />
       </div>
