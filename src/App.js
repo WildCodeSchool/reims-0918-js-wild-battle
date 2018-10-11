@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
+import Countdown from "./countdown/Countdown";
 
 const listHeroes = [
   30,
@@ -122,8 +123,8 @@ class App extends Component {
         <Header />
         <Container fluid>
           <HomeNav />
+          <Countdown />
           <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <HeroesListing />
           <UsernameChoice
             battle={this.state.battle}
             handleChangeNickname={this.handleChangeNickname}
