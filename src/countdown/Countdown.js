@@ -61,7 +61,6 @@ export class Countdown extends React.Component {
               <strong className="countdown-col-element-number">
                 {this.addLeadingZeros(countDown.sec)}
               </strong>
-              <span className="countdown-col-element-text ml-1">Sec</span>
               {countDown.sec === 3 && (
                 <Button onClick={this.countdown} className="ml-3">
                   Go !
