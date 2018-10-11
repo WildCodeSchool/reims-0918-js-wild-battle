@@ -143,17 +143,19 @@ class CombatInit extends Component {
                   this.props.heroes[this.state.randomHero].powerstats[
                     stats[this.state.randomStat].toLowerCase()
                   ] >
-                0
-                  ? "Win"
-                  : this.state.selectedHero[0].powerstats[
-                      stats[this.state.randomStat].toLowerCase()
-                    ] -
-                      this.props.heroes[this.state.randomHero].powerstats[
-                        stats[this.state.randomStat].toLowerCase()
-                      ] ===
-                    0
-                    ? "Draw"
-                    : "Lose"}
+                0 ? (
+                  "Win"
+                ) : this.state.selectedHero[0].powerstats[
+                  stats[this.state.randomStat].toLowerCase()
+                ] -
+                  this.props.heroes[this.state.randomHero].powerstats[
+                    stats[this.state.randomStat].toLowerCase()
+                  ] ===
+                0 ? (
+                  <button onClick={() => this.getRandomInt()}>New Fight</button>
+                ) : (
+                  "Lose"
+                )}
               </h2>
             </Col>
           </Row>
