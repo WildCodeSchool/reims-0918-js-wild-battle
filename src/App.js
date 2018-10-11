@@ -121,21 +121,21 @@ class App extends Component {
     return (
       <div>
         <BattleProvider>
-          <UsernameChoice />
+          <Header />
+          <Container fluid>
+            <HomeNav />
+            <UsernameChoice />
+            <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
+            <HeroesListing
+              heroes={this.state.heroes}
+              collapse={this.state.collapse}
+              toggle={this.toggle}
+            />
+            <StatsSection />
+            <CombatInit />
+          </Container>
+          <Footer />
         </BattleProvider>
-        <Header />
-        <Container fluid>
-          <HomeNav />
-          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <HeroesListing
-            heroes={this.state.heroes}
-            collapse={this.state.collapse}
-            toggle={this.toggle}
-          />
-          <StatsSection />
-          <CombatInit />
-        </Container>
-        <Footer />
       </div>
     );
   }
