@@ -41,6 +41,7 @@ class App extends Component {
     super();
     this.state = {
       collapse: false,
+      isCollapse: 0,
       heroes: [],
       battle: {
         player_1: {
@@ -57,8 +58,9 @@ class App extends Component {
           currentPlayer: "Mathieu"
         }
       },
-      selectedHeroOfList: {},
+      selectedHeroOfList: [],
       searchInputHeroList: ""
+
     };
 
     this.toggle = this.toggle.bind(this);
@@ -125,6 +127,7 @@ class App extends Component {
   toggle(id) {
     this.setState({
       collapse: true,
+      isCollapse: 1,
       selectedHeroOfList: id
     });
   }
@@ -154,6 +157,7 @@ class App extends Component {
             selectedHeroOfList={this.state.selectedHeroOfList}
             searchInputHeroList={this.state.searchInputHeroList}
             handleSearchListChange={this.handleSearchListChange}
+            isCollapse={this.state.isCollapse}
           />
           <StatsSection />
           {/* <CombatInit /> */}

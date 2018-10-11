@@ -2,3 +2,22 @@
   transform: skew(-5deg);
   display: block;
 }
+
+#heroesListSection{
+  color: #FFF;
+}
+
+#heroesListSection h3{
+  font-family: 'Bangers', cursive;
+  text-align: right;
+  font-size: 3rem;
+  }
+
+#heroesListSection .battleCard{
+    font-family: 'Bangers', cursive;
+  color: #333;
+}
+
+#heroesListSection .itemTitleBiography{
+  text-decoration: underline;
+}

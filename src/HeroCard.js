@@ -3,7 +3,7 @@ import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 
 const HeroCard = ({ selectedHeroOfList }) => (
   <div>
-    <Card className="p-2">
+    <Card className="battleCard p-2">
       <CardTitle className="text-center">{selectedHeroOfList.name}</CardTitle>
 
       <CardImg
