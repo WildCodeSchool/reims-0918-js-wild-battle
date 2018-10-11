@@ -1,41 +1,41 @@
 import React from "react";
 
-const HeroBiography = () => (
+const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
-    <h3>Batman</h3>
+    <h3>{selectedHeroOfList.name}</h3>
     <p>
       <span className="itemTitleBiography">Full Name : </span>
-      Bruce Wayne
+      {selectedHeroOfList.biography["full-name"]}
     </p>
 
     <p>
       <span className="itemTitleBiography">Alter-Egos : </span>
-      No Alter egos found
+      {selectedHeroOfList.biography["alter-egos"]}
     </p>
 
     <p>
       <span className="itemTitleBiography">Aliases : </span>
-      Insider - Matches Malone
+      {selectedHeroOfList.biography.aliases.map(hero => `${hero} - `)}
     </p>
 
     <p>
       <span className="itemTitleBiography">Place of Birth : </span>
-      Crest Hill, Bristol Township, Gotham City
+      {selectedHeroOfList.biography["place-of-birth"]}
     </p>
 
     <p>
       <span className="itemTitleBiography">First appearance : </span>
-      Detective Comics #27
+      {selectedHeroOfList.biography["first-appearance"]}
     </p>
 
     <p>
       <span className="itemTitleBiography">Publisher : </span>
-      DC Comics
+      {selectedHeroOfList.biography.publisher}
     </p>
 
     <p>
       <span className="itemTitleBiography">Alignement : </span>
-      Good
+      {selectedHeroOfList.biography.alignment}
     </p>
   </div>
 );
