@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
 import HeroCard from "../HeroCard";
-import heroes from "./heroes.json";
 
 const stats = ["Strength", "Intelligence", "Speed", "Durability"];
 
@@ -9,17 +8,22 @@ class CombatInit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      heroes,
-      randomStat: ""
+      randomStat: "",
+      heroes: [],
+      deck: [],
+      randomHero: []
     };
     this.selectHero = this.selectHero.bind(this);
+    this.getRandomDeck = this.getRandomDeck.bind(this);
   }
 
   selectHero = id => {
-    const heroes = this.state.heroes.filter(hero => hero.id !== id);
+    const deck = this.state.deck.filter(hero => hero.id !== id);
+    const randomHero = Math.floor(Math.random() * this.props.heroes.length);
     this.setState({
-      heroes,
-      selectedHero: this.state.heroes.filter(hero => hero.id === id)
+      deck,
+      selectedHero: this.state.deck.filter(hero => hero.id === id),
+      randomHero: randomHero
     });
   };
 
@@ -30,52 +34,91 @@ class CombatInit extends Component {
     });
   };
 
+  getRandomDeck = () => {
+    let oneCard = 0;
+    const deck = [];
+    for (let i = 5; i > 0; i--) {
+      const randomN = Math.floor(Math.random() * this.props.heroes.length);
+      oneCard = this.props.heroes[randomN];
+      console.log(deck.indexOf(oneCard), randomN);
+      if (deck.indexOf(oneCard) === -1) {
+        deck.push(oneCard);
+      } else {
+        i++;
+      }
+    }
+    this.setState({
+      deck: deck
+    });
+  };
+
+  componentDidMount() {}
+
   render() {
     const selectedHero = this.state.selectedHero;
-
     return (
       <Container fluid>
-        <div onClick={() => this.getRandomInt()}>
-          Fight on: {stats[this.state.randomStat]}
+        <div>
+          {this.state.deck.length === 0 && (
+            <button onClick={this.getRandomDeck}>Générer le Deck</button>
+          )}{" "}
+          <br />
+          <button onClick={() => this.getRandomInt()}>Fight on:</button>
+          {stats[this.state.randomStat]}
         </div>
-        <Row className="mt-5 justify-content-center">
-          {this.state.heroes.map(hero => (
-            <Col xs="2" onClick={() => this.selectHero(hero.id)} key={hero.id}>
-              <HeroCard
-                nameHero={hero.nameHero}
-                imageHero={hero.imageHero}
-                str={hero.str}
-                wise={hero.wise}
-                speed={hero.speed}
-                durability={hero.durability}
-                selectHero={this.selectHero}
-                id={hero.id}
-              />
-            </Col>
-          ))}
-        </Row>
+        {this.state.deck.length > 0 && (
+          <Row className="mt-5 justify-content-center">
+            {this.state.deck.map(hero => (
+              <Col
+                xs="2"
+                onClick={() => this.selectHero(hero.id)}
+                key={hero.id}
+              >
+                <HeroCard
+                  nameHero={hero.name}
+                  imageHero={hero.image.url}
+                  str={hero.powerstats.strength}
+                  wise={hero.powerstats.intelligence}
+                  speed={hero.powerstats.speed}
+                  durability={hero.powerstats.durability}
+                  selectHero={this.selectHero}
+                  id={hero.id}
+                />
+              </Col>
+            ))}
+          </Row>
+        )}
         {selectedHero ? (
           <Row>
             <Col xs="2">
               <HeroCard
-                nameHero={selectedHero[0].nameHero}
-                imageHero={selectedHero[0].imageHero}
-                str={selectedHero[0].str}
-                wise={selectedHero[0].wise}
-                speed={selectedHero[0].speed}
-                durability={selectedHero[0].durability}
+                nameHero={selectedHero[0].name}
+                imageHero={selectedHero[0].image.url}
+                str={selectedHero[0].powerstats.strength}
+                wise={selectedHero[0].powerstats.intelligence}
+                speed={selectedHero[0].powerstats.speed}
+                durability={selectedHero[0].powerstats.durability}
                 id={selectedHero[0].id}
               />
             </Col>
             <Col xs="2">
               <HeroCard
-                nameHero={this.state.heroes[0].nameHero}
-                imageHero={this.state.heroes[0].imageHero}
-                str={this.state.heroes[0].str}
-                wise={this.state.heroes[0].wise}
-                speed={this.state.heroes[0].speed}
-                durability={this.state.heroes[0].durability}
-                id={this.state.heroes[0].id}
+                nameHero={this.props.heroes[this.state.randomHero].name}
+                imageHero={this.props.heroes[this.state.randomHero].image.url}
+                str={
+                  this.props.heroes[this.state.randomHero].powerstats.strength
+                }
+                wise={
+                  this.props.heroes[this.state.randomHero].powerstats
+                    .intelligence
+                }
+                speed={
+                  this.props.heroes[this.state.randomHero].powerstats.speed
+                }
+                durability={
+                  this.props.heroes[this.state.randomHero].powerstats.durability
+                }
+                id={this.props.heroes[this.state.randomHero].id}
               />
             </Col>
           </Row>
