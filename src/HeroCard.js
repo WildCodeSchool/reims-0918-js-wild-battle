@@ -14,11 +14,11 @@ const HeroCard = ({ nameHero, imageHero, str, wise, speed, durability }) => (
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-bolt" />
-            <p>{wise}</p>
+            <p>{speed}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-book" />
-            <p>{speed}</p>
+            <p>{wise}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-shield-alt" />

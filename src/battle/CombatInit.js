@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
 import HeroCard from "../HeroCard";
 
-const stats = ["Strength", "Intelligence", "Speed", "Durability"];
+const stats = ["Strength", "Speed", "Intelligence", "Durability"];
 
 class CombatInit extends Component {
   constructor(props) {
@@ -11,7 +11,8 @@ class CombatInit extends Component {
       randomStat: "",
       heroes: [],
       deck: [],
-      randomHero: []
+      randomHero: [],
+      roundResult: ""
     };
     this.selectHero = this.selectHero.bind(this);
     this.getRandomDeck = this.getRandomDeck.bind(this);
@@ -40,7 +41,6 @@ class CombatInit extends Component {
     for (let i = 5; i > 0; i--) {
       const randomN = Math.floor(Math.random() * this.props.heroes.length);
       oneCard = this.props.heroes[randomN];
-      console.log(deck.indexOf(oneCard), randomN);
       if (deck.indexOf(oneCard) === -1) {
         deck.push(oneCard);
       } else {
@@ -58,12 +58,12 @@ class CombatInit extends Component {
     const selectedHero = this.state.selectedHero;
     return (
       <Container fluid>
-        <div>
+        <div className="mt-5">
           {this.state.deck.length === 0 && (
             <button onClick={this.getRandomDeck}>Générer le Deck</button>
           )}{" "}
           <br />
-          <button onClick={() => this.getRandomInt()}>Fight on:</button>
+          <button onClick={() => this.getRandomInt()}>Fight on:</button>{" "}
           {stats[this.state.randomStat]}
         </div>
         {this.state.deck.length > 0 && (
@@ -89,7 +89,7 @@ class CombatInit extends Component {
           </Row>
         )}
         {selectedHero ? (
-          <Row>
+          <Row className="mt-5">
             <Col xs="2">
               <HeroCard
                 nameHero={selectedHero[0].name}
@@ -120,6 +120,41 @@ class CombatInit extends Component {
                 }
                 id={this.props.heroes[this.state.randomHero].id}
               />
+            </Col>
+            <Col xs="4">
+              <h2>Fight on {stats[this.state.randomStat]}</h2>
+              <h3>
+                {
+                  this.state.selectedHero[0].powerstats[
+                    stats[this.state.randomStat].toLowerCase()
+                  ]
+                }
+                <span> VS </span>
+                {
+                  this.props.heroes[this.state.randomHero].powerstats[
+                    stats[this.state.randomStat].toLowerCase()
+                  ]
+                }
+              </h3>
+              <h2>
+                {this.state.selectedHero[0].powerstats[
+                  stats[this.state.randomStat].toLowerCase()
+                ] -
+                  this.props.heroes[this.state.randomHero].powerstats[
+                    stats[this.state.randomStat].toLowerCase()
+                  ] >
+                0
+                  ? "Win"
+                  : this.state.selectedHero[0].powerstats[
+                      stats[this.state.randomStat].toLowerCase()
+                    ] -
+                      this.props.heroes[this.state.randomHero].powerstats[
+                        stats[this.state.randomStat].toLowerCase()
+                      ] ===
+                    0
+                    ? "Draw"
+                    : "Lose"}
+              </h2>
             </Col>
           </Row>
         ) : (
