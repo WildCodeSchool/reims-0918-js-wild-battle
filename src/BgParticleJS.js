@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Particles from "react-particles-js";
 
-const ParticleJS = () => (
+const BgParticleJS = () => (
   <Particles
     className="bgParticle"
     params={{
@@ -59,4 +59,4 @@ const ParticleJS = () => (
   />
 );
 
-export default ParticleJS;
+export default BgParticleJS;

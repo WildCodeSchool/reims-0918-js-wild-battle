@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import "./App.css";
-import ParticlesJS from "./ParticleJS";
+import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -11,7 +11,6 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
-
 
 const listHeroes = [
   30,
@@ -125,7 +124,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <ParticlesJS />
+        <BgParticlesJS />
         <Header />
         <Container fluid>
           <HomeNav />
@@ -143,7 +142,7 @@ class App extends Component {
             selectedHeroOfList={this.state.selectedHeroOfList}
           />
           <StatsSection />
-          {/* <CombatInit /> */}
+          <CombatInit heroes={this.state.heroes} />
         </Container>
         <Footer />
       </div>
