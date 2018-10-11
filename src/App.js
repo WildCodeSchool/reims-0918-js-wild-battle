@@ -61,14 +61,14 @@ class App extends Component {
   }
 
   handleChangeNickname = (event, name) => {
-    let updateBattle = this.state.battle;
-    if (name === "Player_1") {
-      updateBattle.player_1.nickname = event.target.value;
-    } else if (name === "Player_2") {
-      updateBattle.player_2.nickname = event.target.value;
-    }
     this.setState({
-      battle: updateBattle
+      battle: {
+        ...this.state.battle,
+        [name]: {
+          ...this.state.battle[name],
+          nickname: event.target.value
+        }
+      }
     });
   };
 

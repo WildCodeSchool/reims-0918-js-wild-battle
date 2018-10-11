@@ -31,7 +31,7 @@ class BattleProvider extends Component {
                 ...this.state.battle,
                 [name]: {
                   ...this.state.battle[name],
-                  nickname: event.target.value
+                  nickname: event.target.value.replace(/[ ]/, "")
                 }
               }
             }),
