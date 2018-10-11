@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import "./App.css";
+import "react-countdown-clock";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -10,6 +11,7 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
+// import AnimationCountdown from "./countdown/AnimationCountdown";
 import Countdown from "./countdown/Countdown";
 
 const listHeroes = [
@@ -123,6 +125,7 @@ class App extends Component {
         <Header />
         <Container fluid>
           <HomeNav />
+          {/* <AnimationCountdown /> */}
           <Countdown />
           <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
           <UsernameChoice

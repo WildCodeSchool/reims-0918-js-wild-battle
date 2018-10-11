@@ -1,6 +1,6 @@
 import React from "react";
-import classNames from "classnames";
 import { Col, Button } from "reactstrap";
+import "./AnimationCountdown.css";
 
 export class Countdown extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ export class Countdown extends React.Component {
     this.countdown = this.countdown.bind(this);
     this.calculateCountdown = this.calculateCountdown.bind(this);
     this.stop = this.stop.bind(this);
-    this.addLeadingZeros = this.addLeadingZeros.bind(this);
   }
 
   countdown() {
@@ -42,14 +41,6 @@ export class Countdown extends React.Component {
     clearInterval(this.interval);
   }
 
-  addLeadingZeros(value) {
-    value = String(value);
-    while (value.length < 2) {
-      value = "0" + value;
-    }
-    return value;
-  }
-
   render() {
     const countDown = this.state;
 
@@ -57,16 +48,18 @@ export class Countdown extends React.Component {
       <Col xs={{ size: 2, offset: 5 }}>
         <div>
           {countDown.sec !== 0 && (
-            <div className={classNames("neal-countdown", this.props.className)}>
-              <strong className="countdown-col-element-number">
-                {this.addLeadingZeros(countDown.sec)}
+            <div>
+              <strong
+                className={countDown.sec === 2 ? "pulsate2-css" : "pulsate-css"}
+              >
+                {countDown.sec}
               </strong>
-              {countDown.sec === 3 && (
-                <Button onClick={this.countdown} className="ml-3">
-                  Go !
-                </Button>
-              )}
             </div>
+          )}
+          {countDown.sec === 3 && (
+            <Button onClick={this.countdown} className="mt-3">
+              Go !
+            </Button>
           )}
           {countDown.sec === 0 && <h3>Fight</h3>}
         </div>
