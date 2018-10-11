@@ -52,8 +52,6 @@ class CombatInit extends Component {
     });
   };
 
-  componentDidMount() {}
-
   render() {
     const selectedHero = this.state.selectedHero;
     return (
@@ -74,16 +72,7 @@ class CombatInit extends Component {
                 onClick={() => this.selectHero(hero.id)}
                 key={hero.id}
               >
-                <HeroCard
-                  nameHero={hero.name}
-                  imageHero={hero.image.url}
-                  str={hero.powerstats.strength}
-                  wise={hero.powerstats.intelligence}
-                  speed={hero.powerstats.speed}
-                  durability={hero.powerstats.durability}
-                  selectHero={this.selectHero}
-                  id={hero.id}
-                />
+                <HeroCard selectedHeroOfList={hero} />
               </Col>
             ))}
           </Row>
@@ -91,34 +80,11 @@ class CombatInit extends Component {
         {selectedHero ? (
           <Row className="mt-5">
             <Col xs="2">
-              <HeroCard
-                nameHero={selectedHero[0].name}
-                imageHero={selectedHero[0].image.url}
-                str={selectedHero[0].powerstats.strength}
-                wise={selectedHero[0].powerstats.intelligence}
-                speed={selectedHero[0].powerstats.speed}
-                durability={selectedHero[0].powerstats.durability}
-                id={selectedHero[0].id}
-              />
+              <HeroCard selectedHeroOfList={selectedHero[0]} />
             </Col>
             <Col xs="2">
               <HeroCard
-                nameHero={this.props.heroes[this.state.randomHero].name}
-                imageHero={this.props.heroes[this.state.randomHero].image.url}
-                str={
-                  this.props.heroes[this.state.randomHero].powerstats.strength
-                }
-                wise={
-                  this.props.heroes[this.state.randomHero].powerstats
-                    .intelligence
-                }
-                speed={
-                  this.props.heroes[this.state.randomHero].powerstats.speed
-                }
-                durability={
-                  this.props.heroes[this.state.randomHero].powerstats.durability
-                }
-                id={this.props.heroes[this.state.randomHero].id}
+                selectedHeroOfList={this.props.heroes[this.state.randomHero]}
               />
             </Col>
             <Col xs="4">
@@ -136,27 +102,26 @@ class CombatInit extends Component {
                   ]
                 }
               </h3>
-              <h2>
-                {this.state.selectedHero[0].powerstats[
+
+              {this.state.selectedHero[0].powerstats[
+                stats[this.state.randomStat].toLowerCase()
+              ] -
+                this.props.heroes[this.state.randomHero].powerstats[
                   stats[this.state.randomStat].toLowerCase()
-                ] -
-                  this.props.heroes[this.state.randomHero].powerstats[
-                    stats[this.state.randomStat].toLowerCase()
-                  ] >
-                0 ? (
-                  "Win"
-                ) : this.state.selectedHero[0].powerstats[
+                ] >
+              0 ? (
+                <h2 className="text-success">Win</h2>
+              ) : this.state.selectedHero[0].powerstats[
+                stats[this.state.randomStat].toLowerCase()
+              ] -
+                this.props.heroes[this.state.randomHero].powerstats[
                   stats[this.state.randomStat].toLowerCase()
-                ] -
-                  this.props.heroes[this.state.randomHero].powerstats[
-                    stats[this.state.randomStat].toLowerCase()
-                  ] ===
-                0 ? (
-                  <button onClick={() => this.getRandomInt()}>New Fight</button>
-                ) : (
-                  "Lose"
-                )}
-              </h2>
+                ] ===
+              0 ? (
+                <button onClick={() => this.getRandomInt()}>New Fight</button>
+              ) : (
+                <h2 className="text-danger">Lose</h2>
+              )}
             </Col>
           </Row>
         ) : (

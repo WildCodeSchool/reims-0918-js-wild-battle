@@ -128,11 +128,11 @@ class App extends Component {
             handleChangeNickname={this.handleChangeNickname}
             submitCheck={this.submitCheck}
           />
-          <HeroesListing
+          {/* <HeroesListing
             heroes={this.state.heroes}
             collapse={this.state.collapse}
             toggle={this.toggle}
-          />
+          /> */}
           <StatsSection />
           <CombatInit heroes={this.state.heroes} />
         </Container>
