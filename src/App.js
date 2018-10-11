@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
 
@@ -38,7 +39,7 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameCheck: false
+          nicknameChec: false
         },
         player_2: {
           nickname: "",
@@ -119,15 +120,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        <BattleProvider>
+          <UsernameChoice />
+        </BattleProvider>
         <Header />
         <Container fluid>
           <HomeNav />
           <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <UsernameChoice
-            battle={this.state.battle}
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
-          />
           <HeroesListing
             heroes={this.state.heroes}
             collapse={this.state.collapse}
