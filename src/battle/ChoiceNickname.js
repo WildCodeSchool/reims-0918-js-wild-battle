@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Input } from "reactstrap";
+import "./ChoiceNickname.css";
 import BattleContext from "../battle_context/BattleContext";
 
 const ChoiceNickname = ({ name }) => (
@@ -7,7 +8,11 @@ const ChoiceNickname = ({ name }) => (
     <BattleContext.Consumer>
       {context => (
         <React.Fragment>
-          <h3>
+          <h3
+            className={
+              context.state.battle[name].nicknameChecked && "nicknameChecked"
+            }
+          >
             {name}: {context.state.battle[name].nickname}
           </h3>
           {!context.state.battle[name].nicknameChecked && (
