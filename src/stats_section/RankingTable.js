@@ -59,7 +59,7 @@ const ranking = [
   {
     name: "Michaël",
     id: "9",
-    win: "50",
+    win: "-10",
     lose: "2"
   }
 ];
