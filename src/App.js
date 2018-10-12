@@ -63,33 +63,8 @@ class App extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.handleSearchListChange = this.handleSearchListChange.bind(this);
-    this.handleChangeNickname = this.handleChangeNickname.bind(this);
     this.finishRoom = this.finishRoom.bind(this);
   }
-
-  handleChangeNickname = (event, name) => {
-    this.setState({
-      battle: {
-        ...this.state.battle,
-        [name]: {
-          ...this.state.battle[name],
-          nickname: event.target.value
-        }
-      }
-    });
-  };
-
-  submitCheck = name => {
-    let updateBattle = this.state.battle;
-    if (name === "Player_1") {
-      updateBattle.player_1.nicknameCheck = true;
-    } else if (name === "Player_2") {
-      updateBattle.player_2.nicknameCheck = true;
-    }
-    this.setState({
-      battle: updateBattle
-    });
-  };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
