@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
 import "react-countdown-clock";
+import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -11,7 +13,6 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
-// import AnimationCountdown from "./countdown/AnimationCountdown";
 import Countdown from "./countdown/Countdown";
 
 const listHeroes = [
@@ -20,6 +21,7 @@ const listHeroes = [
   165,
   207,
   222,
+  226,
   263,
   310,
   313,
@@ -27,6 +29,9 @@ const listHeroes = [
   341,
   346,
   354,
+  361,
+  386,
+  485,
   514,
   620,
   644,
@@ -36,6 +41,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      collapse: false,
+      isCollapse: 0,
+      heroes: [],
       battle: {
         player_1: {
           nickname: "",
@@ -53,22 +61,25 @@ class App extends Component {
       },
       collapse: false,
       heroes: [],
+      selectedHeroOfList: [],
+      searchInputHeroList: "",
     };
 
     this.toggle = this.toggle.bind(this);
+    this.handleSearchListChange = this.handleSearchListChange.bind(this);
     this.handleChangeNickname = this.handleChangeNickname.bind(this);
     this.finishRoom = this.finishRoom.bind(this);
   }
 
   handleChangeNickname = (event, name) => {
-    let updateBattle = this.state.battle;
-    if (name === "Player_1") {
-      updateBattle.player_1.nickname = event.target.value;
-    } else if (name === "Player_2") {
-      updateBattle.player_2.nickname = event.target.value;
-    }
     this.setState({
-      battle: updateBattle,
+      battle: {
+        ...this.state.battle,
+        [name]: {
+          ...this.state.battle[name],
+          nickname: event.target.value,
+        },
+      },
     });
   };
 
@@ -115,29 +126,42 @@ class App extends Component {
     this.callApiSuperHeroes();
   }
 
-  toggle(event) {
-    this.setState({ collapse: true });
+  toggle(id) {
+    this.setState({
+      collapse: true,
+      isCollapse: 1,
+      selectedHeroOfList: id,
+    });
+  }
+
+  handleSearchListChange(event) {
+    this.setState({ searchInputHeroList: event.target.value, collapse: false });
   }
 
   render() {
     return (
       <div>
-        <Header />
-        <Container fluid>
-          <HomeNav />
-          {/* <AnimationCountdown /> */}
-          <Countdown />
-          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <UsernameChoice
-            battle={this.state.battle}
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
-          />
-          <HeroesListing {...this.state} toggle={this.toggle} />
-          <StatsSection />
-          <CombatInit />
-        </Container>
-        <Footer />
+        <BattleProvider>
+          <BgParticlesJS />
+          <Header />
+          <Container fluid>
+            <HomeNav />
+            <UsernameChoice />
+            <Countdown />
+            <HeroesListing
+              heroes={this.state.heroes}
+              collapse={this.state.collapse}
+              toggle={this.toggle}
+              selectedHeroOfList={this.state.selectedHeroOfList}
+              searchInputHeroList={this.state.searchInputHeroList}
+              handleSearchListChange={this.handleSearchListChange}
+              isCollapse={this.state.isCollapse}
+            />
+            <StatsSection />
+            <CombatInit heroes={this.state.heroes} />
+          </Container>
+          <Footer />
+        </BattleProvider>
       </div>
     );
   }

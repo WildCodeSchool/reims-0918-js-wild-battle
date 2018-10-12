@@ -1,51 +1,35 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  Button
-} from "reactstrap";
+import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 
-const HeroCard = ({
-  nameHero,
-  imageHero,
-  str,
-  wise,
-  speed,
-  durability,
-  selectHero,
-  id
-}) => (
+const HeroCard = ({ selectedHeroOfList }) => (
   <div>
-    <Card className="p-2">
-      <CardTitle className="text-center">{nameHero}</CardTitle>
-      <CardImg top width="100%" src={imageHero} alt="Card image cap" />
+    <Card className="battleCard p-2">
+      <CardTitle className="text-center">{selectedHeroOfList.name}</CardTitle>
+
+      <CardImg
+        top
+        width="100%"
+        src={selectedHeroOfList.image.url}
+        alt="Card image cap"
+      />
       <CardBody>
         <Row>
           <Col xs="3" className="text-center">
             <i className="fas fa-dumbbell" />
-            <p>{str}</p>
+            <p>{selectedHeroOfList.powerstats.strength}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-bolt" />
-            <p>{wise}</p>
+            <p>{selectedHeroOfList.powerstats.speed}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-book" />
-            <p>{speed}</p>
+            <p>{selectedHeroOfList.powerstats.intelligence}</p>
           </Col>
           <Col xs="3" className="text-center">
             <i className="fas fa-shield-alt" />
-            <p>{durability}</p>
+            <p>{selectedHeroOfList.powerstats.durability}</p>
           </Col>
-        </Row>
-        <Row>
-          <span onClick={() => selectHero(id)} className="btn">
-            <Button>SELECT HERO</Button>
-          </span>
         </Row>
       </CardBody>
     </Card>
