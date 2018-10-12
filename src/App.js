@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
-import ParticlesJS from "./ParticleJS";
+import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
@@ -11,13 +12,12 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
-
+import Countdown from "./countdown/Countdown";
 
 const listHeroes = [
   30,
   69,
   165,
-  176,
   207,
   213,
   222,
@@ -34,7 +34,7 @@ const listHeroes = [
   485,
   514,
   620,
-  644
+  644,
 ];
 
 class App extends Component {
@@ -47,21 +47,22 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameCheck: false
+          nicknameCheck: false,
         },
         player_2: {
           nickname: "",
-          nicknameCheck: false
+          nicknameCheck: false,
         },
         round: {
           roundNumber: 1,
           roundStats: "",
-          currentPlayer: "Mathieu"
-        }
+          currentPlayer: "Mathieu",
+        },
       },
+      collapse: false,
+      heroes: [],
       selectedHeroOfList: [],
-      searchInputHeroList: ""
-
+      searchInputHeroList: "",
     };
 
     this.toggle = this.toggle.bind(this);
@@ -71,18 +72,18 @@ class App extends Component {
   }
 
   handleChangeNickname = (event, name) => {
-    let updateBattle = this.state.battle;
-    if (name === "Player_1") {
-      updateBattle.player_1.nickname = event.target.value;
-    } else if (name === "Player_2") {
-      updateBattle.player_2.nickname = event.target.value;
-    }
     this.setState({
-      battle: updateBattle
+      battle: {
+        ...this.state.battle,
+        [name]: {
+          ...this.state.battle[name],
+          nickname: event.target.value,
+        },
+      },
     });
   };
 
-  submitCheck = name => {
+  submitCheck = (name) => {
     let updateBattle = this.state.battle;
     if (name === "Player_1") {
       updateBattle.player_1.nicknameCheck = true;
@@ -90,17 +91,17 @@ class App extends Component {
       updateBattle.player_2.nicknameCheck = true;
     }
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
       fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
-        .then(results => results.json()) // conversion du résultat en JSON
-        .then(data => {
+        .then((results) => results.json()) // conversion du résultat en JSON
+        .then((data) => {
           this.setState({
-            heroes: [...this.state.heroes, data]
+            heroes: [...this.state.heroes, data],
           });
         });
     }
@@ -117,7 +118,7 @@ class App extends Component {
     }
 
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   }
 
@@ -129,41 +130,38 @@ class App extends Component {
     this.setState({
       collapse: true,
       isCollapse: 1,
-      selectedHeroOfList: id
+      selectedHeroOfList: id,
     });
   }
 
   handleSearchListChange(event) {
-    this.setState({ searchInputHeroList: event.target.value, collapse: false })
+    this.setState({ searchInputHeroList: event.target.value, collapse: false });
   }
 
   render() {
     return (
       <div>
-        <ParticlesJS />
-        <Header />
-        <Container fluid>
-          <HomeNav />
-          <BattleScreen {...this.state.battle} finishRoom={this.finishRoom} />
-          <UsernameChoice
-            battle={this.state.battle}
-            handleChangeNickname={this.handleChangeNickname}
-            submitCheck={this.submitCheck}
-          />
-
-          <HeroesListing
-            heroes={this.state.heroes}
-            collapse={this.state.collapse}
-            toggle={this.toggle}
-            selectedHeroOfList={this.state.selectedHeroOfList}
-            searchInputHeroList={this.state.searchInputHeroList}
-            handleSearchListChange={this.handleSearchListChange}
-            isCollapse={this.state.isCollapse}
-          />
-          <StatsSection />
-          {/* <CombatInit /> */}
-        </Container>
-        <Footer />
+        <BattleProvider>
+          <BgParticlesJS />
+          <Header />
+          <Container fluid>
+            <HomeNav />
+            <UsernameChoice />
+            <Countdown />
+            <HeroesListing
+              heroes={this.state.heroes}
+              collapse={this.state.collapse}
+              toggle={this.toggle}
+              selectedHeroOfList={this.state.selectedHeroOfList}
+              searchInputHeroList={this.state.searchInputHeroList}
+              handleSearchListChange={this.handleSearchListChange}
+              isCollapse={this.state.isCollapse}
+            />
+            <StatsSection />
+            <CombatInit heroes={this.state.heroes} />
+          </Container>
+          <Footer />
+        </BattleProvider>
       </div>
     );
   }

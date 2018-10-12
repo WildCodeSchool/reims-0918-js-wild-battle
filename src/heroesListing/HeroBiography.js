@@ -3,6 +3,7 @@ import React from "react";
 const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
     <h3>{selectedHeroOfList.name}</h3>
+
     {selectedHeroOfList.biography === null && (
       <p>
         <span className="itemTitleBiography">Full Name</span> : {selectedHeroOfList.biography["full-name"]}
@@ -15,7 +16,11 @@ const HeroBiography = ({ selectedHeroOfList }) => (
 
     {selectedHeroOfList.biography.aliases[0] !== "-" && (
       <p>
-        <span className="itemTitleBiography">Aliases</span> : {selectedHeroOfList.biography.aliases.map(hero => `${hero} - `)}
+        <span className="itemTitleBiography">Aliases</span> : {selectedHeroOfList.biography.aliases.map((hero, index) => {
+          return index === selectedHeroOfList.biography.aliases.length - 1
+            ? `${hero}`
+            : `${hero} - `;
+        })}
       </p>)}
 
     {selectedHeroOfList.biography["place-of-birth"] !== "-" && (
@@ -47,6 +52,8 @@ const HeroBiography = ({ selectedHeroOfList }) => (
       <p>
         <span className="itemTitleBiography">Relatives</span> : {selectedHeroOfList.connections.relatives}
       </p>)}
+
+
   </div>
 );
 
