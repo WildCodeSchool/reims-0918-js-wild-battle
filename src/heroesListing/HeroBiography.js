@@ -4,7 +4,7 @@ const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
     <h3>{selectedHeroOfList.name}</h3>
 
-    {selectedHeroOfList.biography === null && (
+    {selectedHeroOfList.biography["full-name"] !== "" && (
       <p>
         <span className="itemTitleBiography">Full Name</span> : {selectedHeroOfList.biography["full-name"]}
       </p>)}
