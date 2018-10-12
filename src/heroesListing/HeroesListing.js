@@ -19,10 +19,10 @@ const HeroesListing = ({ heroes, collapse, isCollapse, toggle, selectedHeroOfLis
       <Collapse isOpen={collapse}>
         {isCollapse && (
           <Row>
-            <Col sm="12" md={{ size: 3, offset: 2 }}>
+            <Col xs={{ size: 12, offset: 0 }} sm={{ size: 4, offset: 0 }} md={{ size: 3, offset: 1 }}>
               <HeroCard selectedHeroOfList={selectedHeroOfList} />
             </Col>
-            <Col sm="12" md={{ size: 6, offset: 1 }}>
+            <Col xs={{ size: 12, offset: 0 }} sm={{ size: 7, offset: 1 }} md={{ size: 7, offset: 1 }}>
               <HeroBiography selectedHeroOfList={selectedHeroOfList} />
             </Col>
           </Row>)}
