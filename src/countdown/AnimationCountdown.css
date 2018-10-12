@@ -2,11 +2,12 @@
   animation: pulsate 1s ease-out;
   animation-iteration-count: infinite;
   opacity: 0;
-  border: 3px solid #999;
+  border: 3px solid #fff;
   border-radius: 50px;
   height: 95px;
   width: 95px;
   font-size: 90px;
+  color: #fff;
   position: relative;
   display: flex;
   justify-content: center;
