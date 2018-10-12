@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
-import "react-countdown-clock";
 import BgParticlesJS from "./BgParticleJS";
 
 import StatsSection from "./stats_section/StatsSection";
