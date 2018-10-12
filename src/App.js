@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
+import Countdown from "./countdown/Countdown";
 
 const listHeroes = [
   30,
@@ -32,7 +33,7 @@ const listHeroes = [
   485,
   514,
   620,
-  644
+  644,
 ];
 
 class App extends Component {
@@ -45,20 +46,22 @@ class App extends Component {
       battle: {
         player_1: {
           nickname: "",
-          nicknameChec: false
+          nicknameCheck: false,
         },
         player_2: {
           nickname: "",
-          nicknameCheck: false
+          nicknameCheck: false,
         },
         round: {
           roundNumber: 1,
           roundStats: "",
-          currentPlayer: "Mathieu"
-        }
+          currentPlayer: "Mathieu",
+        },
       },
+      collapse: false,
+      heroes: [],
       selectedHeroOfList: [],
-      searchInputHeroList: ""
+      searchInputHeroList: "",
     };
 
     this.toggle = this.toggle.bind(this);
@@ -73,13 +76,13 @@ class App extends Component {
         ...this.state.battle,
         [name]: {
           ...this.state.battle[name],
-          nickname: event.target.value
-        }
-      }
+          nickname: event.target.value,
+        },
+      },
     });
   };
 
-  submitCheck = name => {
+  submitCheck = (name) => {
     let updateBattle = this.state.battle;
     if (name === "Player_1") {
       updateBattle.player_1.nicknameCheck = true;
@@ -87,17 +90,17 @@ class App extends Component {
       updateBattle.player_2.nicknameCheck = true;
     }
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
       fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
-        .then(results => results.json()) // conversion du résultat en JSON
-        .then(data => {
+        .then((results) => results.json()) // conversion du résultat en JSON
+        .then((data) => {
           this.setState({
-            heroes: [...this.state.heroes, data]
+            heroes: [...this.state.heroes, data],
           });
         });
     }
@@ -114,7 +117,7 @@ class App extends Component {
     }
 
     this.setState({
-      battle: updateBattle
+      battle: updateBattle,
     });
   }
 
@@ -126,7 +129,7 @@ class App extends Component {
     this.setState({
       collapse: true,
       isCollapse: 1,
-      selectedHeroOfList: id
+      selectedHeroOfList: id,
     });
   }
 
@@ -143,6 +146,7 @@ class App extends Component {
           <Container fluid>
             <HomeNav />
             <UsernameChoice />
+            <Countdown />
             <HeroesListing
               heroes={this.state.heroes}
               collapse={this.state.collapse}

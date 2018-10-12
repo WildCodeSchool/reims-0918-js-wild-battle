@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardDeck,
   CardSubtitle,
-  CardBody
+  CardBody,
 } from "reactstrap";
 
 const HomeNav = () => (
@@ -20,7 +20,7 @@ const HomeNav = () => (
               <i className="fas fa-bolt fa-9x" />
             </div>
             <CardBody className="m-3">
-              <CardTitle>Start a Battle</CardTitle>
+              <CardTitle className="glitch">Start a Battle</CardTitle>
               <CardSubtitle>Find a Friend &amp; Win!</CardSubtitle>
             </CardBody>
           </Card>
