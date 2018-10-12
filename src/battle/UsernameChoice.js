@@ -10,9 +10,12 @@ const UsernameChoice = () => (
   <Container fluid id="usernameSection">
     <BattleContext.Consumer>
       {context => (
-        <Row style={{ height: "100vh" }}>
-          <ChoiceNickname name="player_1" />
-          <ChoiceNickname name="player_2" />
+        <Row
+          style={{ height: "100vh" }}
+          className={"d-flex justify-content-around"}
+        >
+          <ChoiceNickname name="player_1" title="Player 1" />
+          <ChoiceNickname name="player_2" title="Player 2" />
           {context.state.battle.player_1.nicknameChecked &&
             context.state.battle.player_2.nicknameChecked && <CountDown />}
         </Row>

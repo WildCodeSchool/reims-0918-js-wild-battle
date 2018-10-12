@@ -1,23 +1,32 @@
 .heroFrameAngle > a {
   transform: skew(-5deg);
   display: block;
+  text-decoration: none;
+  color: black;
 }
 
-#heroesListSection{
-  color: #FFF;
+#heroesListSection {
+  color: #fff;
 }
 
-#heroesListSection h3{
-  font-family: 'Bangers', cursive;
+#heroesListSection h3 {
+  font-family: "Bangers", cursive;
   text-align: right;
   font-size: 3rem;
-  }
+}
 
-#heroesListSection .battleCard{
-    font-family: 'Bangers', cursive;
+.cardTitleHero {
+  font-family: "Bangers", cursive;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+#heroesListSection .battleCard {
+  font-family: "Bangers", cursive;
   color: #333;
 }
 
-#heroesListSection .itemTitleBiography{
+#heroesListSection .itemTitleBiography {
   text-decoration: underline;
 }

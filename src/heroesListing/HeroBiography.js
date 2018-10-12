@@ -4,31 +4,42 @@ const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
     <h3>{selectedHeroOfList.name}</h3>
     <p>
-      <span className="itemTitleBiography">Full Name</span> : {selectedHeroOfList.biography["full-name"]}
+      <span className="itemTitleBiography">Full Name</span> :{" "}
+      {selectedHeroOfList.biography["full-name"]}
     </p>
 
     <p>
-      <span className="itemTitleBiography">Alter-Egos</span> : {selectedHeroOfList.biography["alter-egos"]}
+      <span className="itemTitleBiography">Alter-Egos</span> :{" "}
+      {selectedHeroOfList.biography["alter-egos"]}
     </p>
 
     <p>
-      <span className="itemTitleBiography">Aliases</span> : {selectedHeroOfList.biography.aliases.map(hero => `${hero} - `)}
+      <span className="itemTitleBiography">Aliases</span> :{" "}
+      {selectedHeroOfList.biography.aliases.map((hero, index) => {
+        return index === selectedHeroOfList.biography.aliases.length - 1
+          ? `${hero}`
+          : `${hero} - `;
+      })}
     </p>
 
     <p>
-      <span className="itemTitleBiography">Place of Birth</span> : {selectedHeroOfList.biography["place-of-birth"]}
+      <span className="itemTitleBiography">Place of Birth</span> :{" "}
+      {selectedHeroOfList.biography["place-of-birth"]}
     </p>
 
     <p>
-      <span className="itemTitleBiography">First appearance</span> : {selectedHeroOfList.biography["first-appearance"]}
+      <span className="itemTitleBiography">First appearance</span> :{" "}
+      {selectedHeroOfList.biography["first-appearance"]}
     </p>
 
     <p>
-      <span className="itemTitleBiography">Publisher</span> : {selectedHeroOfList.biography.publisher}
+      <span className="itemTitleBiography">Publisher</span> :{" "}
+      {selectedHeroOfList.biography.publisher}
     </p>
 
     <p>
-      <span className="itemTitleBiography">Alignement</span> : {selectedHeroOfList.biography.alignment}
+      <span className="itemTitleBiography">Alignement</span> :{" "}
+      {selectedHeroOfList.biography.alignment}
     </p>
   </div>
 );
