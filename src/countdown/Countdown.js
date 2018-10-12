@@ -49,11 +49,7 @@ export class Countdown extends React.Component {
         <div>
           {countDown.sec !== 0 && (
             <div>
-              <strong
-                className={countDown.sec === 2 ? "pulsate2-css" : "pulsate-css"}
-              >
-                {countDown.sec}
-              </strong>
+              <strong className="pulsate-css">{countDown.sec}</strong>
             </div>
           )}
           {countDown.sec === 3 && (

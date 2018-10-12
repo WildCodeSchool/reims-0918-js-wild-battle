@@ -3,10 +3,10 @@
   animation-iteration-count: infinite;
   opacity: 0;
   border: 3px solid #999;
-  border-radius: 30px;
-  height: 50px;
-  width: 50px;
-  font-size: 45px;
+  border-radius: 50px;
+  height: 95px;
+  width: 95px;
+  font-size: 90px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -27,20 +27,4 @@
     transform: scale(1.2, 1.2);
     opacity: 0;
   }
-}
-
-.pulsate2-css {
-  animation: pulsate 1s ease-out;
-  animation-iteration-count: infinite;
-  opacity: 0;
-  border: 3px solid #999;
-  height: 50px;
-  width: 50px;
-  font-size: 45px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  text-align: center;
 }
