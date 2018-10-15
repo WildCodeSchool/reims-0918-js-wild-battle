@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import BattleContext from "./BattleContext";
+import changeNickname from "./changeNickname";
+import nicknameChecked from "./nicknameChecked";
 
 class BattleProvider extends Component {
   state = {
@@ -26,25 +28,9 @@ class BattleProvider extends Component {
         value={{
           state: this.state,
           handleChangeNickname: (event, name) =>
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                [name]: {
-                  ...this.state.battle[name],
-                  nickname: event.target.value.replace(/[ ]/, "")
-                }
-              }
-            }),
+            this.setState(changeNickname(this.state, event, name)),
           submitCheck: name => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                [name]: {
-                  ...this.state.battle[name],
-                  nicknameChecked: true
-                }
-              }
-            });
+            this.setState(nicknameChecked(this.state, name));
           }
         }}
       >
