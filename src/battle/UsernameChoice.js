@@ -1,6 +1,6 @@
 import React from "react";
 import ChoiceNickname from "./ChoiceNickname";
-import CountDown from "./CountDown";
+import Countdown from "./Countdown";
 import { Row, Container } from "reactstrap";
 import "./UsernameChoice.css";
 
@@ -15,9 +15,9 @@ const UsernameChoice = () => (
           className={"d-flex justify-content-around"}
         >
           <ChoiceNickname name="player_1" title="Player 1" />
-          <ChoiceNickname name="player_2" title="Player 2" />
           {context.state.battle.player_1.nicknameChecked &&
-            context.state.battle.player_2.nicknameChecked && <CountDown />}
+            context.state.battle.player_2.nicknameChecked && <Countdown />}
+          <ChoiceNickname name="player_2" title="Player 2" />
         </Row>
       )}
     </BattleContext.Consumer>

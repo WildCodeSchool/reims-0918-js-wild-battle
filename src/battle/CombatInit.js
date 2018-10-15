@@ -55,7 +55,7 @@ class CombatInit extends Component {
   render() {
     const selectedHero = this.state.selectedHero;
     return (
-      <Container fluid>
+      <Container fluid id="CombatInit" style={{ height: "100vh" }}>
         <div className="mt-5">
           {this.state.deck.length === 0 && (
             <button onClick={this.getRandomDeck}>Générer le Deck</button>
@@ -110,7 +110,7 @@ class CombatInit extends Component {
                   stats[this.state.randomStat].toLowerCase()
                 ] >
               0 ? (
-                <h2 className="text-success">Win</h2>
+                <h2 className="text-success FontBangers">Win</h2>
               ) : this.state.selectedHero[0].powerstats[
                 stats[this.state.randomStat].toLowerCase()
               ] -
@@ -120,7 +120,7 @@ class CombatInit extends Component {
               0 ? (
                 <button onClick={() => this.getRandomInt()}>New Fight</button>
               ) : (
-                <h2 className="text-danger">Lose</h2>
+                <h2 className="text-danger FontBangers">Lose</h2>
               )}
             </Col>
           </Row>

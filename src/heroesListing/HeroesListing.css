@@ -15,6 +15,11 @@
   font-size: 3rem;
 }
 
+#heroesListSection h2 {
+  font-family: "Bangers", cursive;
+  font-size: 4rem;
+}
+
 .cardTitleHero {
   font-family: "Bangers", cursive;
   text-align: center;
@@ -22,41 +27,38 @@
   text-decoration: none;
 }
 
-#heroesListSection .battleCard{
-  font-family: 'Bangers', cursive;
-  min-width:230px;
-color: #333;
+.card {
+  font-family: "Bangers", cursive;
+  min-width: 230px;
+  color: #333;
 }
 
-#heroesListSection .battleCard .card-body{
+#heroesListSection .battleCard .card-body {
   padding-bottom: 0px;
 }
 
-#heroesListSection .heroFrameAngle .card-body{
-  padding: 10px 0 0 0; 
+#heroesListSection .heroFrameAngle .card-body {
+  padding: 10px 0 0 0;
 }
 
 #heroesListSection .itemTitleBiography {
   text-decoration: underline;
 }
 
-
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
   .cardTitleHero {
-  font-size: 2.5vw;
-} 
+    font-size: 2.5vw;
+  }
 }
 
-
-
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
   .cardTitleHero {
     font-size: 3vw;
   }
 }
 
-@media (max-width: 575.98px) { 
+@media (max-width: 575.98px) {
   .cardTitleHero {
     font-size: 3.7vw;
   }
- }
+}

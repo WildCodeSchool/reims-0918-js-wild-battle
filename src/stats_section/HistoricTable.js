@@ -1,6 +1,6 @@
 import React from "react";
-import BackgroundHistoric from "../img/greenred.png"
-import "./HistoricTable.css"
+import BackgroundHistoric from "../img/greenred.png";
+import "./HistoricTable.css";
 
 import {
   ListGroup,
@@ -99,17 +99,17 @@ const HistoricTable = () => (
               src={BackgroundHistoric}
               alt="greenred"
               height="95"
-              className={(battleData.player1Score === "Lose") ? "rotateImg" : ""}
+              className={battleData.player1Score === "Lose" ? "rotateImg" : ""}
             />
             <CardImgOverlay>
               <CardTitle>{battleData.date}</CardTitle>
               <div className="d-flex justify-content-around">
-              <CardText>
-                {battleData.player1} : {battleData.player1Score}
-              </CardText>
-              <CardText>
-                {battleData.player2} : {battleData.player2Score}
-              </CardText>
+                <CardText>
+                  {battleData.player1} : {battleData.player1Score}
+                </CardText>
+                <CardText>
+                  {battleData.player2} : {battleData.player2Score}
+                </CardText>
               </div>
             </CardImgOverlay>
           </Card>
