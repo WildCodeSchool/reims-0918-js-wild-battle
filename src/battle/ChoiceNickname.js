@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Col, Input } from "reactstrap";
 import "./ChoiceNickname.css";
 import BattleContext from "../battle_context/BattleContext";
@@ -7,7 +7,7 @@ const ChoiceNickname = ({ name, title }) => (
   <Col xs={{ size: 10 }} md={{ size: 4 }} className="my-auto">
     <BattleContext.Consumer>
       {context => (
-        <React.Fragment>
+        <Fragment>
           <h3
             className={
               context.state.battle[name].nicknameChecked
@@ -34,7 +34,7 @@ const ChoiceNickname = ({ name, title }) => (
               )}
             </div>
           )}
-        </React.Fragment>
+        </Fragment>
       )}
     </BattleContext.Consumer>
   </Col>
