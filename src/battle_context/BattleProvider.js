@@ -29,10 +29,13 @@ const listHeroes = [
 class BattleProvider extends Component {
   state = {
     battle: {
+      stats: ["Strength", "Speed", "Intelligence", "Durability"],
       heroes: [],
+      randomHero: [],
       player_1: {
         nickname: "",
-        nicknameChecked: false
+        nicknameChecked: false,
+        deck: []
       },
       player_2: {
         nickname: "",
@@ -41,6 +44,7 @@ class BattleProvider extends Component {
       round: {
         roundNumber: 1,
         roundStats: "",
+        randomStat: "",
         currentPlayer: "Mathieu"
       }
     },
@@ -89,6 +93,67 @@ class BattleProvider extends Component {
             this.setState({
               searchInputHeroList: event.target.value,
               collapse: false
+            });
+          },
+          selectHero: id => {
+            const deck = this.state.battle.player_1.deck.filter(
+              hero => hero.id !== id
+            );
+            const randomHero = Math.floor(
+              Math.random() * this.state.battle.heroes.length
+            );
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                player_1: {
+                  ...this.state.battle.player_1,
+                  deck,
+
+                  selectedHero: this.state.battle.player_1.deck.filter(
+                    hero => hero.id === id
+                  )
+                },
+                randomHero: randomHero
+              }
+            });
+          },
+
+          getRandomInt: () => {
+            const randomInt = Math.floor(
+              Math.random() * Math.floor(this.state.battle.stats.length)
+            );
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                round: {
+                  ...this.state.battle.round,
+                  randomStat: randomInt
+                }
+              }
+            });
+          },
+          getRandomDeck: () => {
+            let oneCard = 0;
+            const deck = [];
+            for (let i = 5; i > 0; i--) {
+              const randomN = Math.floor(
+                Math.random() * this.state.battle.heroes.length
+              );
+              oneCard = this.state.battle.heroes[randomN];
+              if (deck.indexOf(oneCard) === -1) {
+                deck.push(oneCard);
+              } else {
+                i++;
+              }
+            }
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                player_1: {
+                  ...this.state.battle.player_1,
+                  deck: deck
+                }
+              }
             });
           }
         }}
