@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import BattleProvider from "./battle_context/BattleProvider";
 import { Container } from "reactstrap";
 import "./App.css";
 import BgParticlesJS from "./BgParticleJS";
@@ -10,7 +9,6 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
-import BattleScreen from "./battle/BattleScreen";
 import CombatInit from "./battle/CombatInit";
 
 const listHeroes = [
@@ -139,26 +137,24 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BattleProvider>
-          <BgParticlesJS />
-          <Header />
-          <Container fluid>
-            <HomeNav />
-            <UsernameChoice />
-            <HeroesListing
-              heroes={this.state.heroes}
-              collapse={this.state.collapse}
-              toggle={this.toggle}
-              selectedHeroOfList={this.state.selectedHeroOfList}
-              searchInputHeroList={this.state.searchInputHeroList}
-              handleSearchListChange={this.handleSearchListChange}
-              isCollapse={this.state.isCollapse}
-            />
-            <StatsSection />
-            <CombatInit heroes={this.state.heroes} />
-          </Container>
-          <Footer />
-        </BattleProvider>
+        <BgParticlesJS />
+        <Header />
+        <Container fluid>
+          <HomeNav />
+          <UsernameChoice />
+          <HeroesListing
+            heroes={this.state.heroes}
+            collapse={this.state.collapse}
+            toggle={this.toggle}
+            selectedHeroOfList={this.state.selectedHeroOfList}
+            searchInputHeroList={this.state.searchInputHeroList}
+            handleSearchListChange={this.handleSearchListChange}
+            isCollapse={this.state.isCollapse}
+          />
+          <StatsSection />
+          <CombatInit heroes={this.state.heroes} />
+        </Container>
+        <Footer />
       </div>
     );
   }
