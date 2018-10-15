@@ -5,13 +5,10 @@ import "./index.css";
 import App from "./App";
 import BattleProvider from "./battle_context/BattleProvider";
 import * as serviceWorker from "./serviceWorker";
-import SiteProvider from "./SiteProvider";
 
 ReactDOM.render(
   <BattleProvider>
-    <SiteProvider>
-      <App />
-    </SiteProvider>
+    <App />
   </BattleProvider>,
   document.getElementById("root")
 );
