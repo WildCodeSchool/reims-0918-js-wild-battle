@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Button } from "reactstrap";
+import { Col } from "reactstrap";
 import "./AnimationCountdown.css";
 
 export class Countdown extends React.Component {
@@ -7,7 +7,7 @@ export class Countdown extends React.Component {
     super(props);
 
     this.state = {
-      sec: 3
+      sec: 3,
     };
     this.countdown = this.countdown.bind(this);
     this.calculateCountdown = this.calculateCountdown.bind(this);
@@ -25,7 +25,7 @@ export class Countdown extends React.Component {
     let diff = this.state.sec;
     if (diff <= 0) return false;
     const timeLeft = {
-      sec: 0
+      sec: 0,
     };
     if (diff > 0) {
       diff -= 1;
