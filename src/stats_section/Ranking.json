@@ -1,74 +1,56 @@
 [
   {
-    "player1": "Florentin",
-    "player2": "Mathieu",
+    "name": "Florentin",
     "id": "1",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Win",
-    "player2Score": "Lose"
+    "win": "42",
+    "lose": "0"
   },
   {
-    "player1": "Mathieu",
-    "player2": "Florentin",
+    "name": "Thomas",
     "id": "2",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Lose",
-    "player2Score": "Win"
+    "win": "2",
+    "lose": "0"
   },
   {
-    "player1": "Michael",
-    "player2": "Florentin",
+    "name": "Fabien",
     "id": "3",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Lose",
-    "player2Score": "Win"
+    "win": "1",
+    "lose": "0"
   },
   {
-    "player1": "Fabien",
-    "player2": "Michael",
+    "name": "Corentin",
     "id": "4",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Win",
-    "player2Score": "Lose"
+    "win": "4",
+    "lose": "0"
   },
   {
-    "player1": "Thomas",
-    "player2": "Clément",
+    "name": "Charles",
     "id": "5",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Win",
-    "player2Score": "Lose"
+    "win": "1",
+    "lose": "0"
   },
   {
-    "player1": "Clément",
-    "player2": "Romain",
+    "name": "Romain",
     "id": "6",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Lose",
-    "player2Score": "Win"
+    "win": "1",
+    "lose": "1"
   },
   {
-    "player1": "Romain",
-    "player2": "Thomas",
+    "name": "Quentin",
     "id": "7",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Lose",
-    "player2Score": "Win"
+    "win": "5",
+    "lose": "1"
   },
   {
-    "player1": "Quentin",
-    "player2": "Corentin",
+    "name": "Robin",
     "id": "8",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Lose",
-    "player2Score": "Win"
+    "win": "0",
+    "lose": "1"
   },
   {
-    "player1": "Charles",
-    "player2": "Robin",
+    "name": "Michaël",
     "id": "9",
-    "date": "10/03/2018 11:15",
-    "player1Score": "Win",
-    "player2Score": "Lose"
+    "win": "50",
+    "lose": "2"
   }
 ]
