@@ -4,7 +4,7 @@ import "./Footer.css";
 import { Col, Row } from "reactstrap";
 
 const Footer = () => (
-  <footer className="mt-5 container-fluid">
+  <footer className="mt-5 container-fluid fixed-bottom">
     <Row className="">
       <Col className="d-flex justify-content-center">
         <div className="d-flex">

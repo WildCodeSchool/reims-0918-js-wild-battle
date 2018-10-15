@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Button } from "reactstrap";
+import { Col } from "reactstrap";
 import "./AnimationCountdown.css";
 
 export class Countdown extends React.Component {
@@ -40,25 +40,25 @@ export class Countdown extends React.Component {
   stop() {
     clearInterval(this.interval);
   }
+  componentDidMount() {
+    this.countdown();
+  }
 
   render() {
     const countDown = this.state;
 
     return (
-      <Col xs={{ size: 2, offset: 5 }}>
-        <div>
-          {countDown.sec !== 0 && (
-            <div>
-              <strong className="pulsate-css">{countDown.sec}</strong>
-            </div>
-          )}
-          {countDown.sec === 3 && (
-            <Button onClick={this.countdown} className="mt-3">
-              Go !
-            </Button>
-          )}
-          {countDown.sec === 0 && <h3>Fight</h3>}
-        </div>
+      <Col className="my-auto text-center" xs="12" md="2">
+        {countDown.sec !== 0 && (
+          <div>
+            <strong className="pulsate-css FontBangers">{countDown.sec}</strong>
+          </div>
+        )}
+        {countDown.sec === 0 && (
+          <h3 className="FontBangers fight">
+            <a href="#CombatInit">Fight</a>
+          </h3>
+        )}
       </Col>
     );
   }
