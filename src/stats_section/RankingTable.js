@@ -1,4 +1,5 @@
 import React from "react";
+import ranking from "./Ranking.json";
 
 import {
   ListGroup,

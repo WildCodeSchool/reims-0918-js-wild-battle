@@ -1,6 +1,7 @@
 import React from "react";
 import BackgroundHistoric from "../img/greenred.png";
 import "./HistoricTable.css";
+import battleHistoric from "./Historic.json";
 
 import {
   ListGroup,
