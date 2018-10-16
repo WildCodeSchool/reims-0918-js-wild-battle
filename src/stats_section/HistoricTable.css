@@ -2,3 +2,9 @@
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+
+
+h2 {
+  font-family: "Bangers", cursive;
+  font-size: 3rem;
+}

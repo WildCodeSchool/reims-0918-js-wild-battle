@@ -15,7 +15,7 @@ import {
 
 const HistoricTable = () => (
   <div>
-    <h1 className="text-center">HISTORIC</h1>
+    <h2 className="text-center">HISTORIC</h2>
     <ListGroup className="text-center h5">
       {battleHistoric.map((battleData) => (
         <ListGroupItem className="border-dark p-0" key={battleData.id}>
