@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Container } from "reactstrap";
 import "./App.css";
 import BgParticlesJS from "./BgParticleJS";
-
 import StatsSection from "./stats_section/StatsSection";
 import HeroesListing from "./heroesListing/HeroesListing";
 import Header from "./Header";
@@ -10,22 +9,26 @@ import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import UsernameChoice from "./battle/UsernameChoice";
 import CombatInit from "./battle/CombatInit";
+import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <BgParticlesJS />
         <Header />
         <Container fluid>
-          <HomeNav />
-          <UsernameChoice />
-          <HeroesListing />
-          <StatsSection />
-          <CombatInit />
+
+          <Switch>
+            <Route exact path="/" component={HomeNav} />
+            <Route path="/Battle" component={UsernameChoice} />
+            <Route path="/HeroesListing" component={HeroesListing} />
+            <Route path="/Stats" component={StatsSection} />
+            <Route path="/CombatInit" component={CombatInit} />
+          </Switch>
         </Container>
         <Footer />
-      </div>
+      </Fragment >
     );
   }
 }

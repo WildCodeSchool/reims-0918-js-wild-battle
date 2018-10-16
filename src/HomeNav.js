@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomeNav.css";
+import { Link } from "react-router-dom"
 
 import {
   Col,
@@ -11,10 +12,10 @@ import {
 } from "reactstrap";
 
 const HomeNav = () => (
-  <nav className="navHome" style={{ height: "100vh" }}>
+  <nav className="navHome">
     <CardDeck className="justify-content-center mx-auto mt-5">
       <Col md="5" lg="3" className="mb-2">
-        <a href="#usernameSection">
+        <Link to="/Battle">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-bolt fa-9x" />
@@ -24,10 +25,10 @@ const HomeNav = () => (
               <CardSubtitle>Find a Friend &amp; Win!</CardSubtitle>
             </CardBody>
           </Card>
-        </a>
+        </Link>
       </Col>
       <Col md="5" lg="3" className="mb-2">
-        <a href="#statsSection">
+        <Link to="/Stats">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-list fa-9x" />
@@ -37,10 +38,10 @@ const HomeNav = () => (
               <CardSubtitle>History &amp; Rankings</CardSubtitle>
             </CardBody>
           </Card>
-        </a>
+        </Link>
       </Col>
       <Col md="5" lg="3" className="mb-2">
-        <a href="#heroesListSection">
+        <Link to="/HeroesListing">
           <Card>
             <div className="mt-3 py-5 d-flex justify-content-center">
               <i className="fas fa-user-friends fa-9x" />
@@ -50,7 +51,7 @@ const HomeNav = () => (
               <CardSubtitle>About your Heroes</CardSubtitle>
             </CardBody>
           </Card>
-        </a>
+        </Link>
       </Col>
     </CardDeck>
   </nav>
