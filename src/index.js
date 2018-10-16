@@ -5,11 +5,14 @@ import "./index.css";
 import App from "./App";
 import BattleProvider from "./battle_context/BattleProvider";
 import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <BattleProvider>
-    <App />
-  </BattleProvider>,
+  <BrowserRouter>
+    <BattleProvider>
+      <App />
+    </BattleProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

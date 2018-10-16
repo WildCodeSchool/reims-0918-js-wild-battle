@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "reactstrap";
 import "./AnimationCountdown.css";
+import { Link } from 'react-router-dom'
 
 export class Countdown extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export class Countdown extends React.Component {
     const countDown = this.state;
 
     return (
-      <Col className="my-auto text-center" xs="12" md="2">
+      <Col className="my-auto text-center" xs="12" md="4">
         {countDown.sec !== 0 && (
           <div>
             <strong className="pulsate-css FontBangers">{countDown.sec}</strong>
@@ -56,7 +57,7 @@ export class Countdown extends React.Component {
         )}
         {countDown.sec === 0 && (
           <h3 className="FontBangers fight">
-            <a href="#CombatInit">Fight</a>
+            <Link to="/CombatInit">Fight</Link>
           </h3>
         )}
       </Col>
