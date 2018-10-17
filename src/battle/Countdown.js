@@ -8,7 +8,7 @@ export class Countdown extends React.Component {
     super(props);
 
     this.state = {
-      sec: 1
+      sec: 3
     };
     this.countdown = this.countdown.bind(this);
     this.calculateCountdown = this.calculateCountdown.bind(this);

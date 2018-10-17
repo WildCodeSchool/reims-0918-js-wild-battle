@@ -33,14 +33,14 @@ class BattleProvider extends Component {
       heroes: [],
       player_1: {
         nickname: "",
-        nicknameChecked: true,
+        nicknameChecked: false,
         deck: [],
         score: 0,
         selectedCard: {}
       },
       player_2: {
         nickname: "",
-        nicknameChecked: true,
+        nicknameChecked: false,
         deck: [],
         score: 0,
         selectedCard: {}
@@ -129,28 +129,7 @@ class BattleProvider extends Component {
             });
           },
 
-          // roundFinished: () => {
-          //   this.setState({
-          //     battle: {
-          //       ...this.state.battle,
-          //       round: {
-          //         ...this.state.battle.round,
-          //         roundFinished: this.state.battle.round.currentPlayer === "player_2" ? true : this.state.battle.round.roundFinished
-          //       }
-          //     }
-          //   })
-          // },
 
-          // playerChange: () => {
-          //   this.setState({
-          //     battle: {
-          //       ...this.state.battle,
-          //       round: {
-          //         currentPlayer: this.state.battle.round.currentPlayer === "player_1" ? "player_2" : "player_1"
-          //       }
-          //     }
-          //   })
-          // },
           setRandomStat: () => {
             this.setState({
               battle: {
