@@ -39,7 +39,7 @@ class CombatInit extends Component {
                   {context.state.battle[context.state.battle.round.currentPlayer].deck.map(hero => (
                     <Col
                       xs="2"
-                      onClick={() => context.test(hero.id)}
+                      onClick={() => { context.selectHero(hero.id) }}
                       key={hero.id}
                     >
                       <HeroCard selectedHeroOfList={hero} />

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import UsernameChoice from "./UsernameChoice"
 import CombatScene from "./CombatScene"
 import BattleContext from "../battle_context/BattleContext"
+import CombatResult from "./CombatResult";
 
 class BattleScene extends Component {
   render() {
@@ -13,7 +14,7 @@ class BattleScene extends Component {
               {battleContext.state.battle.round.roundNumber === 0 ? (
                 <UsernameChoice />
               ) : (
-                  <CombatScene />
+                  battleContext.state.battle.round.roundFinished === false ? <CombatScene /> : <CombatResult />
                 )}
             </Fragment>
           )}

@@ -1,10 +1,11 @@
 import React from "react"
 import BattleContext from "../battle_context/BattleContext"
+import { Col, Button } from "reactstrap"
 
 const CombatResult = () => (
   <BattleContext.Consumer>
 
-    {battle => (
+    {context => (
       <Col xs="4">
         <h2>
           Fight on{" "}
@@ -64,6 +65,8 @@ const CombatResult = () => (
             ) : (
               <h2 className="text-danger FontBangers">Lose</h2>
             )}
+
+        <Button>Next round</Button>
       </Col>
     )}
   </BattleContext.Consumer>

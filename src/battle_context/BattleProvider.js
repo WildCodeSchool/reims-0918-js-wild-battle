@@ -50,7 +50,8 @@ class BattleProvider extends Component {
         roundNumber: 1,
         randomStat: 0,
         currentPlayer: "player_1",
-        transition: true
+        transition: true,
+        roundFinished: false,
       }
     },
     collapse: false,
@@ -118,27 +119,40 @@ class BattleProvider extends Component {
                     hero => hero.id === id
                   )
                 },
+                round: {
+                  ...this.state.battle.round,
+                  currentPlayer: this.state.battle.round.currentPlayer === "player_1" ? "player_2" : "player_1",
+                  transition: true,
+                  roundNumber: this.state.battle.round.currentPlayer === "player_2" ? this.state.battle.round.roundNumber + 1 : this.state.battle.round.roundNumber,
+                  roundFinished: this.state.battle.round.currentPlayer === "player_2" ? true : this.state.battle.round.roundFinished
+                },
                 randomHero: randomHero
               }
             });
           },
 
-          playerChange: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  currentPlayer: this.state.round.currentPlayer === "player_1" ? "player_2" : "player_1"
-                }
-              }
-            })
-          },
+          // roundFinished: () => {
+          //   this.setState({
+          //     battle: {
+          //       ...this.state.battle,
+          //       round: {
+          //         ...this.state.battle.round,
+          //         roundFinished: this.state.battle.round.currentPlayer === "player_2" ? true : this.state.battle.round.roundFinished
+          //       }
+          //     }
+          //   })
+          // },
 
-          test: (id) => {
-            this.selectHero(id);
-            this.playerChange()
-          },
-
+          // playerChange: () => {
+          //   this.setState({
+          //     battle: {
+          //       ...this.state.battle,
+          //       round: {
+          //         currentPlayer: this.state.battle.round.currentPlayer === "player_1" ? "player_2" : "player_1"
+          //       }
+          //     }
+          //   })
+          // },
           getRandomInt: () => {
             const randomInt = Math.floor(
               Math.random() * Math.floor(this.state.battle.stats.length)
