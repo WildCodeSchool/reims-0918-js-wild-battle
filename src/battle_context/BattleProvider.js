@@ -31,21 +31,25 @@ class BattleProvider extends Component {
     battle: {
       stats: ["Strength", "Speed", "Intelligence", "Durability"],
       heroes: [],
-      randomHero: [],
       player_1: {
         nickname: "",
         nicknameChecked: false,
-        deck: []
+        deck: [],
+        score: 0,
+        selectedCard: {}
       },
       player_2: {
         nickname: "",
-        nicknameChecked: false
+        nicknameChecked: false,
+        deck: [],
+        score: 0,
+        selectedCard: {}
       },
       round: {
-        roundNumber: 1,
-        roundStats: "",
-        randomStat: "",
-        currentPlayer: "Mathieu"
+        roundNumber: 0,
+        randomStat: 0,
+        currentPlayer: 1,
+        transition: true
       }
     },
     collapse: false,
@@ -99,43 +103,37 @@ class BattleProvider extends Component {
             const deck = this.state.battle.player_1.deck.filter(
               hero => hero.id !== id
             );
-            const randomHero = Math.floor(
-              Math.random() * this.state.battle.heroes.length
-            );
             this.setState({
               battle: {
                 ...this.state.battle,
                 player_1: {
                   ...this.state.battle.player_1,
                   deck,
-
                   selectedHero: this.state.battle.player_1.deck.filter(
                     hero => hero.id === id
                   )
-                },
-                randomHero: randomHero
+                }
               }
             });
           },
 
           getRandomInt: () => {
-            const randomInt = Math.floor(
-              Math.random() * Math.floor(this.state.battle.stats.length)
-            );
             this.setState({
               battle: {
                 ...this.state.battle,
                 round: {
                   ...this.state.battle.round,
-                  randomStat: randomInt
+                  randomStat: Math.floor(
+                    Math.random() * Math.floor(this.state.battle.stats.length)
+                  )
                 }
               }
             });
           },
-          getRandomDeck: () => {
+          initialisationAndStartCombat: () => {
             let oneCard = 0;
             const deck = [];
-            for (let i = 5; i > 0; i--) {
+            for (let i = 10; i > 0; i--) {
               const randomN = Math.floor(
                 Math.random() * this.state.battle.heroes.length
               );
@@ -146,12 +144,24 @@ class BattleProvider extends Component {
                 i++;
               }
             }
+
+            const deck_player_1 = deck.slice(0, 5);
+            const deck_player_2 = deck.slice(5, 10);
+
             this.setState({
               battle: {
                 ...this.state.battle,
                 player_1: {
                   ...this.state.battle.player_1,
-                  deck: deck
+                  deck: deck_player_1
+                },
+                player_2: {
+                  ...this.state.battle.player_2,
+                  deck: deck_player_2
+                },
+                round: {
+                  ...this.state.battle.round,
+                  roundNumber: 1
                 }
               }
             });

@@ -3,7 +3,7 @@ import ChoiceNickname from "./ChoiceNickname";
 import Countdown from "./Countdown";
 import { Row, Container, Col, Button } from "reactstrap";
 import "./UsernameChoice.css";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import BattleContext from "../battle_context/BattleContext";
 
@@ -15,9 +15,10 @@ const UsernameChoice = () => (
           style={{ minHeight: "90vh" }}
           className={"d-flex justify-content-around"}
         >
-
           <Col xs="12">
-            <Link exact to="/"><Button className="mt-3">Back</Button></Link>
+            <Link to="/">
+              <Button className="mt-3">Back</Button>
+            </Link>
           </Col>
           <ChoiceNickname name="player_1" title="Player 1" />
           {context.state.battle.player_1.nicknameChecked &&
