@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
-import UsernameChoice from "./UsernameChoice";
-import CombatScene from "./CombatScene";
-import BattleContext from "../battle_context/BattleContext";
+import UsernameChoice from "./UsernameChoice"
+import CombatScene from "./CombatScene"
+import BattleContext from "../battle_context/BattleContext"
+import CombatResult from "./CombatResult";
+import FinalScore from "./FinalScore";
 
-class BattleScreen extends Component {
+class BattleScene extends Component {
   render() {
     return (
       <Fragment>
@@ -13,8 +15,10 @@ class BattleScreen extends Component {
               {battleContext.state.battle.round.roundNumber === 0 ? (
                 <UsernameChoice />
               ) : (
-                <CombatScene />
-              )}
+                  !battleContext.state.battle.round.roundFinished ? <CombatScene /> :
+
+                    (!battleContext.state.battle.round.matchFinished) ? <CombatResult /> : <FinalScore />
+                )}
             </Fragment>
           )}
         </BattleContext.Consumer>
@@ -22,4 +26,4 @@ class BattleScreen extends Component {
     );
   }
 }
-export default BattleScreen;
+export default BattleScene;

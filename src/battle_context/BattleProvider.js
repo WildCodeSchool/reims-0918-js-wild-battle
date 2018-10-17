@@ -33,23 +33,26 @@ class BattleProvider extends Component {
       heroes: [],
       player_1: {
         nickname: "",
-        nicknameChecked: false,
+        nicknameChecked: true,
         deck: [],
         score: 0,
         selectedCard: {}
       },
       player_2: {
         nickname: "",
-        nicknameChecked: false,
+        nicknameChecked: true,
         deck: [],
         score: 0,
         selectedCard: {}
       },
       round: {
+        roundFinished: false,
         roundNumber: 0,
         randomStat: 0,
-        currentPlayer: 1,
-        transition: true
+        currentPlayer: "player_1",
+        transition: true,
+        roundWinner: 0,
+        matchFinished: false
       }
     },
     collapse: false,
@@ -75,6 +78,8 @@ class BattleProvider extends Component {
   componentDidMount() {
     this.callApiSuperHeroes();
   }
+  isSimilar = (prevRandom, newRandom) => prevRandom !== newRandom ? newRandom : this.isSimilar(prevRandom, Math.floor(
+    Math.random() * Math.floor(this.state.battle.stats.length)))
 
   render() {
     return (
@@ -100,24 +105,53 @@ class BattleProvider extends Component {
             });
           },
           selectHero: id => {
-            const deck = this.state.battle.player_1.deck.filter(
+            const deck = this.state.battle[this.state.battle.round.currentPlayer].deck.filter(
               hero => hero.id !== id
             );
             this.setState({
               battle: {
                 ...this.state.battle,
-                player_1: {
-                  ...this.state.battle.player_1,
+                [this.state.battle.round.currentPlayer]: {
+                  ...this.state.battle[this.state.battle.round.currentPlayer],
                   deck,
-                  selectedHero: this.state.battle.player_1.deck.filter(
+
+                  selectedCard: this.state.battle[this.state.battle.round.currentPlayer].deck.filter(
                     hero => hero.id === id
                   )
+                },
+                round: {
+                  ...this.state.battle.round,
+                  currentPlayer: this.state.battle.round.currentPlayer === "player_1" ? "player_2" : "player_1",
+                  transition: true,
+                  roundFinished: this.state.battle.round.currentPlayer === "player_2" ? true : this.state.battle.round.roundFinished
                 }
               }
             });
           },
 
-          getRandomInt: () => {
+          // roundFinished: () => {
+          //   this.setState({
+          //     battle: {
+          //       ...this.state.battle,
+          //       round: {
+          //         ...this.state.battle.round,
+          //         roundFinished: this.state.battle.round.currentPlayer === "player_2" ? true : this.state.battle.round.roundFinished
+          //       }
+          //     }
+          //   })
+          // },
+
+          // playerChange: () => {
+          //   this.setState({
+          //     battle: {
+          //       ...this.state.battle,
+          //       round: {
+          //         currentPlayer: this.state.battle.round.currentPlayer === "player_1" ? "player_2" : "player_1"
+          //       }
+          //     }
+          //   })
+          // },
+          setRandomStat: () => {
             this.setState({
               battle: {
                 ...this.state.battle,
@@ -126,6 +160,22 @@ class BattleProvider extends Component {
                   randomStat: Math.floor(
                     Math.random() * Math.floor(this.state.battle.stats.length)
                   )
+                }
+              }
+            });
+          }, setNewFight: () => {
+            const randomNumber = Math.floor(
+              Math.random() * Math.floor(this.state.battle.stats.length)
+
+            )
+            const drawNewStat = this.isSimilar(this.state.battle.round.randomStat, randomNumber)
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                round: {
+                  ...this.state.battle.round,
+                  roundWinner: 0,
+                  randomStat: drawNewStat
                 }
               }
             });
@@ -161,15 +211,136 @@ class BattleProvider extends Component {
                 },
                 round: {
                   ...this.state.battle.round,
-                  roundNumber: 1
+                  roundNumber: 1,
+                  randomStat: Math.floor(
+                    Math.random() * Math.floor(this.state.battle.stats.length)
+                  )
                 }
               }
             });
+          },
+          handleChangeTransition: () => {
+            this.setState({
+              battle: {
+                ...this.state.battle, round: { ...this.state.battle.round, transition: !this.state.battle.round.transition }
+              }
+            })
+          },
+          getToNextRound: () => {
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                round: {
+                  ...this.state.battle.round,
+                  roundFinished: false,
+                  roundNumber: this.state.battle.round.roundNumber + 1,
+                  currentPlayer: "player_1",
+                  roundWinner: 0,
+                  randomStat: Math.floor(
+                    Math.random() * Math.floor(this.state.battle.stats.length)
+                  )
+                }
+              }
+            })
+          },
+          hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
+            let updatedState = this.state.battle
+
+            if ((statHeroPlayer1 - statHeroPlayer2) === 0) {
+              updatedState.round.roundWinner = 3
+
+            } else {
+              if ((statHeroPlayer1 - statHeroPlayer2) > 0) {
+                updatedState.round.roundWinner = 1
+                updatedState.player_1.score++
+              } else {
+                updatedState.round.roundWinner = 2
+                updatedState.player_2.score++
+              }
+            }
+
+            this.setState({
+              battle: updatedState
+
+            })
+          },
+
+          getToFinalScore: () => {
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                round: {
+                  ...this.state.battle.round,
+                  matchFinished: true
+                }
+              }
+            })
+
+          },
+
+          setRematch: () => {
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                player_1: {
+                  ...this.state.battle.player_1,
+                  deck: [],
+                  score: 0,
+                  selectedCard: {}
+                },
+                player_2: {
+                  ...this.state.battle.player_2,
+                  deck: [],
+                  score: 0,
+                  selectedCard: {}
+                },
+                round: {
+                  roundFinished: false,
+                  roundNumber: 1,
+                  randomStat: 0,
+                  currentPlayer: "player_1",
+                  transition: true,
+                  roundWinner: 0,
+                  matchFinished: false
+                }
+              }
+            })
+          },
+
+          resetAllDataBattle: () => {
+            this.setState({
+              battle: {
+                ...this.state.battle,
+                player_1: {
+                  nickname: "",
+                  nicknameChecked: false,
+                  deck: [],
+                  score: 0,
+                  selectedCard: {}
+                },
+                player_2: {
+                  nickname: "",
+                  nicknameChecked: false,
+                  deck: [],
+                  score: 0,
+                  selectedCard: {}
+                },
+                round: {
+                  roundFinished: false,
+                  roundNumber: 0,
+                  randomStat: 0,
+                  currentPlayer: "player_1",
+                  transition: true,
+                  roundWinner: 0,
+                  matchFinished: false
+                }
+              }
+            })
           }
         }}
       >
         {this.props.children}
-      </BattleContext.Provider>
+      </ BattleContext.Provider >
     );
   }
 }

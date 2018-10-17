@@ -8,8 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import BattleScene from "./battle/BattleScene";
-import CombatInit from "./battle/CombatInit";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -23,7 +22,6 @@ class App extends Component {
             <Route path="/Battle" component={BattleScene} />
             <Route path="/HeroesListing" component={HeroesListing} />
             <Route path="/Stats" component={StatsSection} />
-            <Route path="/CombatInit" component={CombatInit} />
           </Switch>
         </Container>
         <Footer />

@@ -45,12 +45,12 @@
     "name": "Robin",
     "id": "8",
     "win": "0",
-    "lose": "1"
+    "lose": "3"
   },
   {
     "name": "Michaël",
     "id": "9",
-    "win": "50",
+    "win": "0",
     "lose": "2"
   }
 ]

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { Fragment } from 'react'
+import BattleTransition from './BattleTransition';
+import BattleContext from "../battle_context/BattleContext"
+import CombatInit from "./CombatInit"
 
 const CombatScene = () => (
-  <div>
-    <h2>Combat</h2>
-  </div>
-);
+  <BattleContext>
+    {battleContext => (
+      <Fragment>
+        {/* {battleContext.state.battle.round.currentPlayer === 1 && (battleContext.getRandomInt())} */}
 
-export default CombatScene;
+        {battleContext.state.battle.round.transition ?
+          (<BattleTransition />
+          ) : (
+            <CombatInit />
+          )
+        }
+      </Fragment>
+    )}
+  </BattleContext>
+
+)
+
+export default CombatScene
