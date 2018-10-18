@@ -6,7 +6,10 @@ const changeNickname = (prevState, event, name) => {
       ...prevState.battle,
       [name]: {
         ...prevState.battle[name],
-        nickname: event.target.value.replace(/[ ]/, "")
+        nickname: event.target.value
+          .match(/[\w]/g)
+          .join("")
+          .replace(/[_]+/g, "_")
       }
     }
   };
