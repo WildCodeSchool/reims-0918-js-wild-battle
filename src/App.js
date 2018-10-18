@@ -7,8 +7,7 @@ import HeroesListing from "./heroesListing/HeroesListing";
 import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
-import UsernameChoice from "./battle/UsernameChoice";
-import CombatInit from "./battle/CombatInit";
+import BattleScene from "./battle/BattleScene";
 import { Route, Switch } from 'react-router-dom'
 
 class App extends Component {
@@ -18,17 +17,15 @@ class App extends Component {
         <BgParticlesJS />
         <Header />
         <Container fluid>
-
           <Switch>
             <Route exact path="/" component={HomeNav} />
-            <Route path="/Battle" component={UsernameChoice} />
+            <Route path="/Battle" component={BattleScene} />
             <Route path="/HeroesListing" component={HeroesListing} />
             <Route path="/Stats" component={StatsSection} />
-            <Route path="/CombatInit" component={CombatInit} />
           </Switch>
         </Container>
         <Footer />
-      </Fragment >
+      </Fragment>
     );
   }
 }

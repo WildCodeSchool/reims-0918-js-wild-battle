@@ -13,7 +13,7 @@ const rank_sort = (ranking) =>
 
 const RankingTable = () => (
   <div>
-    <h1 className="text-center">RANKING</h1>
+    <h2 className="text-center">RANKING</h2>
     <ListGroup className="text-center h5">
       {rank_sort(ranking).map((person) => (
         <ListGroupItem className="border-dark" key={person.id}>
