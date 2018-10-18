@@ -128,21 +128,28 @@ class BattleProvider extends Component {
                   selectedCard: this.state.battle[
                     this.state.battle.round.currentPlayer
                   ].deck.filter(hero => hero.id === id)
-                },
-                round: {
-                  ...this.state.battle.round,
-                  currentPlayer:
-                    this.state.battle.round.currentPlayer === "player_1"
-                      ? "player_2"
-                      : "player_1",
-                  transition: true,
-                  roundFinished:
-                    this.state.battle.round.currentPlayer === "player_2"
-                      ? true
-                      : this.state.battle.round.roundFinished
                 }
               }
             });
+            setTimeout(() => {
+              this.setState({
+                battle: {
+                  ...this.state.battle,
+                  round: {
+                    ...this.state.battle.round,
+                    currentPlayer:
+                      this.state.battle.round.currentPlayer === "player_1"
+                        ? "player_2"
+                        : "player_1",
+                    transition: true,
+                    roundFinished:
+                      this.state.battle.round.currentPlayer === "player_2"
+                        ? true
+                        : this.state.battle.round.roundFinished
+                  }
+                }
+              });
+            }, 1000);
           },
 
           setRandomStat: () => {
