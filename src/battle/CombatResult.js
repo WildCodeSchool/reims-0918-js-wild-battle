@@ -1,22 +1,19 @@
-import React, { Fragment } from "react"
-import BattleContext from "../battle_context/BattleContext"
-import { Col, Row, Button } from "reactstrap"
-import HeroCard from "../HeroCard"
-
+import React, { Fragment } from "react";
+import BattleContext from "../battle_context/BattleContext";
+import { Col, Row, Button } from "reactstrap";
+import HeroCard from "../HeroCard";
 
 const CombatResult = () => (
   <BattleContext.Consumer>
-    {battleContext => (
-
+    {(battleContext) => (
       <Fragment>
-
         <Row>
           <Col xs="12">
             <h2>
               Fight on{" "}
               {
                 battleContext.state.battle.stats[
-                battleContext.state.battle.round.randomStat
+                  battleContext.state.battle.round.randomStat
                 ]
               }
             </h2>
@@ -25,26 +22,33 @@ const CombatResult = () => (
 
         <Row className="d-flex justify-content-around">
           <Col xs="3">
-            {battleContext.state.battle.round.roundWinner === 1 ?
+            {battleContext.state.battle.round.roundWinner === 1 ? (
               <h2>WIN</h2>
-              : battleContext.state.battle.round.roundWinner === 2 ? <h2>LOSE</h2>
-                : <h2></h2>}
+            ) : battleContext.state.battle.round.roundWinner === 2 ? (
+              <h2>LOSE</h2>
+            ) : (
+              <h2 />
+            )}
           </Col>
           <Col xs="2">
-            {battleContext.state.battle.round.roundWinner === 3 ?
+            {battleContext.state.battle.round.roundWinner === 3 ? (
               <h2>Draw</h2>
-              : <h2></h2>}
+            ) : (
+              <h2 />
+            )}
           </Col>
           <Col xs="3">
-            {battleContext.state.battle.round.roundWinner === 2 ?
+            {battleContext.state.battle.round.roundWinner === 2 ? (
               <h2>WIN</h2>
-              : battleContext.state.battle.round.roundWinner === 1 ? <h2>LOSE</h2>
-                : <h2></h2>}
+            ) : battleContext.state.battle.round.roundWinner === 1 ? (
+              <h2>LOSE</h2>
+            ) : (
+              <h2 />
+            )}
           </Col>
         </Row>
         <Row className="d-flex justify-content-around">
           <Col className="text-center" xs="3">
-
             <HeroCard
               selectedHeroOfList={
                 battleContext.state.battle.player_1.selectedCard[0]
@@ -52,33 +56,46 @@ const CombatResult = () => (
             />
           </Col>
           <Col className="text-center" xs="2">
-
             <h2>VS</h2>
-            {battleContext.state.battle.round.roundWinner === 0 ?
-              (<Button onClick={() => battleContext.hasWonRound(battleContext.state.battle.player_1.selectedCard[0]
-                .powerstats[
-                battleContext.state.battle.stats[
-                  battleContext.state.battle.round.randomStat
-                ].toLowerCase()
-              ], battleContext.state.battle.player_2.selectedCard[0]
-                .powerstats[
-                battleContext.state.battle.stats[
-                  battleContext.state.battle.round.randomStat
-                ].toLowerCase()
-                ])}>Result</Button>
-              ) : (
-                battleContext.state.battle.round.roundWinner === 3 ?
-                  (
-                    <Button onClick={() => battleContext.setNewFight()}>Fight with another Stat</Button>
-                  ) : battleContext.state.battle.round.roundNumber !== 5 ?
-                    (
-                      <Button onClick={() => battleContext.getToNextRound()} >Next round</Button>
-                    ) : (
-                      <Button onClick={() => battleContext.getToFinalScore()}>Final Score</Button>
-                    )
-              )}
-
-
+            {battleContext.state.battle.round.roundWinner === 0 ? (
+              <Button
+                onClick={() =>
+                  battleContext.hasWonRound(
+                    battleContext.state.battle.player_1.selectedCard[0]
+                      .powerstats[
+                      battleContext.state.battle.stats[
+                        battleContext.state.battle.round.randomStat
+                      ].toLowerCase()
+                    ],
+                    battleContext.state.battle.player_2.selectedCard[0]
+                      .powerstats[
+                      battleContext.state.battle.stats[
+                        battleContext.state.battle.round.randomStat
+                      ].toLowerCase()
+                    ]
+                  )
+                }
+              >
+                Result
+              </Button>
+            ) : battleContext.state.battle.round.roundWinner === 3 ? (
+              <Button onClick={() => battleContext.setNewFight()}>
+                Fight with another Stat
+              </Button>
+            ) : battleContext.state.battle.round.roundNumber !== 1 ? (
+              <Button onClick={() => battleContext.getToNextRound()}>
+                Next round
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  battleContext.getToFinalScore();
+                  battleContext.setStorage();
+                }}
+              >
+                Final Score
+              </Button>
+            )}
           </Col>
           <Col className="text-center" xs="3">
             <HeroCard
@@ -89,10 +106,9 @@ const CombatResult = () => (
           </Col>
         </Row>
       </Fragment>
-
     )}
-  </BattleContext.Consumer >
-)
+  </BattleContext.Consumer>
+);
 
 // const CombatResult = () => (
 //   <BattleContext.Consumer>
@@ -164,4 +180,4 @@ const CombatResult = () => (
 //   </BattleContext.Consumer >
 // )
 
-export default CombatResult
+export default CombatResult;

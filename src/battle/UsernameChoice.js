@@ -10,7 +10,7 @@ import BattleContext from "../battle_context/BattleContext";
 const UsernameChoice = () => (
   <Container fluid id="usernameSection">
     <BattleContext.Consumer>
-      {context => (
+      {(context) => (
         <Row
           style={{ minHeight: "90vh" }}
           className={"d-flex justify-content-around"}

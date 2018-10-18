@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomeNav.css";
 import { Link } from "react-router-dom";
+import BattleContext from "./battle_context/BattleContext";
 
 import {
   Col,
@@ -8,7 +9,8 @@ import {
   CardTitle,
   CardDeck,
   CardSubtitle,
-  CardBody
+  CardBody,
+  Button,
 } from "reactstrap";
 
 const HomeNav = () => (

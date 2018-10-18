@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import BattleContext from "./BattleContext";
 import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
-import Ranking from "../stats_section/Ranking.json";
+import AsyncStorage from "@callstack/async-storage";
+import RankingJSon from "../stats_section/Ranking.json";
 
 const listHeroes = [
   30,
@@ -26,8 +27,6 @@ const listHeroes = [
   620,
   644,
 ];
-
-const rankingTable = Ranking;
 
 class BattleProvider extends Component {
   state = {
@@ -62,6 +61,7 @@ class BattleProvider extends Component {
     isCollapse: 0,
     selectedHeroOfList: [],
     searchInputHeroList: "",
+    ranking: [{ ranking: [] }],
   };
 
   callApiSuperHeroes() {
@@ -78,8 +78,17 @@ class BattleProvider extends Component {
         });
     }
   }
+
+  getStorage() {
+    AsyncStorage.getItem("ranking").then((rank) => {
+      this.setState(() => ({
+        ranking: [JSON.parse(rank)],
+      }));
+    });
+  }
   componentDidMount() {
     this.callApiSuperHeroes();
+    this.getStorage();
   }
   isSimilar = (prevRandom, newRandom) =>
     prevRandom !== newRandom
@@ -333,14 +342,12 @@ class BattleProvider extends Component {
               },
             });
           },
-          stockInJson: () => {
-            if (this.state.nickname !== "") {
-              const newName = this.state.nickname;
-              this.setState(() => ({
-                nicknamep1: newName,
-                nickname: "",
-              }));
-            }
+
+          setStorage: () => {
+            const stringRanking = JSON.stringify(RankingJSon);
+            AsyncStorage.setItem("ranking", stringRanking);
+            console.log(JSON.parse(stringRanking));
+            console.log(stringRanking);
           },
         }}
       >

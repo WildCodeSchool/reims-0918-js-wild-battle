@@ -1,64 +1,17 @@
 [
   {
-    "name": "",
-    "id": "1",
-    "win": "0",
-    "lose": "0"
+    "name": "Mathieu",
+    "win": 1,
+    "lose": 0
   },
   {
-    "name": "",
-    "id": "2",
-    "win": "0",
-    "lose": "0"
+    "name": "Florentin",
+    "win": 1,
+    "lose": 0
   },
   {
-    "name": "",
-    "id": "3",
-    "win": "0",
-    "lose": "0"
-  },
-  {
-    "name": "",
-    "id": "4",
-    "win": "0",
-    "lose": "0"
-  },
-  {
-    "name": "",
-    "id": "5",
-    "win": "0",
-    "lose": "0"
-  },
-  {
-    "name": "",
-    "id": "6",
-    "win": "0",
-    "lose": "0"
-  },
-  {
-    "name": "",
-    "id": "7",
-    "win": "0",
-    "lose": "0"
-  },
-  {
-    "name": "",
-    "id": "8",
-    "win": "0",
-<<<<<<< HEAD
-    "lose": "0"
-=======
-    "lose": "3"
->>>>>>> dev
-  },
-  {
-    "name": "",
-    "id": "9",
-    "win": "0",
-<<<<<<< HEAD
-    "lose": "0"
-=======
-    "lose": "2"
->>>>>>> dev
+    "name": "Michaël",
+    "win": 1,
+    "lose": 0
   }
 ]
