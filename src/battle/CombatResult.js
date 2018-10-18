@@ -90,7 +90,11 @@ const CombatResult = () => (
               <Button
                 onClick={() => {
                   battleContext.getToFinalScore();
-                  battleContext.setStorage();
+                  battleContext.setStorage(
+                    battleContext.state.battle.round.roundWinner,
+                    battleContext.state.battle.player_1.nickname,
+                    battleContext.state.battle.player_2.nickname
+                  );
                 }}
               >
                 Final Score

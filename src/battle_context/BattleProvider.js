@@ -253,7 +253,6 @@ class BattleProvider extends Component {
           },
           hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
             let updatedState = this.state.battle;
-
             if (statHeroPlayer1 - statHeroPlayer2 === 0) {
               updatedState.round.roundWinner = 3;
             } else {
@@ -343,11 +342,19 @@ class BattleProvider extends Component {
             });
           },
 
-          setStorage: () => {
-            const stringRanking = JSON.stringify(RankingJSon);
-            AsyncStorage.setItem("ranking", stringRanking);
-            console.log(JSON.parse(stringRanking));
-            console.log(stringRanking);
+          setStorage: (winner, player_1, player_2) => {
+            const playerWinner = winner === 1 ? player_1 : player_2;
+            const playerLoser = winner === 1 ? player_2 : player_1;
+            let prevState = this.state.ranking[0];
+            let doesWinnerExist;
+            let doesLoserExist;
+            for (let i = 0; i < prevState.length; i++) {
+              doesLoserExist = prevState.name.indexOf(playerLoser);
+              doesWinnerExist = prevState.name.indexOf(playerWinner);
+            }
+            console.log(prevState);
+            // const stringRanking = JSON.stringify(RankingJSon);
+            // AsyncStorage.setItem("ranking", stringRanking);
           },
         }}
       >
