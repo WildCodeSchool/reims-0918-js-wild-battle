@@ -25,6 +25,9 @@ const ChoiceNickname = ({ name, title }) => (
                 placeholder="Enter Your Nickname"
                 className="mr-2"
                 onChange={event => context.handleChangeNickname(event, name)}
+                onKeyPress={event =>
+                  context.onPressEnterNicknameChecked(event, name)
+                }
                 value={context.state.battle[name].nickname}
               />
               {context.state.battle[name].nickname.length > 2 && (
