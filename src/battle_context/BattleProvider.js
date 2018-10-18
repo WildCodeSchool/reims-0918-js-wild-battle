@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import BattleContext from "./BattleContext";
 import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
+import AsyncStorage from "@callstack/async-storage";
+import Ranking from "../stats_section/Ranking.json";
 
 const listHeroes = [
   30,
@@ -23,8 +25,10 @@ const listHeroes = [
   485,
   514,
   620,
-  644
+  644,
 ];
+
+const rankingTable = Ranking;
 
 class BattleProvider extends Component {
   state = {
@@ -35,35 +39,35 @@ class BattleProvider extends Component {
       player_1: {
         nickname: "",
         nicknameChecked: false,
-        deck: []
+        deck: [],
       },
       player_2: {
         nickname: "",
-        nicknameChecked: false
+        nicknameChecked: false,
       },
       round: {
         roundNumber: 1,
         roundStats: "",
         randomStat: "",
-        currentPlayer: "Mathieu"
-      }
+        currentPlayer: "Mathieu",
+      },
     },
     collapse: false,
     isCollapse: 0,
     selectedHeroOfList: [],
-    searchInputHeroList: ""
+    searchInputHeroList: "",
   };
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
       fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
-        .then(results => results.json()) // conversion du résultat en JSON
-        .then(data => {
+        .then((results) => results.json()) // conversion du résultat en JSON
+        .then((data) => {
           this.setState({
             battle: {
               ...this.state.battle,
-              heroes: [...this.state.battle.heroes, data]
-            }
+              heroes: [...this.state.battle.heroes, data],
+            },
           });
         });
     }
@@ -72,6 +76,8 @@ class BattleProvider extends Component {
     this.callApiSuperHeroes();
   }
 
+  
+
   render() {
     return (
       <BattleContext.Provider
@@ -79,25 +85,25 @@ class BattleProvider extends Component {
           state: this.state,
           handleChangeNickname: (event, name) =>
             this.setState(changeNickname(this.state, event, name)),
-          submitCheck: name => {
+          submitCheck: (name) => {
             this.setState(nicknameChecked(this.state, name));
           },
-          toggle: id => {
+          toggle: (id) => {
             this.setState({
               collapse: true,
               isCollapse: 1,
-              selectedHeroOfList: id
+              selectedHeroOfList: id,
             });
           },
-          handleSearchListChange: event => {
+          handleSearchListChange: (event) => {
             this.setState({
               searchInputHeroList: event.target.value,
-              collapse: false
+              collapse: false,
             });
           },
-          selectHero: id => {
+          selectHero: (id) => {
             const deck = this.state.battle.player_1.deck.filter(
-              hero => hero.id !== id
+              (hero) => hero.id !== id
             );
             const randomHero = Math.floor(
               Math.random() * this.state.battle.heroes.length
@@ -110,11 +116,11 @@ class BattleProvider extends Component {
                   deck,
 
                   selectedHero: this.state.battle.player_1.deck.filter(
-                    hero => hero.id === id
-                  )
+                    (hero) => hero.id === id
+                  ),
                 },
-                randomHero: randomHero
-              }
+                randomHero: randomHero,
+              },
             });
           },
 
@@ -127,9 +133,9 @@ class BattleProvider extends Component {
                 ...this.state.battle,
                 round: {
                   ...this.state.battle.round,
-                  randomStat: randomInt
-                }
-              }
+                  randomStat: randomInt,
+                },
+              },
             });
           },
           getRandomDeck: () => {
@@ -151,11 +157,21 @@ class BattleProvider extends Component {
                 ...this.state.battle,
                 player_1: {
                   ...this.state.battle.player_1,
-                  deck: deck
-                }
-              }
+                  deck: deck,
+                },
+              },
             });
-          }
+          },
+          stockInJson: () => {
+            if (this.state.nickname !== "") {
+              const newName = this.state.nickname;
+              await AsyncStorage.setItem("nicknamep1", newName);
+              this.setState(() => ({
+                nicknamep1: newName,
+                nickname: "",
+              }));
+            }
+          },
         }}
       >
         {this.props.children}
