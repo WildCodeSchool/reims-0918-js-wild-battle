@@ -1,18 +1,17 @@
 import React from "react";
 import { Col } from "reactstrap";
 import "./AnimationCountdown.css";
-import { Link } from 'react-router-dom'
+import BattleContext from "../battle_context/BattleContext";
 
 export class Countdown extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      sec: 3,
+      sec: 3
     };
     this.countdown = this.countdown.bind(this);
     this.calculateCountdown = this.calculateCountdown.bind(this);
-    this.stop = this.stop.bind(this);
   }
 
   countdown() {
@@ -24,13 +23,10 @@ export class Countdown extends React.Component {
 
   calculateCountdown() {
     let diff = this.state.sec;
-    if (diff <= 0) return false;
     const timeLeft = {
-      sec: 0,
+      sec: 0
     };
-    if (diff > 0) {
-      diff -= 1;
-    }
+    diff -= 1;
     timeLeft.sec = diff;
     if (diff === 0) {
       this.stop();
@@ -41,6 +37,7 @@ export class Countdown extends React.Component {
   stop() {
     clearInterval(this.interval);
   }
+
   componentDidMount() {
     this.countdown();
   }
@@ -50,15 +47,23 @@ export class Countdown extends React.Component {
 
     return (
       <Col className="my-auto text-center" xs="12" md="4">
-        {countDown.sec !== 0 && (
+        {countDown.sec > 0 && (
           <div>
             <strong className="pulsate-css FontBangers">{countDown.sec}</strong>
           </div>
         )}
         {countDown.sec === 0 && (
-          <h3 className="FontBangers fight">
-            <Link to="/CombatInit">Fight</Link>
-          </h3>
+          <BattleContext>
+            {battleContext => (
+              <h3 className="FontBangers fight">
+                <span
+                  onClick={() => battleContext.initialisationAndStartCombat()}
+                >
+                  FIGHT
+                </span>
+              </h3>
+            )}
+          </BattleContext>
         )}
       </Col>
     );

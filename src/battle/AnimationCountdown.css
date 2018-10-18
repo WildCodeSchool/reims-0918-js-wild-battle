@@ -17,13 +17,10 @@
 .fight {
   animation: pulsate-fight 1s ease-out;
 }
-.fight a {
-  text-decoration: none;
-  color: white;
-}
-.fight a:hover {
+.fight span:hover {
   text-decoration: none;
   color: #007bff;
+  cursor: pointer;
 }
 
 @keyframes pulsate {

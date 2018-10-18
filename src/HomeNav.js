@@ -1,6 +1,6 @@
 import React from "react";
 import "./HomeNav.css";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 import {
   Col,
@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardDeck,
   CardSubtitle,
-  CardBody,
+  CardBody
 } from "reactstrap";
 
 const HomeNav = () => (
