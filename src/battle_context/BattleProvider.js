@@ -98,7 +98,7 @@ class BattleProvider extends Component {
           },
           onPressEnterNicknameChecked: (event, name) => {
             if (event.charCode === 13) {
-              this.submitCheck(name);
+              this.setState(nicknameChecked(this.state, name));
             }
           },
           toggle: id => {
