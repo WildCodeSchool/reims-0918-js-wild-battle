@@ -4,26 +4,14 @@ import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
 
 const listHeroes = [
-  30,
-  69,
-  165,
-  207,
-  213,
-  222,
-  226,
-  263,
-  310,
-  313,
-  322,
-  341,
-  346,
-  354,
-  361,
-  386,
-  485,
-  514,
-  620,
-  644
+  18, 21, 30, 34, 57, 60, 63, 69, 92,
+  145, 162, 165,
+  207, 208, 213, 222, 226, 263,
+  310, 313, 322, 341, 346, 354, 361, 386,
+  416, 418, 423, 427, 435, 441, 462, 485, 489, 490,
+  502, 514, 522, 523, 526, 529, 566, 567,
+  619, 620, 627, 639, 644, 672,
+  729
 ];
 
 class BattleProvider extends Component {
@@ -82,9 +70,9 @@ class BattleProvider extends Component {
     prevRandom !== newRandom
       ? newRandom
       : this.isSimilar(
-          prevRandom,
-          Math.floor(Math.random() * Math.floor(this.state.battle.stats.length))
-        );
+        prevRandom,
+        Math.floor(Math.random() * Math.floor(this.state.battle.stats.length))
+      );
 
   render() {
     return (
