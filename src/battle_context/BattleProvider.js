@@ -96,7 +96,6 @@ class BattleProvider extends Component {
     this.callApiSuperHeroes();
     this.getStorage();
   }
-
   isSimilar = (prevRandom, newRandom) =>
     prevRandom !== newRandom
       ? newRandom
@@ -115,7 +114,12 @@ class BattleProvider extends Component {
           submitCheck: (name) => {
             this.setState(nicknameChecked(this.state, name));
           },
-          toggle: (id) => {
+          onPressEnterNicknameChecked: (event, name) => {
+            if (event.charCode === 13) {
+              this.setState(nicknameChecked(this.state, name));
+            }
+          },
+          toggle: id => {
             this.setState({
               collapse: true,
               isCollapse: 1,
@@ -157,6 +161,25 @@ class BattleProvider extends Component {
                 },
               },
             });
+            setTimeout(() => {
+              this.setState({
+                battle: {
+                  ...this.state.battle,
+                  round: {
+                    ...this.state.battle.round,
+                    currentPlayer:
+                      this.state.battle.round.currentPlayer === "player_1"
+                        ? "player_2"
+                        : "player_1",
+                    transition: true,
+                    roundFinished:
+                      this.state.battle.round.currentPlayer === "player_2"
+                        ? true
+                        : this.state.battle.round.roundFinished
+                  }
+                }
+              });
+            }, 1000);
           },
 
           setRandomStat: () => {
@@ -237,8 +260,8 @@ class BattleProvider extends Component {
                 round: {
                   ...this.state.battle.round,
                   transition: !this.state.battle.round.transition,
-                },
-              },
+                }
+              }
             });
           },
           getToNextRound: () => {
@@ -253,9 +276,9 @@ class BattleProvider extends Component {
                   roundWinner: 0,
                   randomStat: Math.floor(
                     Math.random() * Math.floor(this.state.battle.stats.length)
-                  ),
-                },
-              },
+                  )
+                }
+              }
             });
           },
           hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
@@ -273,7 +296,7 @@ class BattleProvider extends Component {
             }
 
             this.setState({
-              battle: updatedState,
+              battle: updatedState
             });
           },
 
@@ -283,9 +306,9 @@ class BattleProvider extends Component {
                 ...this.state.battle,
                 round: {
                   ...this.state.battle.round,
-                  matchFinished: true,
-                },
-              },
+                  matchFinished: true
+                }
+              }
             });
           },
 
@@ -312,9 +335,9 @@ class BattleProvider extends Component {
                   currentPlayer: "player_1",
                   transition: true,
                   roundWinner: 0,
-                  matchFinished: false,
-                },
-              },
+                  matchFinished: false
+                }
+              }
             });
           },
 
