@@ -6,10 +6,19 @@ import AsyncStorage from "@callstack/async-storage";
 import rankingJson from "../stats_section/Ranking.json";
 
 const listHeroes = [
+  18,
   30,
+  34,
+  57,
+  60,
+  63,
   69,
+  92,
+  145,
+  162,
   165,
   207,
+  208,
   213,
   222,
   226,
@@ -22,10 +31,32 @@ const listHeroes = [
   354,
   361,
   386,
+  416,
+  418,
+  423,
+  427,
+  435,
+  441,
+  462,
   485,
+  489,
+  490,
+  502,
   514,
+  522,
+  523,
+  526,
+  529,
+  566,
+  567,
+  619,
   620,
+  627,
+  639,
   644,
+  672,
+  687,
+  729,
 ];
 
 class BattleProvider extends Component {
@@ -114,12 +145,12 @@ class BattleProvider extends Component {
           submitCheck: (name) => {
             this.setState(nicknameChecked(this.state, name));
           },
-          onPressEnterNicknameChecked: (event, name) => {
-            if (event.charCode === 13) {
+          onPressEnterNicknameChecked: (event, name, nicknameLength) => {
+            if (event.charCode === 13 && nicknameLength > 2) {
               this.setState(nicknameChecked(this.state, name));
             }
           },
-          toggle: id => {
+          toggle: (id) => {
             this.setState({
               collapse: true,
               isCollapse: 1,
@@ -147,18 +178,6 @@ class BattleProvider extends Component {
                     this.state.battle.round.currentPlayer
                   ].deck.filter((hero) => hero.id === id),
                 },
-                round: {
-                  ...this.state.battle.round,
-                  currentPlayer:
-                    this.state.battle.round.currentPlayer === "player_1"
-                      ? "player_2"
-                      : "player_1",
-                  transition: true,
-                  roundFinished:
-                    this.state.battle.round.currentPlayer === "player_2"
-                      ? true
-                      : this.state.battle.round.roundFinished,
-                },
               },
             });
             setTimeout(() => {
@@ -175,9 +194,9 @@ class BattleProvider extends Component {
                     roundFinished:
                       this.state.battle.round.currentPlayer === "player_2"
                         ? true
-                        : this.state.battle.round.roundFinished
-                  }
-                }
+                        : this.state.battle.round.roundFinished,
+                  },
+                },
               });
             }, 1000);
           },
@@ -217,7 +236,7 @@ class BattleProvider extends Component {
           initialisationAndStartCombat: () => {
             let oneCard = 0;
             const deck = [];
-            for (let i = 10; i > 0; i--) {
+            for (let i = 12; i > 0; i--) {
               const randomN = Math.floor(
                 Math.random() * this.state.battle.heroes.length
               );
@@ -229,8 +248,8 @@ class BattleProvider extends Component {
               }
             }
 
-            const deck_player_1 = deck.slice(0, 5);
-            const deck_player_2 = deck.slice(5, 10);
+            const deck_player_1 = deck.slice(0, 6);
+            const deck_player_2 = deck.slice(6, 12);
 
             this.setState({
               battle: {
@@ -260,8 +279,8 @@ class BattleProvider extends Component {
                 round: {
                   ...this.state.battle.round,
                   transition: !this.state.battle.round.transition,
-                }
-              }
+                },
+              },
             });
           },
           getToNextRound: () => {
@@ -276,9 +295,9 @@ class BattleProvider extends Component {
                   roundWinner: 0,
                   randomStat: Math.floor(
                     Math.random() * Math.floor(this.state.battle.stats.length)
-                  )
-                }
-              }
+                  ),
+                },
+              },
             });
           },
           hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
@@ -296,7 +315,7 @@ class BattleProvider extends Component {
             }
 
             this.setState({
-              battle: updatedState
+              battle: updatedState,
             });
           },
 
@@ -306,9 +325,9 @@ class BattleProvider extends Component {
                 ...this.state.battle,
                 round: {
                   ...this.state.battle.round,
-                  matchFinished: true
-                }
-              }
+                  matchFinished: true,
+                },
+              },
             });
           },
 
@@ -335,9 +354,9 @@ class BattleProvider extends Component {
                   currentPlayer: "player_1",
                   transition: true,
                   roundWinner: 0,
-                  matchFinished: false
-                }
-              }
+                  matchFinished: false,
+                },
+              },
             });
           },
 

@@ -17,7 +17,9 @@ const UsernameChoice = () => (
         >
           <Col xs="12">
             <Link to="/">
-              <Button className="mt-3">Back</Button>
+              <Button className="button-style mt-3">
+                <span>Back</span>
+              </Button>
             </Link>
           </Col>
           <ChoiceNickname name="player_1" title="Player 1" />

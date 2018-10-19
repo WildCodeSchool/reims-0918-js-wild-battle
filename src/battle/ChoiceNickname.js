@@ -6,7 +6,7 @@ import BattleContext from "../battle_context/BattleContext";
 const ChoiceNickname = ({ name, title }) => (
   <Col xs={{ size: 10 }} md={{ size: 3 }} className="my-auto">
     <BattleContext.Consumer>
-      {context => (
+      {(context) => (
         <Fragment>
           <h3
             className={
@@ -24,9 +24,13 @@ const ChoiceNickname = ({ name, title }) => (
                 name={name}
                 placeholder="Enter Your Nickname"
                 className="mr-2"
-                onChange={event => context.handleChangeNickname(event, name)}
-                onKeyPress={event =>
-                  context.onPressEnterNicknameChecked(event, name)
+                onChange={(event) => context.handleChangeNickname(event, name)}
+                onKeyPress={(event) =>
+                  context.onPressEnterNicknameChecked(
+                    event,
+                    name,
+                    context.state.battle[name].nickname.length
+                  )
                 }
                 value={context.state.battle[name].nickname}
               />
