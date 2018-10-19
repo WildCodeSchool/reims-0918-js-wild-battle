@@ -49,6 +49,7 @@ const CombatResult = () => (
           >
             {styles => (
               <Col style={styles} className="text-center" xs="3">
+                <h2>{battleContext.state.battle.player_1.nickname}</h2>
                 <HeroCard
                   className="position:relative"
                   battle="true"
@@ -199,6 +200,7 @@ const CombatResult = () => (
           >
             {styles => (
               <Col style={styles} className="text-center" xs="3">
+                <h2>{battleContext.state.battle.player_2.nickname}</h2>
                 <HeroCard
                   className="position:relative"
                   battle="true"

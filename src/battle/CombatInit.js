@@ -71,7 +71,16 @@ class CombatInit extends Component {
                         }}
                         key={hero.id}
                       >
-                        <HeroCard selectedHeroOfList={hero} />
+                        <HeroCard
+                          selectedHeroOfList={hero}
+                          className={
+                            context.state.battle[
+                              context.state.battle.round.currentPlayer
+                            ].selectedCard.id === hero.id
+                              ? "active"
+                              : ""
+                          }
+                        />
                       </Col>
                     ))}
                   </Transition>
