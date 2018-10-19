@@ -19,12 +19,24 @@ class CombatInit extends Component {
                   leave={{ opacity: 0 }}
                 >
                   {styles => (
-                    <h2 style={styles}>
+                    <h2 className="text-center" style={styles}>
+                      Fight on{" "}
                       {
                         context.state.battle.stats[
                           context.state.battle.round.randomStat
                         ]
                       }
+                      <span className="ml-3">
+                        {context.state.battle.round.randomStat === 1 ? (
+                          <i className="fas fa-dumbbell" />
+                        ) : context.state.battle.round.randomStat === 2 ? (
+                          <i className="fas fa-bolt" />
+                        ) : context.state.battle.round.randomStat === 3 ? (
+                          <i className="fas fa-book" />
+                        ) : (
+                          <i className="fas fa-shield-alt" />
+                        )}
+                      </span>
                     </h2>
                   )}
                 </Spring>
@@ -32,7 +44,7 @@ class CombatInit extends Component {
               {context.state.battle[context.state.battle.round.currentPlayer]
                 .deck.length > 0 && (
                 <Row
-                  className="mt-5 battle-deck pt-5 justify-content-center"
+                  className="battle-deck justify-content-center"
                   style={{ minHeight: "80%" }}
                 >
                   <Transition

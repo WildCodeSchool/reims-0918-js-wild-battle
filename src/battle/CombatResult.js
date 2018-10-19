@@ -17,13 +17,24 @@ const CombatResult = () => (
               leave={{ opacity: 0 }}
             >
               {styles => (
-                <h2 style={styles}>
+                <h2 className="text-center mt-4" style={styles}>
                   Fight on{" "}
                   {
                     battleContext.state.battle.stats[
                       battleContext.state.battle.round.randomStat
                     ]
                   }
+                  <span className="ml-3">
+                    {battleContext.state.battle.round.randomStat === 1 ? (
+                      <i className="fas fa-dumbbell" />
+                    ) : battleContext.state.battle.round.randomStat === 2 ? (
+                      <i className="fas fa-bolt" />
+                    ) : battleContext.state.battle.round.randomStat === 3 ? (
+                      <i className="fas fa-book" />
+                    ) : (
+                      <i className="fas fa-shield-alt" />
+                    )}
+                  </span>
                 </h2>
               )}
             </Spring>
@@ -160,7 +171,7 @@ const CombatResult = () => (
                     className="button-style"
                     onClick={() => battleContext.setNewFight()}
                   >
-                    Fight with another Stat
+                    Fight Again
                   </Button>
                 ) : battleContext.state.battle.round.roundNumber !== 5 ? (
                   <Button
