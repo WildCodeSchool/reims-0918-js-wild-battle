@@ -15,11 +15,11 @@ const RankingTable = () => (
   <BattleContext.Consumer>
     {(battleContext) => (
       <Fragment>
-        {battleContext.state.ranking[0].length > 0 && (
+        {battleContext.state.ranking.length > 0 && (
           <Fragment>
             <h2 className="text-center">RANKING</h2>
             <ListGroup className="text-center h5">
-              {rank_sort(battleContext.state.ranking[0]).map((person) => (
+              {rank_sort(battleContext.state.ranking).map((person) => (
                 <ListGroupItem className="border-dark" key={person.name}>
                   <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
                   <div className="d-flex justify-content-around">

@@ -3,7 +3,7 @@ import BattleContext from "./BattleContext";
 import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
 import AsyncStorage from "@callstack/async-storage";
-import RankingJSon from "../stats_section/Ranking.json";
+import rankingJson from "../stats_section/Ranking.json";
 
 const listHeroes = [
   30,
@@ -61,7 +61,7 @@ class BattleProvider extends Component {
     isCollapse: 0,
     selectedHeroOfList: [],
     searchInputHeroList: "",
-    ranking: [{ ranking: [] }],
+    ranking: [],
   };
 
   callApiSuperHeroes() {
@@ -81,8 +81,14 @@ class BattleProvider extends Component {
 
   getStorage() {
     AsyncStorage.getItem("ranking").then((rank) => {
+      let ranking;
+      if (rank) {
+        ranking = JSON.parse(rank);
+      } else {
+        ranking = rankingJson;
+      }
       this.setState(() => ({
-        ranking: [JSON.parse(rank)],
+        ranking: ranking,
       }));
     });
   }
@@ -90,6 +96,7 @@ class BattleProvider extends Component {
     this.callApiSuperHeroes();
     this.getStorage();
   }
+
   isSimilar = (prevRandom, newRandom) =>
     prevRandom !== newRandom
       ? newRandom
@@ -346,15 +353,26 @@ class BattleProvider extends Component {
             const playerWinner = winner === 1 ? player_1 : player_2;
             const playerLoser = winner === 1 ? player_2 : player_1;
             let prevState = this.state.ranking[0];
-            let doesWinnerExist;
-            let doesLoserExist;
+            let doesWinnerExist = 0;
+            let doesLoserExist = 0;
             for (let i = 0; i < prevState.length; i++) {
-              doesLoserExist = prevState.name.indexOf(playerLoser);
-              doesWinnerExist = prevState.name.indexOf(playerWinner);
+              if (prevState[i].name.indexOf(playerLoser) === 0) {
+                prevState[i].lose++;
+                doesLoserExist++;
+              } else if (prevState[i].name.indexOf(playerWinner) === 0) {
+                prevState[i].win++;
+                doesWinnerExist++;
+              }
             }
-            console.log(prevState);
-            // const stringRanking = JSON.stringify(RankingJSon);
-            // AsyncStorage.setItem("ranking", stringRanking);
+            if (!doesWinnerExist) {
+              prevState.push({ name: playerWinner, win: 1, lose: 0 });
+            }
+            if (!doesLoserExist) {
+              prevState.push({ name: playerLoser, win: 0, lose: 1 });
+            }
+            const stringRanking = JSON.stringify(prevState);
+            this.setState({ ...this.state, ranking: prevState });
+            AsyncStorage.setItem("ranking", stringRanking);
           },
         }}
       >

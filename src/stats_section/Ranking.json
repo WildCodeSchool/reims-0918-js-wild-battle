@@ -6,12 +6,17 @@
   },
   {
     "name": "Florentin",
+    "win": 0,
+    "lose": 1
+  },
+  {
+    "name": "Fabien",
     "win": 1,
     "lose": 0
   },
   {
     "name": "Michaël",
-    "win": 1,
-    "lose": 0
+    "win": 0,
+    "lose": 1
   }
 ]
