@@ -3,14 +3,15 @@ import React from "react";
 import { Row, Col, Button, Container } from "reactstrap";
 import RankingTable from "./RankingTable";
 import HistoricTable from "./HistoricTable";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const StatsSection = () => (
   <Container fluid id="statsSection">
     <Row>
-
       <Col xs="12">
-        <Link exact to="/"><Button className="mt-3">Back</Button></Link>
+        <Link to="/">
+          <Button className="mt-3">Back</Button>
+        </Link>
       </Col>
       <Col sm={{ size: 4, offset: 1 }}>
         <RankingTable />

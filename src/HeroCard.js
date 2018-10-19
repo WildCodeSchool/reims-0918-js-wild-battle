@@ -2,9 +2,9 @@ import React from "react";
 import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 import BattleContext from "./battle_context/BattleContext";
 
-const HeroCard = ({ selectedHeroOfList }) => (
+const HeroCard = ({ selectedHeroOfList, battle }) => (
   <BattleContext.Consumer>
-    {siteContext => (
+    {(siteContext) => (
       <div>
         <Card className="battleCard p-2">
           <CardTitle className="text-center">
@@ -17,26 +17,30 @@ const HeroCard = ({ selectedHeroOfList }) => (
             src={selectedHeroOfList.image.url}
             alt="Card image cap"
           />
-          <CardBody>
-            <Row>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-dumbbell" />
-                <p>{selectedHeroOfList.powerstats.strength}</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-bolt" />
-                <p>{selectedHeroOfList.powerstats.speed}</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-book" />
-                <p>{selectedHeroOfList.powerstats.intelligence}</p>
-              </Col>
-              <Col xs="3" className="text-center">
-                <i className="fas fa-shield-alt" />
-                <p>{selectedHeroOfList.powerstats.durability}</p>
-              </Col>
-            </Row>
-          </CardBody>
+          {!(battle === "true") ? (
+            <CardBody>
+              <Row>
+                <Col xs="3" className="text-center">
+                  <i className="fas fa-dumbbell" />
+                  <p>{selectedHeroOfList.powerstats.strength}</p>
+                </Col>
+                <Col xs="3" className="text-center">
+                  <i className="fas fa-bolt" />
+                  <p>{selectedHeroOfList.powerstats.speed}</p>
+                </Col>
+                <Col xs="3" className="text-center">
+                  <i className="fas fa-book" />
+                  <p>{selectedHeroOfList.powerstats.intelligence}</p>
+                </Col>
+                <Col xs="3" className="text-center">
+                  <i className="fas fa-shield-alt" />
+                  <p>{selectedHeroOfList.powerstats.durability}</p>
+                </Col>
+              </Row>
+            </CardBody>
+          ) : (
+            ""
+          )}
         </Card>
       </div>
     )}

@@ -9,7 +9,7 @@ import {
   CardTitle,
   CardDeck,
   CardSubtitle,
-  CardBody
+  CardBody,
 } from "reactstrap";
 
 const HomeNav = () => (
@@ -20,7 +20,7 @@ const HomeNav = () => (
         to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
         config={{ delay: 50 }}
       >
-        {props => (
+        {(props) => (
           <Col style={props} md="5" lg="3" className="mb-2">
             <Link to="/Battle">
               <Card>
@@ -41,7 +41,7 @@ const HomeNav = () => (
         to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
         config={{ delay: 100 }}
       >
-        {props => (
+        {(props) => (
           <Col style={props} md="5" lg="3" className="mb-2">
             <Link to="/Stats">
               <Card>
@@ -62,7 +62,7 @@ const HomeNav = () => (
         to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
         config={{ delay: 150 }}
       >
-        {props => (
+        {(props) => (
           <Col style={props} md="5" lg="3" className="mb-2">
             <Link to="/HeroesListing">
               <Card>

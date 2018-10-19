@@ -1,5 +1,5 @@
-import React from "react";
-import ranking from "./Ranking.json";
+import React, { Fragment } from "react";
+import BattleContext from "../battle_context/BattleContext";
 
 import {
   ListGroup,
@@ -12,20 +12,28 @@ const rank_sort = (ranking) =>
   ranking.sort((person1, person2) => person2.win - person1.win);
 
 const RankingTable = () => (
-  <div>
-    <h2 className="text-center">RANKING</h2>
-    <ListGroup className="text-center h5">
-      {rank_sort(ranking).map((person) => (
-        <ListGroupItem className="border-dark" key={person.id}>
-          <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
-          <div className="d-flex justify-content-around">
-            <ListGroupItemText>Win: {person.win}</ListGroupItemText>
-            <ListGroupItemText>Lose: {person.lose}</ListGroupItemText>
-          </div>
-        </ListGroupItem>
-      ))}
-    </ListGroup>
-  </div>
+  <BattleContext.Consumer>
+    {(battleContext) => (
+      <Fragment>
+        {battleContext.state.ranking.length > 0 && (
+          <Fragment>
+            <h2 className="text-center">RANKING</h2>
+            <ListGroup className="text-center h5">
+              {rank_sort(battleContext.state.ranking).map((person) => (
+                <ListGroupItem className="border-dark" key={person.name}>
+                  <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
+                  <div className="d-flex justify-content-around">
+                    <ListGroupItemText>Win: {person.win}</ListGroupItemText>
+                    <ListGroupItemText>Lose: {person.lose}</ListGroupItemText>
+                  </div>
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          </Fragment>
+        )}
+      </Fragment>
+    )}
+  </BattleContext.Consumer>
 );
 
 export default RankingTable;

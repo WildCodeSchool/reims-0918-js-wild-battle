@@ -8,7 +8,7 @@ import Header from "./Header";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import BattleScene from "./battle/BattleScene";
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
