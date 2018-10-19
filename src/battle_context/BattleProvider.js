@@ -352,7 +352,7 @@ class BattleProvider extends Component {
           setStorage: (winner, player_1, player_2) => {
             const playerWinner = winner === 1 ? player_1 : player_2;
             const playerLoser = winner === 1 ? player_2 : player_1;
-            let prevState = this.state.ranking[0];
+            let prevState = this.state.ranking;
             let doesWinnerExist = 0;
             let doesLoserExist = 0;
             for (let i = 0; i < prevState.length; i++) {
