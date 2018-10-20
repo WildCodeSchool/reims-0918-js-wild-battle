@@ -1,8 +1,6 @@
 img.logo {
-  width: 150px;
+  width: 200px;
 }
 
-header {
-  background-color: white;
-  border-bottom: 1px solid #dee2e6;
+header .logo {
 }
