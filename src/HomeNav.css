@@ -34,11 +34,11 @@
 }
 
 .navHome a:hover .card:before {
-  -webkit-transform: rotate(10deg);
-  -moz-transform: rotate(10deg);
-  -ms-transform: rotate(10deg);
-  -o-transform: rotate(10deg);
-  transform: rotate(10deg);
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
   width: 135%;
   height: 135%;
   top: -18%;
@@ -79,6 +79,8 @@
   transition: padding-right 0.3s;
   background-color: #fff;
   box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transform: skew(-5deg);
+  transform: skew(-5deg);
 }
 
 .navHome a:hover .card .card-body {
