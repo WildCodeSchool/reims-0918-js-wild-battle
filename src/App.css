@@ -94,7 +94,16 @@ h1 {
   transform: translate3d(0, -50px, 0);
 }
 
-@media (min-width: 576px) {
+.battleCardTitle {
+  margin-bottom: 0.4rem;
+  font-family: "Bangers";
+}
+
+.battleCardBody {
+  padding: 0.9rem;
+}
+
+@media (min-width: 390px) {
   .responsive-card {
     padding: 0;
   }

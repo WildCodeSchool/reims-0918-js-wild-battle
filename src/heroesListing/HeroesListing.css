@@ -25,10 +25,13 @@
   text-align: center;
   font-size: 1.5vw;
   text-decoration: none;
+  margin-bottom: 8px;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Oswald:500");
+
 .card {
-  font-family: "Bangers", cursive;
+  font-family: "Oswald", cursive;
   color: #333;
 }
 
@@ -41,7 +44,7 @@
 }
 
 #heroesListSection .itemTitleBiography {
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 @media (max-width: 991.98px) {

@@ -7,7 +7,7 @@ const HeroCard = ({ selectedHeroOfList, battle }) => (
     {(siteContext) => (
       <div>
         <Card className="battleCard p-2">
-          <CardTitle className="text-center">
+          <CardTitle className="text-center battleCardTitle">
             {selectedHeroOfList.name}
           </CardTitle>
 
@@ -18,23 +18,29 @@ const HeroCard = ({ selectedHeroOfList, battle }) => (
             alt="Card image cap"
           />
           {!(battle === "true") ? (
-            <CardBody>
+            <CardBody className="pb-0 pt-2 battleCardBody">
               <Row>
                 <Col className="text-center responsive-card">
                   <i className="fas fa-dumbbell" />
-                  <p>{selectedHeroOfList.powerstats.strength}</p>
+                  <p className="mb-0">
+                    {selectedHeroOfList.powerstats.strength}
+                  </p>
                 </Col>
                 <Col className="text-center responsive-card">
                   <i className="fas fa-bolt" />
-                  <p>{selectedHeroOfList.powerstats.speed}</p>
+                  <p className="mb-0">{selectedHeroOfList.powerstats.speed}</p>
                 </Col>
                 <Col className="text-center responsive-card">
                   <i className="fas fa-book" />
-                  <p>{selectedHeroOfList.powerstats.intelligence}</p>
+                  <p className="mb-0">
+                    {selectedHeroOfList.powerstats.intelligence}
+                  </p>
                 </Col>
                 <Col className="text-center responsive-card">
                   <i className="fas fa-shield-alt" />
-                  <p>{selectedHeroOfList.powerstats.durability}</p>
+                  <p className="mb-0">
+                    {selectedHeroOfList.powerstats.durability}
+                  </p>
                 </Col>
               </Row>
             </CardBody>
