@@ -115,6 +115,7 @@ class BattleProvider extends Component {
       let ranking;
       if (rank) {
         ranking = JSON.parse(rank);
+        console.log(ranking);
       } else {
         ranking = rankingJson;
       }
@@ -236,7 +237,7 @@ class BattleProvider extends Component {
           initialisationAndStartCombat: () => {
             let oneCard = 0;
             const deck = [];
-            for (let i = 12; i > 0; i--) {
+            for (let i = 10; i > 0; i--) {
               const randomN = Math.floor(
                 Math.random() * this.state.battle.heroes.length
               );
@@ -248,8 +249,8 @@ class BattleProvider extends Component {
               }
             }
 
-            const deck_player_1 = deck.slice(0, 6);
-            const deck_player_2 = deck.slice(6, 12);
+            const deck_player_1 = deck.slice(0, 5);
+            const deck_player_2 = deck.slice(5, 10);
 
             this.setState({
               battle: {
@@ -332,18 +333,35 @@ class BattleProvider extends Component {
           },
 
           setRematch: () => {
+            let oneCard = 0;
+            const deck = [];
+            for (let i = 10; i > 0; i--) {
+              const randomN = Math.floor(
+                Math.random() * this.state.battle.heroes.length
+              );
+              oneCard = this.state.battle.heroes[randomN];
+              if (deck.indexOf(oneCard) === -1) {
+                deck.push(oneCard);
+              } else {
+                i++;
+              }
+            }
+
+            const deck_player_1 = deck.slice(0, 5);
+            const deck_player_2 = deck.slice(5, 10);
+
             this.setState({
               battle: {
                 ...this.state.battle,
                 player_1: {
                   ...this.state.battle.player_1,
-                  deck: [],
+                  deck: deck_player_1,
                   score: 0,
                   selectedCard: {}
                 },
                 player_2: {
                   ...this.state.battle.player_2,
-                  deck: [],
+                  deck: deck_player_2,
                   score: 0,
                   selectedCard: {}
                 },
