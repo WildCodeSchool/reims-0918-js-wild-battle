@@ -93,3 +93,9 @@ h1 {
 .battle-deck .battleCard:hover {
   transform: translate3d(0, -50px, 0);
 }
+
+@media (min-width: 576px) {
+  .responsive-card {
+    padding: 0;
+  }
+}

@@ -20,19 +20,19 @@ const HeroCard = ({ selectedHeroOfList, battle }) => (
           {!(battle === "true") ? (
             <CardBody>
               <Row>
-                <Col xs="3" className="text-center">
+                <Col className="text-center responsive-card">
                   <i className="fas fa-dumbbell" />
                   <p>{selectedHeroOfList.powerstats.strength}</p>
                 </Col>
-                <Col xs="3" className="text-center">
+                <Col className="text-center responsive-card">
                   <i className="fas fa-bolt" />
                   <p>{selectedHeroOfList.powerstats.speed}</p>
                 </Col>
-                <Col xs="3" className="text-center">
+                <Col className="text-center responsive-card">
                   <i className="fas fa-book" />
                   <p>{selectedHeroOfList.powerstats.intelligence}</p>
                 </Col>
-                <Col xs="3" className="text-center">
+                <Col className="text-center responsive-card">
                   <i className="fas fa-shield-alt" />
                   <p>{selectedHeroOfList.powerstats.durability}</p>
                 </Col>
