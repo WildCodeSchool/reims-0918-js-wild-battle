@@ -56,7 +56,7 @@ const listHeroes = [
   644,
   672,
   687,
-  729,
+  729
 ];
 
 class BattleProvider extends Component {
