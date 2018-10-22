@@ -32,12 +32,27 @@
   color: #333;
 }
 
+#heroesListSection .card {
+  overflow: hidden;
+}
+
 #heroesListSection .battleCard .card-body {
   padding-bottom: 0px;
 }
 
 #heroesListSection .heroFrameAngle .card-body {
   padding: 10px 0 0 0;
+  z-index: 0;
+  display: block;
+  background-color: #fff;
+}
+
+#heroesListSection .card .card-img-top {
+  transition: transform 0.3s;
+}
+
+#heroesListSection .card:hover .card-img-top {
+  transform: rotate(15deg) scale(1.4);
 }
 
 #heroesListSection .itemTitleBiography {
