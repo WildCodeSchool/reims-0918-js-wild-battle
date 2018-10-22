@@ -52,7 +52,7 @@
 }
 
 #heroesListSection .card:hover .card-img-top {
-  transform: rotate(15deg) scale(1.4);
+  transform: rotate(10deg) scale(1.4);
 }
 
 #heroesListSection .itemTitleBiography {
