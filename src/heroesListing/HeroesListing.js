@@ -14,7 +14,7 @@ import HeroCard from "../HeroCard";
 import HeroBiography from "./HeroBiography";
 import "./HeroesListing.css";
 import BattleContext from "../battle_context/BattleContext";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const HeroesListing = () => (
   <BattleContext.Consumer>
@@ -22,9 +22,10 @@ const HeroesListing = () => (
       <section id="heroesListSection">
         <Container fluid>
           <Row>
-
             <Col xs="12">
-              <Link exact to="/"><Button className="mt-3">Back</Button></Link>
+              <Link exact to="/">
+                <Button className="mt-3 button-style">Back</Button>
+              </Link>
             </Col>
             <h2 className="mr-3">Heroes List</h2>
 

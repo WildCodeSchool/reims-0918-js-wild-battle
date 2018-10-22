@@ -1,0 +1,19 @@
+.win {
+  transform: rotate(-45deg);
+  top: 36%;
+  font-size: 11vw;
+  position: absolute;
+  left: 22%;
+  color: #28a745;
+  text-shadow: 3px 3px #0f6e25;
+}
+
+.lose {
+  transform: rotate(-45deg);
+  top: 36%;
+  font-size: 11vw;
+  position: absolute;
+  left: 14%;
+  color: #dc3545;
+  text-shadow: 3px 3px #8d121f;
+}

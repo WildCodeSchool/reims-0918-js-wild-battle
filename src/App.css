@@ -54,3 +54,42 @@ h3,
 h1 {
   color: white;
 }
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:900i");
+
+.button-style {
+  font-family: "Poppins", sans-serif;
+  border-radius: 0;
+  color: #fff;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  max-width: 350px;
+  font-size: 30px;
+  margin: 0 auto;
+  padding: 10px 45px;
+  text-decoration: none;
+  font-size: 40px;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  margin-bottom: 10px;
+}
+
+.button-style:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  transition: 0.5s;
+  color: #6225e6;
+  box-shadow: 10px 10px 0 #fbc638;
+}
+
+.battle-deck .battleCard {
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.battle-deck .battleCard:hover {
+  transform: translate3d(0, -50px, 0);
+}
