@@ -28,10 +28,8 @@
   margin-bottom: 8px;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Oswald:500");
-
 .card {
-  font-family: "Oswald", cursive;
+  font-family: "Bangers", cursive;
   color: #333;
 }
 

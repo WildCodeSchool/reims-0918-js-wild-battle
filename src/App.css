@@ -108,3 +108,9 @@ h1 {
     padding: 0;
   }
 }
+
+@import url("https://fonts.googleapis.com/css?family=Oswald:500");
+
+.responsive-card :nth-child(2) {
+  font-family: "Oswald";
+}
