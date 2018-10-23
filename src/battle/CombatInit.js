@@ -77,7 +77,9 @@ class CombatInit extends Component {
                       <Col
                         className="mt-5"
                         style={styles}
-                        xs="2"
+                        xs="6"
+                        md="4"
+                        lg="2"
                         onClick={() => {
                           context.selectHero(hero.id);
                         }}

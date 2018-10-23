@@ -92,3 +92,24 @@ h1 {
 .battle-deck .battleCard:hover {
   transform: translate3d(0, -50px, 0);
 }
+
+.battleCardTitle {
+  margin-bottom: 0.4rem;
+  font-family: "Bangers";
+}
+
+.battleCardBody {
+  padding: 0.9rem;
+}
+
+@media (min-width: 390px) {
+  .responsive-card {
+    padding: 0;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Oswald:500");
+
+.responsive-card :nth-child(2) {
+  font-family: "Oswald";
+}

@@ -7,7 +7,7 @@ import {
   Form,
   FormGroup,
   Input,
-  Collapse
+  Collapse,
 } from "reactstrap";
 import HeroListFrame from "./HeroListFrame";
 import HeroCard from "../HeroCard";
@@ -18,12 +18,12 @@ import { Link } from "react-router-dom";
 
 const HeroesListing = () => (
   <BattleContext.Consumer>
-    {siteContext => (
+    {(siteContext) => (
       <section id="heroesListSection">
         <Container fluid>
           <Row>
             <Col xs="12">
-              <Link exact to="/">
+              <Link to="/">
                 <Button className="mt-3 button-style">Back</Button>
               </Link>
             </Col>
@@ -32,7 +32,9 @@ const HeroesListing = () => (
             <Form className="ml-auto">
               <FormGroup>
                 <Input
-                  onChange={event => siteContext.handleSearchListChange(event)}
+                  onChange={(event) =>
+                    siteContext.handleSearchListChange(event)
+                  }
                   value={siteContext.state.searchInputHeroList}
                   type="search"
                   name="searchCard"
@@ -69,13 +71,13 @@ const HeroesListing = () => (
 
           <Row>
             {siteContext.state.battle.heroes
-              .filter(hero =>
+              .filter((hero) =>
                 hero.name
                   .toLowerCase()
                   .includes(siteContext.state.searchInputHeroList.toLowerCase())
               )
               .sort((a, b) => a.name.localeCompare(b.name))
-              .map(hero => (
+              .map((hero) => (
                 <Col
                   key={hero.id}
                   className="heroFrameAngle my-3"
