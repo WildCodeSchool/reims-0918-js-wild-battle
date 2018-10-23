@@ -379,20 +379,36 @@ class BattleProvider extends Component {
           },
 
           resetAllDataBattle: () => {
+            let oneCard = 0;
+            const deck = [];
+            for (let i = 12; i > 0; i--) {
+              const randomN = Math.floor(
+                Math.random() * this.state.battle.heroes.length
+              );
+              oneCard = this.state.battle.heroes[randomN];
+              if (deck.indexOf(oneCard) === -1) {
+                deck.push(oneCard);
+              } else {
+                i++;
+              }
+            }
+
+            const deck_player_1 = deck.slice(0, 6);
+            const deck_player_2 = deck.slice(6, 12);
             this.setState({
               battle: {
                 ...this.state.battle,
                 player_1: {
                   nickname: "",
                   nicknameChecked: false,
-                  deck: [],
+                  deck: deck_player_1,
                   score: 0,
                   selectedCard: {}
                 },
                 player_2: {
                   nickname: "",
                   nicknameChecked: false,
-                  deck: [],
+                  deck: deck_player_2,
                   score: 0,
                   selectedCard: {}
                 },

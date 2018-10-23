@@ -4,7 +4,7 @@ import BattleContext from "./battle_context/BattleContext";
 
 const HeroCard = ({ selectedHeroOfList, battle }) => (
   <BattleContext.Consumer>
-    {(siteContext) => (
+    {siteContext => (
       <div>
         <Card className="battleCard p-2">
           <CardTitle className="text-center">

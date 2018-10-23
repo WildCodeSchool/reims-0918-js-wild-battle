@@ -5,16 +5,16 @@ import { Spring } from "react-spring";
 
 const BattleTransition = () => (
   <BattleContext.Consumer>
-    {(battleContext) => (
+    {battleContext => (
       <Spring
         from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
         to={{ opacity: 1, transform: "translate3d(0,0,0)" }}
         leave={{ opacity: 0 }}
       >
-        {(styles) => (
+        {styles => (
           <div style={styles}>
             <div
-              style={{ height: "calc(100vh - 164px)", styles }}
+              style={{ styles }}
               className="battle-transition d-flex flex-column justify-content-center text-align-center"
             >
               <Row>

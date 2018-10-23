@@ -43,9 +43,8 @@ body {
 
 .bgParticle {
   position: absolute;
-  top: 165px;
   width: 100%;
-  height: 100%;
+  height: 99%;
   z-index: -100;
 }
 
