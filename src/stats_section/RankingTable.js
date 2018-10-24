@@ -11,7 +11,7 @@ import {
 const rank_sort = (history) =>
   history.sort((person1, person2) => person2.win - person1.win);
 
-const createRankingObject = history => {
+export const createRankingObject = history => {
   let rankingObject = {};
   for (let i = 0; i < history.length; i++) {
     if (rankingObject[history[i].winner.nickname] === undefined) {
@@ -25,10 +25,12 @@ const createRankingObject = history => {
       rankingObject[history[i].loser.nickname].lose += 1;
     }
   }
+  console.log(rankingObject)
   return rankingObject;
+
 };
 
-const createRankingTable = history => {
+export const createRankingTable = history => {
   const rankingTable = [];
   const rankingObject = createRankingObject(history);
   Object.keys(rankingObject).map(function (key, index) {

@@ -1,62 +1,68 @@
-const createRankingObject = history => {
-  let rankingObject = {};
-  for (let i = 0; i < history.length; i++) {
-    if (rankingObject[history[i].winner] === undefined) {
-      rankingObject[history[i].winner] = { win: 1, lose: 0 };
-    } else {
-      rankingObject[history[i].winner].win += 1;
-    }
-    if (rankingObject[history[i].loser] === undefined) {
-      rankingObject[history[i].loser] = { win: 0, lose: 1 };
-    } else {
-      rankingObject[history[i].loser].lose += 1;
-    }
-  }
-
-  return rankingObject;
-};
+import { createRankingObject, createRankingTable } from "./RankingTable";
 
 it("Should return a ranking object", () => {
   const history = [
-    { winner: "Fabien", loser: "Florentin" },
-    { winner: "Mathieu", loser: "Michael" },
-    { winner: "Fabien", loser: "Marion" },
-    { winner: "Fabien", loser: "Mathieu" }
-  ];
+    {
+      "winner": {
+        "nickname": "Fabien",
+        "score": 3
+      },
+      "loser": {
+        "nickname": "Florentin",
+        "score": 2
+      },
+      "date": "10/15/2018"
+    },
+    {
+      "winner": {
+        "nickname": "Mathieu",
+        "score": 3
+      },
+      "loser": {
+        "nickname": "Michaël",
+        "score": 2
+      },
+      "date": "10/16/2018"
+    }
+  ]
   const expected = {
-    Fabien: { win: 3, lose: 0 },
-    Marion: { win: 0, lose: 1 },
-    Mathieu: { win: 1, lose: 1 },
-    Michael: { win: 0, lose: 1 },
+    Fabien: { win: 1, lose: 0 },
+    Mathieu: { win: 1, lose: 0 },
+    Michaël: { win: 0, lose: 1 },
     Florentin: { win: 0, lose: 1 }
   };
   expect(createRankingObject(history)).toEqual(expected);
 });
 
-const createRankingTable = history => {
-  const rankingTable = [];
-  const rankingObject = createRankingObject(history);
-  Object.keys(rankingObject).map(function (key, index) {
-    rankingTable.push({
-      name: key,
-      win: rankingObject[key].win,
-      lose: rankingObject[key].lose
-    });
-  });
-  return rankingTable;
-};
-
 it("Should return a ranking table", () => {
   const history = [
-    { winner: "Fabien", loser: "Florentin" },
-    { winner: "Mathieu", loser: "Michael" },
-    { winner: "Fabien", loser: "Marion" },
-    { winner: "Fabien", loser: "Mathieu" }
-  ];
+    {
+      "winner": {
+        "nickname": "Fabien",
+        "score": 3
+      },
+      "loser": {
+        "nickname": "Florentin",
+        "score": 2
+      },
+      "date": "10/15/2018"
+    },
+    {
+      "winner": {
+        "nickname": "Mathieu",
+        "score": 3
+      },
+      "loser": {
+        "nickname": "Michaël",
+        "score": 2
+      },
+      "date": "10/16/2018"
+    }
+  ]
   const expected = [
     {
       name: "Fabien",
-      win: 3,
+      win: 1,
       lose: 0
     },
     {
@@ -68,15 +74,10 @@ it("Should return a ranking table", () => {
     {
       name: "Mathieu",
       win: 1,
-      lose: 1
+      lose: 0
     },
     {
-      name: "Michael",
-      win: 0,
-      lose: 1
-    },
-    {
-      name: "Marion",
+      name: "Michaël",
       win: 0,
       lose: 1
     }

@@ -92,8 +92,7 @@ class BattleProvider extends Component {
     isCollapse: 0,
     selectedHeroOfList: [],
     searchInputHeroList: "",
-    history: [],
-    ranking: []
+    history: []
   };
 
   callApiSuperHeroes() {
