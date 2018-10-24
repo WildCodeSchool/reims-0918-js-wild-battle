@@ -7,7 +7,7 @@ import { Transition, Spring } from "react-spring";
 
 const CombatResult = () => (
   <BattleContext.Consumer>
-    {(battleContext) => (
+    {battleContext => (
       <Fragment>
         <Row>
           <Col xs="12">
@@ -16,7 +16,7 @@ const CombatResult = () => (
               to={{ opacity: 1 }}
               leave={{ opacity: 0 }}
             >
-              {(styles) => (
+              {styles => (
                 <h2 className="text-center" style={styles}>
                   Fight on
                   <br />
@@ -59,7 +59,7 @@ const CombatResult = () => (
             enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
             leave={{ opacity: 0 }}
           >
-            {(styles) => (
+            {styles => (
               <Col style={styles} className="text-center" xs="3">
                 <h2>{battleContext.state.battle.player_1.nickname}</h2>
                 <HeroCard
@@ -85,7 +85,7 @@ const CombatResult = () => (
                     from={{ fontSize: "0vw" }}
                     to={{ fontSize: "4vw" }}
                   >
-                    {(props) => (
+                    {props => (
                       <h2 style={props}>
                         {
                           battleContext.state.battle.player_1.selectedCard[0]
@@ -109,7 +109,7 @@ const CombatResult = () => (
                   enter={{ fontSize: "12vw" }}
                   leave={{ opacity: 0 }}
                 >
-                  {(styles) => <h2 style={styles}>VS</h2>}
+                  {styles => <h2 style={styles}>VS</h2>}
                 </Transition>
               </Col>
               {battleContext.state.battle.round.roundWinner !== 0 ? (
@@ -119,7 +119,7 @@ const CombatResult = () => (
                     from={{ fontSize: "0vw" }}
                     to={{ fontSize: "4vw" }}
                   >
-                    {(props) => (
+                    {props => (
                       <h2 style={props}>
                         {
                           battleContext.state.battle.player_2.selectedCard[0]
@@ -145,7 +145,7 @@ const CombatResult = () => (
                       textAlign: "center",
                       fontSize: "135px",
                       color: "#cecece",
-                      textShadow: "3px 3px #646464",
+                      textShadow: "3px 3px #646464"
                     }}
                   >
                     Draw
@@ -198,9 +198,8 @@ const CombatResult = () => (
                     className="button-style"
                     onClick={() => {
                       battleContext.setStorage(
-                        battleContext.state.battle.round.roundWinner,
-                        battleContext.state.battle.player_1.nickname,
-                        battleContext.state.battle.player_2.nickname
+                        battleContext.state.battle.player_1,
+                        battleContext.state.battle.player_2
                       );
                       battleContext.getToFinalScore();
                     }}
@@ -217,7 +216,7 @@ const CombatResult = () => (
             enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
             leave={{ opacity: 0 }}
           >
-            {(styles) => (
+            {styles => (
               <Col style={styles} className="text-center" xs="3">
                 <h2>{battleContext.state.battle.player_2.nickname}</h2>
                 <HeroCard

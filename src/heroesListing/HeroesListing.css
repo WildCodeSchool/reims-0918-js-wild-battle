@@ -25,11 +25,16 @@
   text-align: center;
   font-size: 1.5vw;
   text-decoration: none;
+  margin-bottom: 8px;
 }
 
 .card {
   font-family: "Bangers", cursive;
   color: #333;
+}
+
+#heroesListSection .card {
+  overflow: hidden;
 }
 
 #heroesListSection .battleCard .card-body {
@@ -38,10 +43,21 @@
 
 #heroesListSection .heroFrameAngle .card-body {
   padding: 10px 0 0 0;
+  z-index: 0;
+  display: block;
+  background-color: #fff;
+}
+
+#heroesListSection .card .card-img-top {
+  transition: transform 0.3s;
+}
+
+#heroesListSection .card:hover .card-img-top {
+  transform: rotate(10deg) scale(1.4);
 }
 
 #heroesListSection .itemTitleBiography {
-  text-decoration: underline;
+  font-weight: bold;
 }
 
 @media (max-width: 991.98px) {

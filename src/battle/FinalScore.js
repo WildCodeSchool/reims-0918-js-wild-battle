@@ -43,7 +43,9 @@ const FinalScore = () => (
                     <Link to="/">
                       <Button
                         className="button-style"
-                        onClick={() => battleContext.resetAllDataBattle()}
+                        onClick={() => {
+                          battleContext.resetAllDataBattle();
+                        }}
                       >
                         Go to Home
                       </Button>
