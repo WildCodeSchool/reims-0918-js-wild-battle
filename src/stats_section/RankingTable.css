@@ -1,24 +1,65 @@
-.ranking-table ul {
-  transform: skew(-3deg);
-  border: 3px solid black;
+.ranking-table table {
+  transform: skew(-2deg);
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.ranking-table li {
-  display: block;
-  padding: 1rem;
+.ranking-table .table-head {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.ranking-table .table-head td {
+  border: 0;
+}
+
+.ranking-table .table-head td:first-child {
+  border-left: 0;
+}
+
+.ranking-table .table-head td:last-child {
+  border-right: 0;
+}
+
+.ranking-table tr {
+  padding: 0.5rem;
   background-color: #fff;
-  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
   background-image: url(circleBackground.svg);
   background-repeat: repeat;
   background-blend-mode: multiply;
-  border-bottom: 2px solid #969696;
 }
 
-.historic-table .list-group-item:nth-child(odd) .card {
+.ranking-table tr:first-child {
+  background-image: none;
+}
+
+.ranking-table tr:nth-child(odd) {
   background-color: #ececec;
 }
 
-.ranking-table h5 {
+.ranking-table tr:nth-child(odd).table-head {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+.ranking-table td {
+  min-width: 25%;
+  text-align: center;
+  border: 0;
+}
+
+.ranking-table th {
+  padding: 15px;
+}
+
+.ranking-table td {
+  font-family: "Oswald", cursive;
+  font-size: 1.5rem;
+}
+
+.ranking-table td:nth-child(1) {
   font-family: "Bangers", cursive;
   font-size: 2rem;
 }

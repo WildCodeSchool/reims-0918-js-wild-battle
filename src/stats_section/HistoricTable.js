@@ -14,7 +14,17 @@ const HistoricTable = () => (
   <BattleContext.Consumer>
     {battleContext => (
       <div className="historic-table">
-        <h2 className="text-center">HISTORIC</h2>
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: 1 }}
+          config={{ delay: 200 }}
+        >
+          {props => (
+            <h2 style={props} className="text-center">
+              HISTORIC
+            </h2>
+          )}
+        </Spring>
         <ListGroup className="text-center h5">
           <Transition
             keys={battleContext.state.history
@@ -35,7 +45,7 @@ const HistoricTable = () => (
               .map((match, index) => styles => (
                 <ListGroupItem
                   style={styles}
-                  className="border-dark p-0 player"
+                  className="border-dark p-0 mb-2 player"
                   key={index}
                 >
                   <Card inverse>
@@ -44,10 +54,12 @@ const HistoricTable = () => (
                     </CardTitle>
                     <div className="d-flex justify-content-around">
                       <CardText className="winner">
-                        {match.winner.nickname} : {match.winner.score}
+                        <span>{match.winner.nickname} : </span>
+                        {match.winner.score}
                       </CardText>
                       <CardText className="loser">
-                        {match.loser.nickname} : {match.loser.score}
+                        <span>{match.loser.nickname} : </span>
+                        {match.loser.score}
                       </CardText>
                     </div>
                   </Card>
