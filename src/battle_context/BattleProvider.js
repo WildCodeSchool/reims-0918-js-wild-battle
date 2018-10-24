@@ -3,7 +3,7 @@ import BattleContext from "./BattleContext";
 import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
 import AsyncStorage from "@callstack/async-storage";
-import rankingJson from "../stats_section/Ranking.json";
+import historyJson from "../stats_section/History.json";
 
 const listHeroes = [
   18,
@@ -92,7 +92,7 @@ class BattleProvider extends Component {
     isCollapse: 0,
     selectedHeroOfList: [],
     searchInputHeroList: "",
-    ranking: []
+    history: []
   };
 
   callApiSuperHeroes() {
@@ -111,16 +111,15 @@ class BattleProvider extends Component {
   }
 
   getStorage() {
-    AsyncStorage.getItem("ranking").then(rank => {
-      let ranking;
+    AsyncStorage.getItem("history").then((rank) => {
+      let history;
       if (rank) {
-        ranking = JSON.parse(rank);
-        console.log(ranking);
+        history = JSON.parse(rank);
       } else {
-        ranking = rankingJson;
+        history = historyJson;
       }
       this.setState(() => ({
-        ranking: ranking
+        history: history,
       }));
     });
   }
@@ -132,9 +131,9 @@ class BattleProvider extends Component {
     prevRandom !== newRandom
       ? newRandom
       : this.isSimilar(
-          prevRandom,
-          Math.floor(Math.random() * Math.floor(this.state.battle.stats.length))
-        );
+        prevRandom,
+        Math.floor(Math.random() * Math.floor(this.state.battle.stats.length))
+      );
 
   render() {
     return (
@@ -425,35 +424,27 @@ class BattleProvider extends Component {
             });
           },
 
-          setStorage: (winner, player_1, player_2) => {
-            const playerWinner = winner === 1 ? player_1 : player_2;
-            const playerLoser = winner === 1 ? player_2 : player_1;
-            let prevState = this.state.ranking;
-            let doesWinnerExist = 0;
-            let doesLoserExist = 0;
-            for (let i = 0; i < prevState.length; i++) {
-              if (prevState[i].name.indexOf(playerLoser) === 0) {
-                prevState[i].lose++;
-                doesLoserExist++;
-              } else if (prevState[i].name.indexOf(playerWinner) === 0) {
-                prevState[i].win++;
-                doesWinnerExist++;
-              }
-            }
-            if (!doesWinnerExist) {
-              prevState.push({ name: playerWinner, win: 1, lose: 0 });
-            }
-            if (!doesLoserExist) {
-              prevState.push({ name: playerLoser, win: 0, lose: 1 });
-            }
-            const stringRanking = JSON.stringify(prevState);
-            this.setState({ ...this.state, ranking: prevState });
-            AsyncStorage.setItem("ranking", stringRanking);
+          setStorage: (player_1, player_2) => {
+            let prevState = this.state.history;
+            const gameCompleteDate = new Date();
+            const gameDisplayDate = `${gameCompleteDate.getMonth() + 1}/${gameCompleteDate.getDate()}/${gameCompleteDate.getFullYear()}`
+            const winner = player_1.score > player_2.score ? player_1 : player_2
+            const loser = player_1.score > player_2.score ? player_2 : player_1
+            const getMatchData = { "winner": winner, "loser": loser, "date": gameDisplayDate }
+            prevState.push({ ...getMatchData })
+
+
+            const stringHistory = JSON.stringify(prevState);
+            this.setState({ ...this.state, history: prevState });
+            AsyncStorage.setItem("history", stringHistory);
           }
-        }}
+
+
+        }
+        }
       >
         {this.props.children}
-      </BattleContext.Provider>
+      </BattleContext.Provider >
     );
   }
 }
