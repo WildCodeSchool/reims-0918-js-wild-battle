@@ -115,7 +115,6 @@ class BattleProvider extends Component {
       let ranking;
       if (rank) {
         ranking = JSON.parse(rank);
-        console.log(ranking);
       } else {
         ranking = rankingJson;
       }
