@@ -10,7 +10,7 @@ class CombatInit extends Component {
     return (
       <Container fluid id="CombatInit" style={{ height: "100vh" }}>
         <BattleContext.Consumer>
-          {(context) => (
+          {context => (
             <Fragment>
               <div className="mt-5">
                 <Spring
@@ -18,7 +18,7 @@ class CombatInit extends Component {
                   to={{ opacity: 1 }}
                   leave={{ opacity: 0 }}
                 >
-                  {(styles) => (
+                  {styles => (
                     <h2 className="text-center" style={styles}>
                       Fight on
                       <br />
@@ -62,37 +62,30 @@ class CombatInit extends Component {
                   <Transition
                     keys={context.state.battle[
                       context.state.battle.round.currentPlayer
-                    ].deck.map((item) => item.id)}
+                    ].deck.map(item => item.id)}
                     from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
                     enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
                     leave={{
                       opacity: 0,
-                      scale: 0,
+                      scale: 0
                     }}
                     delay={300}
                   >
                     {context.state.battle[
                       context.state.battle.round.currentPlayer
-                    ].deck.map((hero) => (styles) => (
+                    ].deck.map(hero => styles => (
                       <Col
                         className="mt-5"
                         style={styles}
-                        xs="2"
+                        xs="6"
+                        md="4"
+                        lg="2"
                         onClick={() => {
                           context.selectHero(hero.id);
                         }}
                         key={hero.id}
                       >
-                        <HeroCard
-                          selectedHeroOfList={hero}
-                          className={
-                            context.state.battle[
-                              context.state.battle.round.currentPlayer
-                            ].selectedCard.id === hero.id
-                              ? "active"
-                              : ""
-                          }
-                        />
+                        <HeroCard selectedHeroOfList={hero} />
                       </Col>
                     ))}
                   </Transition>
