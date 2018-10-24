@@ -7,11 +7,15 @@ import getRandomNumber from "./getRandomNumber";
 
 import changeNickname from "./changeNickname";
 import nicknameChecked from "./nicknameChecked";
-import displatCollapseId from "./displayCollapseId";
+import displayCollapseId from "./displayCollapseId";
 import addSelectedHeroOnSelectedCard from "./addSelectedHeroOnSelectedCard";
 import changePlayer from "./changePlayer";
 import setRandomStatRound from "./setRandomStatRound";
 import changeStatForFight from "./changeStatForFight";
+import generateDeck from "./generateDeck";
+import changeTransitionRound from "./changeTransitionRound";
+import goToNextRound from "./goToNextRound";
+import hasWonRound from "./hasWonRound";
 
 const listHeroes = [
   18,
@@ -153,7 +157,7 @@ class BattleProvider extends Component {
             }
           },
           toggle: id => {
-            this.setState(displatCollapseId(id));
+            this.setState(displayCollapseId(id));
           },
           handleSearchListChange: event => {
             this.setState({
@@ -176,20 +180,9 @@ class BattleProvider extends Component {
             this.setState(changeStatForFight(this.state));
           },
           initialisationAndStartCombat: () => {
-            let oneCard = 0;
-            const deck = [];
-            for (let i = 10; i > 0; i--) {
-              const randomN = getRandomNumber(this.state.battle.heroes.length);
-              oneCard = this.state.battle.heroes[randomN];
-              if (deck.indexOf(oneCard) === -1) {
-                deck.push(oneCard);
-              } else {
-                i++;
-              }
-            }
-
-            const deck_player_1 = deck.slice(0, 5);
-            const deck_player_2 = deck.slice(5, 10);
+            const deckTotal = generateDeck(this.state, 10);
+            const deck_player_1 = deckTotal.slice(0, 5);
+            const deck_player_2 = deckTotal.slice(5, 10);
 
             this.setState({
               battle: {
@@ -211,48 +204,15 @@ class BattleProvider extends Component {
             });
           },
           handleChangeTransition: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  transition: !this.state.battle.round.transition
-                }
-              }
-            });
+            this.setState(changeTransitionRound(this.state));
           },
           getToNextRound: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  roundFinished: false,
-                  roundNumber: this.state.battle.round.roundNumber + 1,
-                  currentPlayer: "player_1",
-                  roundWinner: 0,
-                  randomStat: getRandomNumber(this.state.battle.stats.length)
-                }
-              }
-            });
+            this.setState(goToNextRound(this.state));
           },
           hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
-            let updatedState = this.state.battle;
-            if (statHeroPlayer1 - statHeroPlayer2 === 0) {
-              updatedState.round.roundWinner = 3;
-            } else {
-              if (statHeroPlayer1 - statHeroPlayer2 > 0) {
-                updatedState.round.roundWinner = 1;
-                updatedState.player_1.score++;
-              } else {
-                updatedState.round.roundWinner = 2;
-                updatedState.player_2.score++;
-              }
-            }
-
-            this.setState({
-              battle: updatedState
-            });
+            this.setState(
+              hasWonRound(statHeroPlayer1, statHeroPlayer2, this.state)
+            );
           },
 
           getToFinalScore: () => {
@@ -268,22 +228,9 @@ class BattleProvider extends Component {
           },
 
           setRematch: () => {
-            let oneCard = 0;
-            const deck = [];
-            for (let i = 10; i > 0; i--) {
-              const randomN = Math.floor(
-                Math.random() * this.state.battle.heroes.length
-              );
-              oneCard = this.state.battle.heroes[randomN];
-              if (deck.indexOf(oneCard) === -1) {
-                deck.push(oneCard);
-              } else {
-                i++;
-              }
-            }
-
-            const deck_player_1 = deck.slice(0, 5);
-            const deck_player_2 = deck.slice(5, 10);
+            const deckTotal = generateDeck(this.state, 10);
+            const deck_player_1 = deckTotal.slice(0, 5);
+            const deck_player_2 = deckTotal.slice(5, 10);
 
             this.setState({
               battle: {
