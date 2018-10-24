@@ -28,12 +28,12 @@ const CombatResult = () => (
                     ) : battleContext.state.battle.round.randomStat === 2 ? (
                       <i className="fas fa-book" />
                     ) : (
-                      <i className="fas fa-shield-alt" />
-                    )}
+                            <i className="fas fa-shield-alt" />
+                          )}
                   </span>
                   {
                     battleContext.state.battle.stats[
-                      battleContext.state.battle.round.randomStat
+                    battleContext.state.battle.round.randomStat
                     ]
                   }
                   <span className="ml-3">
@@ -44,8 +44,8 @@ const CombatResult = () => (
                     ) : battleContext.state.battle.round.randomStat === 2 ? (
                       <i className="fas fa-book" />
                     ) : (
-                      <i className="fas fa-shield-alt" />
-                    )}
+                            <i className="fas fa-shield-alt" />
+                          )}
                   </span>
                 </h2>
               )}
@@ -90,9 +90,9 @@ const CombatResult = () => (
                         {
                           battleContext.state.battle.player_1.selectedCard[0]
                             .powerstats[
-                            battleContext.state.battle.stats[
-                              battleContext.state.battle.round.randomStat
-                            ].toLowerCase()
+                          battleContext.state.battle.stats[
+                            battleContext.state.battle.round.randomStat
+                          ].toLowerCase()
                           ]
                         }
                       </h2>
@@ -100,8 +100,8 @@ const CombatResult = () => (
                   </Spring>
                 </Col>
               ) : (
-                ""
-              )}
+                  ""
+                )}
               <Col xs="6">
                 <Transition
                   config={{ tension: 170, friction: 7 }}
@@ -124,9 +124,9 @@ const CombatResult = () => (
                         {
                           battleContext.state.battle.player_2.selectedCard[0]
                             .powerstats[
-                            battleContext.state.battle.stats[
-                              battleContext.state.battle.round.randomStat
-                            ].toLowerCase()
+                          battleContext.state.battle.stats[
+                            battleContext.state.battle.round.randomStat
+                          ].toLowerCase()
                           ]
                         }
                       </h2>
@@ -134,8 +134,8 @@ const CombatResult = () => (
                   </Spring>
                 </Col>
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </Row>
             <Row className="d-flex justify-content-center">
               <Col xs="12">
@@ -151,8 +151,8 @@ const CombatResult = () => (
                     Draw
                   </h2>
                 ) : (
-                  <h2> </h2>
-                )}
+                    <h2> </h2>
+                  )}
               </Col>
             </Row>
             <Row className="d-flex justify-content-center">
@@ -164,15 +164,15 @@ const CombatResult = () => (
                       battleContext.hasWonRound(
                         battleContext.state.battle.player_1.selectedCard[0]
                           .powerstats[
-                          battleContext.state.battle.stats[
-                            battleContext.state.battle.round.randomStat
-                          ].toLowerCase()
+                        battleContext.state.battle.stats[
+                          battleContext.state.battle.round.randomStat
+                        ].toLowerCase()
                         ],
                         battleContext.state.battle.player_2.selectedCard[0]
                           .powerstats[
-                          battleContext.state.battle.stats[
-                            battleContext.state.battle.round.randomStat
-                          ].toLowerCase()
+                        battleContext.state.battle.stats[
+                          battleContext.state.battle.round.randomStat
+                        ].toLowerCase()
                         ]
                       )
                     }
@@ -186,7 +186,7 @@ const CombatResult = () => (
                   >
                     Fight Again
                   </Button>
-                ) : battleContext.state.battle.round.roundNumber !== 5 ? (
+                ) : battleContext.state.battle.round.roundNumber !== 1 ? (
                   <Button
                     className="button-style"
                     onClick={() => battleContext.getToNextRound()}
@@ -194,20 +194,19 @@ const CombatResult = () => (
                     Next round
                   </Button>
                 ) : (
-                  <Button
-                    className="button-style"
-                    onClick={() => {
-                      battleContext.setStorage(
-                        battleContext.state.battle.round.roundWinner,
-                        battleContext.state.battle.player_1.nickname,
-                        battleContext.state.battle.player_2.nickname
-                      );
-                      battleContext.getToFinalScore();
-                    }}
-                  >
-                    Final Score
+                        <Button
+                          className="button-style"
+                          onClick={() => {
+                            battleContext.setStorage(
+                              battleContext.state.battle.player_1,
+                              battleContext.state.battle.player_2
+                            );
+                            battleContext.getToFinalScore();
+                          }}
+                        >
+                          Final Score
                   </Button>
-                )}
+                      )}
               </Col>
             </Row>
           </Col>
