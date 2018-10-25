@@ -112,6 +112,7 @@ class BattleProvider extends Component {
       fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
         .then(results => results.json()) // conversion du résultat en JSON
         .then(data => {
+          data.used = false;
           this.setState({
             battle: {
               ...this.state.battle,
@@ -165,10 +166,22 @@ class BattleProvider extends Component {
             });
           },
           selectHero: idHero => {
-            this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
-            setTimeout(() => {
-              this.setState(changePlayer(this.state));
-            }, 1000);
+            let heroUsed = 0;
+            this.state.battle[this.state.battle.round.currentPlayer].deck.map(
+              hero => {
+                if (hero.id === idHero) {
+                  !hero.used ? (heroUsed = 0) : (heroUsed = 1);
+                }
+                return hero;
+              }
+            );
+
+            if (!heroUsed) {
+              this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
+              setTimeout(() => {
+                this.setState(changePlayer(this.state));
+              }, 1000);
+            }
           },
 
           setRandomStat: () => {

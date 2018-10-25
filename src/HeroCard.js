@@ -2,11 +2,21 @@ import React from "react";
 import { Row, Col, Card, CardImg, CardBody, CardTitle } from "reactstrap";
 import BattleContext from "./battle_context/BattleContext";
 
-const HeroCard = ({ selectedHeroOfList, battle }) => (
+const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
   <BattleContext.Consumer>
     {siteContext => (
       <div>
-        <Card className="battleCard p-2">
+        <Card
+          className={
+            indexHero !== undefined
+              ? !siteContext.state.battle[
+                  siteContext.state.battle.round.currentPlayer
+                ].deck[indexHero].used
+                ? "battleCard p-2 unUsed"
+                : "battleCard p-2"
+              : "battleCard p-2"
+          }
+        >
           <CardTitle className="text-center battleCardTitle">
             {selectedHeroOfList.name}
           </CardTitle>

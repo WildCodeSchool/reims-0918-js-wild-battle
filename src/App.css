@@ -86,11 +86,16 @@ h1 {
 
 .battle-deck .battleCard {
   transition: transform 0.2s;
+  opacity: 0.5;
   cursor: pointer;
 }
 
-.battle-deck .battleCard:hover {
+.battle-deck .battleCard.unUsed:hover {
   transform: translate3d(0, -50px, 0);
+}
+
+.unUsed {
+  opacity: 1 !important;
 }
 
 .battleCardTitle {

@@ -73,7 +73,7 @@ class CombatInit extends Component {
                   >
                     {context.state.battle[
                       context.state.battle.round.currentPlayer
-                    ].deck.map(hero => styles => (
+                    ].deck.map((hero, index) => styles => (
                       <Col
                         className="mt-5"
                         style={styles}
@@ -85,7 +85,7 @@ class CombatInit extends Component {
                         }}
                         key={hero.id}
                       >
-                        <HeroCard selectedHeroOfList={hero} />
+                        <HeroCard indexHero={index} selectedHeroOfList={hero} />
                       </Col>
                     ))}
                   </Transition>
