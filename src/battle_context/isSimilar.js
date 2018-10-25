@@ -1,11 +1,11 @@
 import getRandomNumber from "./getRandomNumber";
 
-const isSimilar = (prevRandom, newRandom) =>
+const isSimilar = (prevRandom, newRandom, prevState) =>
   prevRandom !== newRandom
     ? newRandom
     : this.isSimilar(
         prevRandom,
-        getRandomNumber(this.state.battle.stats.length)
+        getRandomNumber(prevState.battle.stats.length)
       );
 
 export default isSimilar;
