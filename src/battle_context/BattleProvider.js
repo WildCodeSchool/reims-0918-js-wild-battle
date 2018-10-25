@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 import BattleContext from "./BattleContext";
-import changeNickname from "./changeNickname";
-import nicknameChecked from "./nicknameChecked";
 import AsyncStorage from "@callstack/async-storage";
 import historyJson from "../stats_section/History.json";
+
+import getRandomNumber from "./getRandomNumber";
+
+import changeNickname from "./changeNickname";
+import nicknameChecked from "./nicknameChecked";
+import displayCollapseId from "./displayCollapseId";
+import addSelectedHeroOnSelectedCard from "./addSelectedHeroOnSelectedCard";
+import changePlayer from "./changePlayer";
+import setRandomStatRound from "./setRandomStatRound";
+import changeStatForFight from "./changeStatForFight";
+import generateDeck from "./generateDeck";
+import changeTransitionRound from "./changeTransitionRound";
+import goToNextRound from "./goToNextRound";
+import hasWonRound from "./hasWonRound";
 
 const listHeroes = [
   18,
@@ -111,7 +123,7 @@ class BattleProvider extends Component {
   }
 
   getStorage() {
-    AsyncStorage.getItem("history").then((rank) => {
+    AsyncStorage.getItem("history").then(rank => {
       let history;
       if (rank) {
         history = JSON.parse(rank);
@@ -119,7 +131,7 @@ class BattleProvider extends Component {
         history = historyJson;
       }
       this.setState(() => ({
-        history: history,
+        history: history
       }));
     });
   }
@@ -127,13 +139,6 @@ class BattleProvider extends Component {
     this.callApiSuperHeroes();
     this.getStorage();
   }
-  isSimilar = (prevRandom, newRandom) =>
-    prevRandom !== newRandom
-      ? newRandom
-      : this.isSimilar(
-        prevRandom,
-        Math.floor(Math.random() * Math.floor(this.state.battle.stats.length))
-      );
 
   render() {
     return (
@@ -151,11 +156,7 @@ class BattleProvider extends Component {
             }
           },
           toggle: id => {
-            this.setState({
-              collapse: true,
-              isCollapse: 1,
-              selectedHeroOfList: id
-            });
+            this.setState(displayCollapseId(id));
           },
           handleSearchListChange: event => {
             this.setState({
@@ -163,93 +164,24 @@ class BattleProvider extends Component {
               collapse: false
             });
           },
-          selectHero: id => {
-            const deck = this.state.battle[
-              this.state.battle.round.currentPlayer
-            ].deck.filter(hero => hero.id !== id);
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                [this.state.battle.round.currentPlayer]: {
-                  ...this.state.battle[this.state.battle.round.currentPlayer],
-                  deck,
-
-                  selectedCard: this.state.battle[
-                    this.state.battle.round.currentPlayer
-                  ].deck.filter(hero => hero.id === id)
-                }
-              }
-            });
+          selectHero: idHero => {
+            this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
             setTimeout(() => {
-              this.setState({
-                battle: {
-                  ...this.state.battle,
-                  round: {
-                    ...this.state.battle.round,
-                    currentPlayer:
-                      this.state.battle.round.currentPlayer === "player_1"
-                        ? "player_2"
-                        : "player_1",
-                    transition: true,
-                    roundFinished:
-                      this.state.battle.round.currentPlayer === "player_2"
-                        ? true
-                        : this.state.battle.round.roundFinished
-                  }
-                }
-              });
+              this.setState(changePlayer(this.state));
             }, 1000);
           },
 
           setRandomStat: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  randomStat: Math.floor(
-                    Math.random() * Math.floor(this.state.battle.stats.length)
-                  )
-                }
-              }
-            });
+            this.setState(setRandomStatRound(this.state));
           },
+
           setNewFight: () => {
-            const randomNumber = Math.floor(
-              Math.random() * Math.floor(this.state.battle.stats.length)
-            );
-            const drawNewStat = this.isSimilar(
-              this.state.battle.round.randomStat,
-              randomNumber
-            );
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  roundWinner: 0,
-                  randomStat: drawNewStat
-                }
-              }
-            });
+            this.setState(changeStatForFight(this.state));
           },
           initialisationAndStartCombat: () => {
-            let oneCard = 0;
-            const deck = [];
-            for (let i = 10; i > 0; i--) {
-              const randomN = Math.floor(
-                Math.random() * this.state.battle.heroes.length
-              );
-              oneCard = this.state.battle.heroes[randomN];
-              if (deck.indexOf(oneCard) === -1) {
-                deck.push(oneCard);
-              } else {
-                i++;
-              }
-            }
-
-            const deck_player_1 = deck.slice(0, 5);
-            const deck_player_2 = deck.slice(5, 10);
+            const deckTotal = generateDeck(this.state, 12);
+            const deck_player_1 = deckTotal.slice(0, 6);
+            const deck_player_2 = deckTotal.slice(6, 12);
 
             this.setState({
               battle: {
@@ -265,58 +197,21 @@ class BattleProvider extends Component {
                 round: {
                   ...this.state.battle.round,
                   roundNumber: 1,
-                  randomStat: Math.floor(
-                    Math.random() * Math.floor(this.state.battle.stats.length)
-                  )
+                  randomStat: getRandomNumber(this.state.battle.stats.length)
                 }
               }
             });
           },
           handleChangeTransition: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  transition: !this.state.battle.round.transition
-                }
-              }
-            });
+            this.setState(changeTransitionRound(this.state));
           },
           getToNextRound: () => {
-            this.setState({
-              battle: {
-                ...this.state.battle,
-                round: {
-                  ...this.state.battle.round,
-                  roundFinished: false,
-                  roundNumber: this.state.battle.round.roundNumber + 1,
-                  currentPlayer: "player_1",
-                  roundWinner: 0,
-                  randomStat: Math.floor(
-                    Math.random() * Math.floor(this.state.battle.stats.length)
-                  )
-                }
-              }
-            });
+            this.setState(goToNextRound(this.state));
           },
           hasWonRound: (statHeroPlayer1, statHeroPlayer2) => {
-            let updatedState = this.state.battle;
-            if (statHeroPlayer1 - statHeroPlayer2 === 0) {
-              updatedState.round.roundWinner = 3;
-            } else {
-              if (statHeroPlayer1 - statHeroPlayer2 > 0) {
-                updatedState.round.roundWinner = 1;
-                updatedState.player_1.score++;
-              } else {
-                updatedState.round.roundWinner = 2;
-                updatedState.player_2.score++;
-              }
-            }
-
-            this.setState({
-              battle: updatedState
-            });
+            this.setState(
+              hasWonRound(statHeroPlayer1, statHeroPlayer2, this.state)
+            );
           },
 
           getToFinalScore: () => {
@@ -332,22 +227,9 @@ class BattleProvider extends Component {
           },
 
           setRematch: () => {
-            let oneCard = 0;
-            const deck = [];
-            for (let i = 10; i > 0; i--) {
-              const randomN = Math.floor(
-                Math.random() * this.state.battle.heroes.length
-              );
-              oneCard = this.state.battle.heroes[randomN];
-              if (deck.indexOf(oneCard) === -1) {
-                deck.push(oneCard);
-              } else {
-                i++;
-              }
-            }
-
-            const deck_player_1 = deck.slice(0, 5);
-            const deck_player_2 = deck.slice(5, 10);
+            const deckTotal = generateDeck(this.state, 12);
+            const deck_player_1 = deckTotal.slice(0, 6);
+            const deck_player_2 = deckTotal.slice(6, 12);
 
             this.setState({
               battle: {
@@ -427,24 +309,26 @@ class BattleProvider extends Component {
           setStorage: (player_1, player_2) => {
             let prevState = this.state.history;
             const gameCompleteDate = new Date();
-            const gameDisplayDate = `${gameCompleteDate.getMonth() + 1}/${gameCompleteDate.getDate()}/${gameCompleteDate.getFullYear()}`
-            const winner = player_1.score > player_2.score ? player_1 : player_2
-            const loser = player_1.score > player_2.score ? player_2 : player_1
-            const getMatchData = { "winner": winner, "loser": loser, "date": gameDisplayDate }
-            prevState.push({ ...getMatchData })
-
+            const gameDisplayDate = `${gameCompleteDate.getMonth() +
+              1}/${gameCompleteDate.getDate()}/${gameCompleteDate.getFullYear()}`;
+            const winner =
+              player_1.score > player_2.score ? player_1 : player_2;
+            const loser = player_1.score > player_2.score ? player_2 : player_1;
+            const getMatchData = {
+              winner: winner,
+              loser: loser,
+              date: gameDisplayDate
+            };
+            prevState.push({ ...getMatchData });
 
             const stringHistory = JSON.stringify(prevState);
             this.setState({ ...this.state, history: prevState });
             AsyncStorage.setItem("history", stringHistory);
           }
-
-
-        }
-        }
+        }}
       >
         {this.props.children}
-      </BattleContext.Provider >
+      </BattleContext.Provider>
     );
   }
 }
