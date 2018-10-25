@@ -76,11 +76,11 @@ const Help = () => (
                   </h3>
                   <p>
                     The Deck of each Player is generated at the first round. The
-                    players receive 6 random cards with 4 stats. Each round a
-                    "Fight Stat" is generated.
+                    two players receive 6 Hero Random Cards with 4 stats. Each
+                    round a "Fight Stat" is generated.
                   </p>
                   <p>
-                    Each Heroes have{" "}
+                    Each Hero Card have{" "}
                     <span>
                       <i className="fas fa-dumbbell" /> Strength,
                     </span>{" "}
@@ -97,8 +97,8 @@ const Help = () => (
                   </p>
                   <p>
                     To win, the player must choice a card regarding the "Fight
-                    Stat". Maybe the best card he have or a less strong to not
-                    sacrifice a good option for the next rounds
+                    Stat". Maybe the best card he have....or a less strong to
+                    not sacrifice a good option for the next rounds.
                   </p>
                 </li>
                 <li>
@@ -107,8 +107,9 @@ const Help = () => (
                     Final Score
                   </h3>
                   <p>
-                    After 5 rounds the Battle end and the winner is determine.
-                    The result is save and the ranking actualize.
+                    After 5 rounds the Battle end and the winner is determined.
+                    The result is saved and the ranking actualized with the new
+                    datas.
                   </p>
                 </li>
               </ul>
