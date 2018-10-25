@@ -41,12 +41,16 @@ const ChoiceNickname = ({ name, title }) => (
                   </span>
                 )}
               </div>
-              {context.state.battle[name].nickname.length < 3 ? (
-                <div className="text-danger">
-                  Your nickname must have at least 3 characters
-                </div>
+              {0 < context.state.battle[name].nickname.length ? (
+                context.state.battle[name].nickname.length < 3 ? (
+                  <div className="text-danger">
+                    Your nickname must have at least 3 characters
+                  </div>
+                ) : (
+                  <div className="text-success">Your nickname is valid</div>
+                )
               ) : (
-                <div className="text-success">Your nickname is valid</div>
+                <div>&nbsp;</div>
               )}
             </div>
           )}
