@@ -8,7 +8,7 @@ import BattleContext from "../battle_context/BattleContext";
 class CombatInit extends Component {
   render() {
     return (
-      <Container fluid id="CombatInit" style={{ height: "100vh" }}>
+      <Container fluid id="CombatInit" style={{ height: "60vh" }}>
         <BattleContext.Consumer>
           {context => (
             <Fragment>

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import BattleContext from "../battle_context/BattleContext";
 import "./RankingTable.css";
 import { Spring, Transition } from "react-spring";
-import { ListGroup, ListGroupItem, ListGroupItemText } from "reactstrap";
 
 const rank_sort = history =>
   history.sort((person1, person2) => person2.win - person1.win);
