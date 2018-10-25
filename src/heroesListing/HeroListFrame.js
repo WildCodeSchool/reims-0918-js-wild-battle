@@ -5,12 +5,12 @@ import BattleContext from "../battle_context/BattleContext";
 
 const HeroListFrame = ({ imageHero, nameHero, heroData }) => (
   <BattleContext.Consumer>
-    {(siteContext) => (
+    {siteContext => (
       <Scrollchor
         to="#heroesListSection"
         beforeAnimate={() => siteContext.toggle(heroData)}
       >
-        <Card>
+        <Card className="list-heroes">
           <CardImg top width="100%" src={imageHero} alt="Card image cap" />
           <CardBody>
             <CardTitle className="cardTitleHero">{nameHero} </CardTitle>
