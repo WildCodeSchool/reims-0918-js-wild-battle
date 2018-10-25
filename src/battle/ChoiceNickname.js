@@ -50,7 +50,7 @@ const ChoiceNickname = ({ name, title }) => (
                   <div className="text-success">Your nickname is valid</div>
                 )
               ) : (
-                <div>&nsbp;</div>
+                <div>&nbsp;</div>
               )}
             </div>
           )}
