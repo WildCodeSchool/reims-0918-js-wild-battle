@@ -1,14 +1,9 @@
 import React, { Component, Fragment } from "react";
-import BattleContext from "../battle_context/BattleContext"
+import BattleContext from "../battle_context/BattleContext";
+import "./RankingTable.css";
+import { Spring, Transition } from "react-spring";
 
-import {
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText,
-} from "reactstrap";
-
-const rank_sort = (history) =>
+const rank_sort = history =>
   history.sort((person1, person2) => person2.win - person1.win);
 
 export const createRankingObject = history => {
@@ -25,15 +20,13 @@ export const createRankingObject = history => {
       rankingObject[history[i].loser.nickname].lose += 1;
     }
   }
-  console.log(rankingObject)
   return rankingObject;
-
 };
 
 export const createRankingTable = history => {
   const rankingTable = [];
   const rankingObject = createRankingObject(history);
-  Object.keys(rankingObject).map(function (key, index) {
+  Object.keys(rankingObject).map(function(key, index) {
     rankingTable.push({
       name: key,
       win: rankingObject[key].win,
@@ -44,35 +37,71 @@ export const createRankingTable = history => {
 };
 
 class RankingTable extends Component {
-
-
-
   render() {
     return (
       <BattleContext.Consumer>
-        {(battleContext) => (
-
+        {battleContext => (
           <Fragment>
             {battleContext.state.history.length > 0 && (
-              <Fragment>
-                <h2 className="text-center">RANKING</h2>
-                <ListGroup className="text-center h5">
-                  {rank_sort(createRankingTable(battleContext.state.history)).map((person) => (
-                    <ListGroupItem className="border-dark" key={person.name}>
-                      <ListGroupItemHeading>{person.name}</ListGroupItemHeading>
-                      <div className="d-flex justify-content-around">
-                        <ListGroupItemText>Win: {person.win}</ListGroupItemText>
-                        <ListGroupItemText>Lose: {person.lose}</ListGroupItemText>
-                      </div>
-                    </ListGroupItem>
-                  ))}
-                </ListGroup>
-              </Fragment>
+              <div className="ranking-table">
+                <Spring
+                  from={{ opacity: 0 }}
+                  to={{ opacity: 1 }}
+                  config={{ delay: 200 }}
+                >
+                  {props => (
+                    <h2 style={props} className="text-center">
+                      RANKING
+                    </h2>
+                  )}
+                </Spring>
+                <table>
+                  <tbody>
+                    <Spring
+                      from={{ opacity: 0, transform: "translate3d(0,-50px,0)" }}
+                      to={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                      config={{ delay: 200 }}
+                    >
+                      {props => (
+                        <tr style={props} className="table-head">
+                          <td>Rank</td>
+                          <td>Player</td>
+                          <td>Win</td>
+                          <td>Lose</td>
+                        </tr>
+                      )}
+                    </Spring>
+                    <Transition
+                      keys={rank_sort(
+                        createRankingTable(battleContext.state.history)
+                      ).map((person, index) => index)}
+                      from={{ opacity: 0, transform: "translate3d(0,-50px,0)" }}
+                      enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                      leave={{
+                        opacity: 0,
+                        scale: 0
+                      }}
+                      delay={300}
+                    >
+                      {rank_sort(
+                        createRankingTable(battleContext.state.history)
+                      ).map((person, index) => styles => (
+                        <tr style={styles}>
+                          <td>{index + 1}</td>
+                          <td>{person.name}</td>
+                          <td>{person.win}</td>
+                          <td>{person.lose}</td>
+                        </tr>
+                      ))}
+                    </Transition>
+                  </tbody>
+                </table>
+              </div>
             )}
           </Fragment>
         )}
       </BattleContext.Consumer>
-    )
+    );
   }
 }
 
