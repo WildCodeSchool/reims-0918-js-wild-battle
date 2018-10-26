@@ -28,7 +28,7 @@ const HomeNav = () => (
               className="text-light border p-2 rounded"
               to="/Help"
             >
-              <i class="fas fa-info-circle" /> Need Help?
+              <i className="fas fa-info-circle" /> How to Play?
             </Link>
           </Col>
         )}
