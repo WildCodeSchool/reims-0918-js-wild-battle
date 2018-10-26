@@ -35,11 +35,11 @@ const Help = () => (
                 with your favourite Hero in a "Card Game". It's a turn by turn
                 game and for each round you have to pick a card. Your choice
                 must take into account the "Random Stat". Indeed at the
-                beginning of a round, a stat is draw by lot to determined with
+                beginning of a round, a stat is drawn by lot to determined with
                 which stat heroes will fight. For instance, if the Strength is
                 choosen, and if your card have a better strength stat than your
-                opponent's, you win the round, and after 3 win, you win the
-                match.
+                opponent's, you win the round, and the best of the five rounds,
+                you win the match.
               </p>
               <ul>
                 <li>
@@ -48,11 +48,11 @@ const Help = () => (
                     Start a Battle
                   </h3>
                   <p>
-                    Each Player will complete an input with his Nickname. This
-                    Nickname need to have at least 3 characters.
+                    Each player will fill in an input with his nickname. This
+                    nickname need to have at least three characters.
                   </p>
                   <p>
-                    When the 2 Players nicknames are checked, the fight can
+                    When the two players' nicknames are checked, the fight can
                     begin!
                   </p>
                 </li>
@@ -63,24 +63,20 @@ const Help = () => (
                   </h3>
                   <p>
                     At the beginning of each round there will be a transition.
-                    The Player who doesn't play must not look a the screen.
+                    The player who doesn't play must not look at the screen.
                   </p>
                   <p>
-                    The Current Player press the "Ready button" when he's ready.
+                    The current player press the "Ready button" when he's ready.
                   </p>
                 </li>
                 <li>
                   <h3>
                     <span>3</span>
-                    Round Conduct
+                    Battle Phase
                   </h3>
                   <p>
-                    The Deck of each Player is generated at the first round. The
-                    two players receive 6 Hero Random Cards with 4 stats. Each
-                    round a "Fight Stat" is generated.
-                  </p>
-                  <p>
-                    Each Hero Card have{" "}
+                    The deck of each player is generated at the first round. The
+                    two players receive six random hero cards with four stats :{" "}
                     <span>
                       <i className="fas fa-dumbbell" /> Strength,
                     </span>{" "}
@@ -96,20 +92,21 @@ const Help = () => (
                     </span>
                   </p>
                   <p>
-                    To win, the player must choice a card regarding the "Fight
-                    Stat". Maybe the best card he have....or a less strong to
-                    not sacrifice a good option for the next rounds.
+                    Each round, a "Stat" is generated, that will influenced the
+                    card's choice of the players. Maybe the best card he
+                    has....or a weaker card to not sacrifice a good option for
+                    the next rounds.
                   </p>
                 </li>
                 <li>
                   <h3>
-                    <span>5</span>
+                    <span>4</span>
                     Final Score
                   </h3>
                   <p>
-                    After 5 rounds the Battle end and the winner is determined.
-                    The result is saved and the ranking actualized with the new
-                    datas.
+                    After five rounds the Battle ends and the winner is
+                    determined. The result is saved and the ranking refreshed
+                    with the new datas.
                   </p>
                 </li>
               </ul>
