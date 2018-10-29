@@ -3,6 +3,8 @@ import BattleContext from "./BattleContext";
 import AsyncStorage from "@callstack/async-storage";
 import historyJson from "../stats_section/History.json";
 
+import firebase from "../firebase"
+
 import getRandomNumber from "./getRandomNumber";
 
 import changeNickname from "./changeNickname";
@@ -124,16 +126,21 @@ class BattleProvider extends Component {
   }
 
   getStorage() {
-    AsyncStorage.getItem("history").then(rank => {
-      let history;
-      if (rank) {
-        history = JSON.parse(rank);
-      } else {
-        history = historyJson;
+    const itemsRef = firebase.database().ref('history');
+    itemsRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          winner: items[item].winner,
+          loser: items[item].loser,
+          date: items[item].date
+        });
       }
-      this.setState(() => ({
-        history: history
-      }));
+      this.setState({
+        history: newState
+      });
     });
   }
   componentDidMount() {
@@ -332,11 +339,13 @@ class BattleProvider extends Component {
               loser: loser,
               date: gameDisplayDate
             };
-            prevState.push({ ...getMatchData });
+            const itemsRef = firebase.database().ref('history');
 
-            const stringHistory = JSON.stringify(prevState);
-            this.setState({ ...this.state, history: prevState });
-            AsyncStorage.setItem("history", stringHistory);
+            itemsRef.push(getMatchData);
+            this.setState({
+              currentItem: '',
+              username: ''
+            });
           }
         }}
       >
