@@ -85,11 +85,16 @@ h1 {
 
 .battle-deck .battleCard {
   transition: transform 0.2s;
+  opacity: 0.5;
   cursor: pointer;
 }
 
-.battle-deck .battleCard:hover {
+.battle-deck .battleCard.unUsed:hover {
   transform: translate3d(0, -50px, 0);
+}
+
+.unUsed {
+  opacity: 1 !important;
 }
 
 .battleCardTitle {
@@ -99,6 +104,41 @@ h1 {
 
 .battleCardBody {
   padding: 0.9rem;
+}
+
+.help-section p:first-child {
+  margin-top: 10px;
+  color: #fff;
+}
+.help-section p {
+  margin-bottom: 5px;
+}
+
+.help-section h3 {
+  display: flex;
+  margin-top: 25px;
+}
+
+.help-section h3 span {
+  color: #000d38;
+  display: block;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.help-section ul {
+  padding: 0;
+}
+
+.help-section ul li {
+  list-style: none;
+  color: #fff;
 }
 
 @media (min-width: 390px) {

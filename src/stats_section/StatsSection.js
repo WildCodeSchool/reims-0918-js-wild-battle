@@ -8,11 +8,9 @@ import { Link } from "react-router-dom";
 const StatsSection = () => (
   <Container fluid id="statsSection">
     <Row>
-      <Col xs="12">
+      <Col xs="12 pl-5">
         <Link to="/">
-          <Button className="button-style mt-3">
-            <span>Back</span>
-          </Button>
+          <Button className="button-style mt-3 ml-5">Back</Button>
         </Link>
       </Col>
       <Col sm={{ size: 4, offset: 1 }}>

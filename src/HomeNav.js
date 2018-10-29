@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Spring } from "react-spring";
 
 import {
+  Row,
   Col,
   Card,
   CardTitle,
@@ -14,6 +15,25 @@ import {
 
 const HomeNav = () => (
   <nav className="navHome">
+    <Row>
+      <Spring
+        from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
+        to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
+        config={{ delay: 50 }}
+      >
+        {props => (
+          <Col style={props} xs={{ size: "2", offset: "9" }}>
+            <Link
+              style={{ fontSize: "20px" }}
+              className="text-light border p-2 rounded"
+              to="/Help"
+            >
+              <i className="fas fa-info-circle" /> How to Play?
+            </Link>
+          </Col>
+        )}
+      </Spring>
+    </Row>
     <CardDeck className="justify-content-center mx-auto mt-5">
       <Spring
         from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}

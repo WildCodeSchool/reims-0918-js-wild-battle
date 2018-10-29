@@ -8,7 +8,7 @@ export class Countdown extends React.Component {
     super(props);
 
     this.state = {
-      sec: 3,
+      sec: 3
     };
     this.countdown = this.countdown.bind(this);
     this.calculateCountdown = this.calculateCountdown.bind(this);
@@ -24,7 +24,7 @@ export class Countdown extends React.Component {
   calculateCountdown() {
     let diff = this.state.sec;
     const timeLeft = {
-      sec: 0,
+      sec: 0
     };
     diff -= 1;
     timeLeft.sec = diff;
@@ -54,7 +54,7 @@ export class Countdown extends React.Component {
         )}
         {countDown.sec === 0 && (
           <BattleContext>
-            {(battleContext) => (
+            {battleContext => (
               <h3 className="FontBangers fight">
                 <span
                   onClick={() => battleContext.initialisationAndStartCombat()}
