@@ -15,8 +15,8 @@ class App extends Component {
     return (
       <Fragment>
         <BgParticlesJS />
-        <Header />
         <Container fluid>
+        <Header />
           <Switch>
             <Route exact path="/" component={HomeNav} />
             <Route path="/Battle" component={BattleScene} />
@@ -25,7 +25,7 @@ class App extends Component {
           </Switch>
         </Container>
         <Footer />
-      </Fragment>
+      </Fragment >
     );
   }
 }

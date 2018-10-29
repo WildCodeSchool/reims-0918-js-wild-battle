@@ -10,7 +10,9 @@ const StatsSection = () => (
     <Row>
       <Col xs="12">
         <Link to="/">
-          <Button className="mt-3">Back</Button>
+          <Button className="button-style mt-3">
+            <span>Back</span>
+          </Button>
         </Link>
       </Col>
       <Col sm={{ size: 4, offset: 1 }}>

@@ -29,7 +29,7 @@ const UsernameChoice = () => (
         </Row>
       )}
     </BattleContext.Consumer>
-  </Container>
+  </Container >
 );
 
 export default UsernameChoice;
