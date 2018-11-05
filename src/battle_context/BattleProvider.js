@@ -80,7 +80,7 @@ class BattleProvider extends Component {
       heroes: [
         {
           id: 6553,
-          name: "The Brain",
+          name: "The B.R.A.I.N",
           biography: {
             aliases: ["Clem"],
             alignment: "good",
@@ -111,7 +111,7 @@ class BattleProvider extends Component {
           biography: {
             aliases: ["Thom"],
             alignment: "good",
-            "alter-egos": "The Brain",
+            "alter-egos": "The B.R.A.I.N",
             "full-name": "Thomas Culdaut",
             "first-appearance": "2017",
             "place-of-birth": "In our mind ! <3 or nightmares !",
