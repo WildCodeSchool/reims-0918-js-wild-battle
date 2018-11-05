@@ -62,6 +62,23 @@ h1 {
   color: #fff;
   padding: 6px 20px;
   text-transform: uppercase;
+  max-width: 150px;
+  font-size: 20px;
+  margin: 0 auto;
+  text-decoration: none;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  margin-bottom: 10px;
+}
+.button-style-transition {
+  font-family: "Poppins", sans-serif;
+  border-radius: 0;
+  color: #fff;
+  padding: 6px 20px;
+  text-transform: uppercase;
   max-width: 350px;
   font-size: 30px;
   margin: 0 auto;
@@ -76,7 +93,8 @@ h1 {
   margin-bottom: 10px;
 }
 
-.button-style:hover {
+.button-style:hover,
+.button-style-transition:hover {
   background-color: #fff;
   border: 1px solid #fff;
   transition: 0.5s;
@@ -85,13 +103,13 @@ h1 {
 }
 
 .battle-deck .battleCard {
-  transition: transform 0.2s;
+  transition: transform 0.1s;
   opacity: 0.5;
   cursor: pointer;
 }
 
 .battle-deck .battleCard.unUsed:hover {
-  transform: translate3d(0, -50px, 0);
+  transform: translate3d(0, -30px, 0);
 }
 
 .unUsed {
@@ -107,6 +125,44 @@ h1 {
   padding: 0.9rem;
 }
 
+.help-section p:first-child {
+  margin-top: 10px;
+  color: #fff;
+}
+.help-section p {
+  margin-bottom: 5px;
+}
+
+.help-section h3 {
+  display: flex;
+  margin-top: 25px;
+}
+
+.help-section h3 span {
+  color: #000d38;
+  display: block;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.help-section ul {
+  padding: 0;
+}
+
+.help-section ul li {
+  list-style: none;
+  color: #fff;
+}
+.round-title-transition {
+  font-size: 150px;
+}
+
 @media (min-width: 390px) {
   .responsive-card {
     padding: 0;
@@ -117,4 +173,22 @@ h1 {
 
 .responsive-card :nth-child(2) {
   font-family: "Oswald";
+}
+
+@media (max-width: 667.98px) {
+  .round-title-transition {
+    font-size: 110px;
+  }
+}
+
+.battleCard {
+  background-image: url(./stats_section/circleBackground.svg);
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  border: 1px solid #161616;
+}
+
+.battleCard h5:before,
+.battleCard h5:after {
+  content: " • ";
 }

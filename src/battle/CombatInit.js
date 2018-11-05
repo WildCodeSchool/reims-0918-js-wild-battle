@@ -12,7 +12,7 @@ class CombatInit extends Component {
         <BattleContext.Consumer>
           {context => (
             <Fragment>
-              <div className="mt-5">
+              <div className="mt-1">
                 <Spring
                   from={{ opacity: 0 }}
                   to={{ opacity: 1 }}
@@ -20,9 +20,9 @@ class CombatInit extends Component {
                 >
                   {styles => (
                     <h2 className="text-center" style={styles}>
-                      Fight on
-                      <br />
-                      <span className="mr-3">
+                      Fight on {"  "}
+                      <br className="d-sm-none d-md-inline" />
+                      <span className="mr-3 d-sm-none d-md-inline">
                         {context.state.battle.round.randomStat === 0 ? (
                           <i className="fas fa-dumbbell" />
                         ) : context.state.battle.round.randomStat === 1 ? (
@@ -75,11 +75,9 @@ class CombatInit extends Component {
                       context.state.battle.round.currentPlayer
                     ].deck.map((hero, index) => styles => (
                       <Col
-                        className="mt-5"
+                        className="mt-4"
                         style={styles}
-                        xs="6"
-                        md="4"
-                        lg="2"
+                        xs="2"
                         onClick={() => {
                           context.selectHero(hero.id);
                         }}

@@ -3,9 +3,9 @@ import "./Footer.css";
 
 import { Col, Row } from "reactstrap";
 
-const Footer = () => (
+const Footer = ({ mobileDisplay }) => (
   <footer className="mt-5 container-fluid fixed-bottom">
-    <Row className="">
+    <Row className={mobileDisplay && "d-sm-none d-md-block"}>
       <Col className="d-flex justify-content-center">
         <div className="d-flex">
           <a href="#" className="d-block mr-2">

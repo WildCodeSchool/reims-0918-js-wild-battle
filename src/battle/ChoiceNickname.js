@@ -4,7 +4,7 @@ import "./ChoiceNickname.css";
 import BattleContext from "../battle_context/BattleContext";
 
 const ChoiceNickname = ({ name, title }) => (
-  <Col xs={{ size: 10 }} md={{ size: 3 }} className="my-auto">
+  <Col xs={{ size: 10 }} md={{ size: 5 }} className="my-auto">
     <BattleContext.Consumer>
       {context => (
         <Fragment>

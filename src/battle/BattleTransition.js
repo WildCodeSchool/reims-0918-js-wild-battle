@@ -18,7 +18,7 @@ const BattleTransition = () => (
               className="battle-transition d-flex flex-column justify-content-center text-align-center"
             >
               <Row>
-                <h2 className="mx-auto" style={{ fontSize: "150px" }}>
+                <h2 className="mx-auto round-title-transition">
                   Round {battleContext.state.battle.round.roundNumber}
                 </h2>
               </Row>
@@ -40,7 +40,7 @@ const BattleTransition = () => (
               </Row>
               <Row>
                 <Button
-                  className="button-style"
+                  className="button-style-transition"
                   onClick={() => battleContext.handleChangeTransition()}
                 >
                   I'm ready !
