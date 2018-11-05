@@ -1,113 +1,74 @@
 import React from "react";
-import BackgroundHistoric from "../img/greenred.png"
-import "./HistoricTable.css"
+import { Transition, Spring } from "react-spring";
+import "./HistoricTable.css";
+import BattleContext from "../battle_context/BattleContext";
 
 import {
   ListGroup,
   ListGroupItem,
   Card,
   CardTitle,
-  CardText,
-  CardImg,
-  CardImgOverlay
+  CardText
 } from "reactstrap";
-
-const battleHistoric = [
-  {
-    player1: "Florentin",
-    player2: "Mathieu",
-    date: "10/03/2018 11:15",
-    player1Score: "Win",
-    player2Score: "Lose"
-  },
-  {
-    player1: "Mathieu",
-    player2: "Florentin",
-    date: "10/03/2018 11:15",
-    player1Score: "Lose",
-    player2Score: "Win"
-  },
-  {
-    player1: "Michael",
-    player2: "Florentin",
-    date: "10/03/2018 11:15",
-    player1Score: "Lose",
-    player2Score: "Win"
-  },
-  {
-    player1: "Fabien",
-    player2: "Michael",
-    date: "10/03/2018 11:15",
-    player1Score: "Win",
-    player2Score: "Lose"
-  },
-  {
-    player1: "Thomas",
-    player2: "Clément",
-    date: "10/03/2018 11:15",
-    player1Score: "Win",
-    player2Score: "Lose"
-  },
-  {
-    player1: "Clément",
-    player2: "Romain",
-    date: "10/03/2018 11:15",
-    player1Score: "Lose",
-    player2Score: "Win"
-  },
-  {
-    player1: "Romain",
-    player2: "Thomas",
-    date: "10/03/2018 11:15",
-    player1Score: "Lose",
-    player2Score: "Win"
-  },
-  {
-    player1: "Quentin",
-    player2: "Corentin",
-    date: "10/03/2018 11:15",
-    player1Score: "Lose",
-    player2Score: "Win"
-  },
-  {
-    player1: "Charles",
-    player2: "Robin",
-    date: "10/03/2018 11:15",
-    player1Score: "Win",
-    player2Score: "Lose"
-  }
-];
-
 const HistoricTable = () => (
-  <div>
-    <h1 className="text-center">HISTORIC</h1>
-    <ListGroup className="text-center h5">
-      {battleHistoric.map(battleData => (
-        <ListGroupItem className="border-dark p-0">
-          <Card inverse>
-            <CardImg
-              width="100%"
-              src={BackgroundHistoric}
-              alt="greenred"
-              height="95"
-              className={(battleData.player1Score === "Lose") ? "rotateImg" : ""}
-            />
-            <CardImgOverlay>
-              <CardTitle>{battleData.date}</CardTitle>
-              <div className="d-flex justify-content-around">
-              <CardText>
-                {battleData.player1} : {battleData.player1Score}
-              </CardText>
-              <CardText>
-                {battleData.player2} : {battleData.player2Score}
-              </CardText>
-              </div>
-            </CardImgOverlay>
-          </Card>
-        </ListGroupItem>
-      ))}
-    </ListGroup>
-  </div>
+  <BattleContext.Consumer>
+    {battleContext => (
+      <div className="historic-table">
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: 1 }}
+          config={{ delay: 200 }}
+        >
+          {props => (
+            <h2 style={props} className="text-center">
+              HISTORIC
+            </h2>
+          )}
+        </Spring>
+        <ListGroup className="text-center h5">
+          <Transition
+            keys={battleContext.state.history
+              .slice(0)
+              .reverse()
+              .map((match, index) => index)}
+            from={{ opacity: 0, transform: "translate3d(100px,0,0)" }}
+            enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+            leave={{
+              opacity: 0,
+              scale: 0
+            }}
+            delay={300}
+          >
+            {battleContext.state.history
+              .slice(0)
+              .reverse()
+              .map((match, index) => styles => (
+                <ListGroupItem
+                  style={styles}
+                  className="border-dark p-0 mb-2 player"
+                  key={index}
+                >
+                  <Card inverse>
+                    <CardTitle className="text-secondary date">
+                      {match.date}
+                    </CardTitle>
+                    <div className="d-flex justify-content-around">
+                      <CardText className="winner">
+                        <span>{match.winner.nickname} : </span>
+                        {match.winner.score}
+                      </CardText>
+                      <CardText className="loser">
+                        <span>{match.loser.nickname} : </span>
+                        {match.loser.score}
+                      </CardText>
+                    </div>
+                  </Card>
+                </ListGroupItem>
+              ))}
+          </Transition>
+        </ListGroup>
+      </div>
+    )}
+  </BattleContext.Consumer>
 );
-
 export default HistoricTable;

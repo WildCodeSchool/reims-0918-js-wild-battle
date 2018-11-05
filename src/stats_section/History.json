@@ -1,0 +1,24 @@
+[
+  {
+    "winner": {
+      "nickname": "Fabien",
+      "score": 3
+    },
+    "loser": {
+      "nickname": "Florentin",
+      "score": 2
+    },
+    "date": "10/15/2018"
+  },
+  {
+    "winner": {
+      "nickname": "Mathieu",
+      "score": 3
+    },
+    "loser": {
+      "nickname": "Michaël",
+      "score": 2
+    },
+    "date": "10/16/2018"
+  }
+]

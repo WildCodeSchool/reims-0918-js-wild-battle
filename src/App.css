@@ -1,3 +1,154 @@
 body {
-  background-color: #e9ecef;
+  background: linear-gradient(241deg, #000, #000d38);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 15s ease infinite;
+  -moz-animation: AnimationName 15s ease infinite;
+  animation: AnimationName 15s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bgParticle {
+  position: absolute;
+  width: 100%;
+  height: 99%;
+  z-index: -100;
+}
+
+h2,
+h3,
+h1 {
+  color: white;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:900i");
+
+.button-style {
+  font-family: "Poppins", sans-serif;
+  border-radius: 0;
+  color: #fff;
+  text-transform: uppercase;
+  max-width: 350px;
+  font-size: 30px;
+  margin: 0 auto;
+  padding: 2px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  margin-bottom: 10px;
+}
+
+.button-style:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  transition: 0.5s;
+  color: #6225e6;
+  box-shadow: 10px 10px 0 #fbc638;
+}
+
+.battle-deck .battleCard {
+  transition: transform 0.2s;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.battle-deck .battleCard.unUsed:hover {
+  transform: translate3d(0, -50px, 0);
+}
+
+.unUsed {
+  opacity: 1 !important;
+}
+
+.battleCardTitle {
+  margin-bottom: 0.4rem;
+  font-family: "Bangers";
+}
+
+.battleCardBody {
+  padding: 0.9rem;
+}
+
+.help-section p:first-child {
+  margin-top: 10px;
+  color: #fff;
+}
+.help-section p {
+  margin-bottom: 5px;
+}
+
+.help-section h3 {
+  display: flex;
+  margin-top: 25px;
+}
+
+.help-section h3 span {
+  color: #000d38;
+  display: block;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.help-section ul {
+  padding: 0;
+}
+
+.help-section ul li {
+  list-style: none;
+  color: #fff;
+}
+
+@media (min-width: 390px) {
+  .responsive-card {
+    padding: 0;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Oswald:500");
+
+.responsive-card :nth-child(2) {
+  font-family: "Oswald";
 }

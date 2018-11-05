@@ -1,9 +1,7 @@
-.navHome {
-}
-
 .navHome a,
 .navHome a:hover {
   color: black;
+  min-height: 500px;
   text-decoration: none;
 }
 
@@ -13,27 +11,80 @@
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s, opacity 0.3s;
   text-align: right;
-  opacity: 0.8;
+  background: none;
+  padding-top: 300px;
+  margin-bottom: 50px;
+  border: 3px solid #000;
+  border-radius: 0;
+  box-shadow: 0px 0px 0px 10px #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.navHome a:hover .card {
-  opacity: 1;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.2);
+.navHome a .card:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 110%;
+  height: 110%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: transform 0.3s, width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+}
+
+.navHome a:hover .card:before {
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+  width: 135%;
+  height: 135%;
+  top: -18%;
+  left: -18%;
+}
+
+.navHome a .card.startfight:before {
+  background: url("./img/fight.png");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: 50% 50%;
+}
+
+.navHome a .card.history:before {
+  background: url("./img/stats.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.navHome a .card.list:before {
+  background: url("./img/list.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .navHome .card .card-body {
-  border-right: 3px solid black;
-  padding: 0;
-  padding-right: 0.5rem;
+  border: 3px solid black;
+  padding: 1rem;
   transition: padding-right 0.3s;
+  background-color: #fff;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transform: skew(-5deg);
+  transform: skew(-5deg);
 }
 
 .navHome a:hover .card .card-body {
-  padding-right: 1rem;
+  padding-right: 1.5rem;
 }
 
-.navHome .card i {
-  font-size: 9em;
+.navHome a .card .card-body h5 {
+  font-size: 2rem;
+}
+
+.navHome a .card .card-body h6 {
+  font-size: 1.2rem;
 }

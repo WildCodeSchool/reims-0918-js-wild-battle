@@ -1,3 +1,79 @@
-.heroFrameAngle {
+.heroFrameAngle > a {
   transform: skew(-5deg);
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+#heroesListSection {
+  color: #fff;
+}
+
+#heroesListSection h3 {
+  font-family: "Bangers", cursive;
+  text-align: right;
+  font-size: 3rem;
+}
+
+#heroesListSection h2 {
+  font-family: "Bangers", cursive;
+  font-size: 4rem;
+}
+
+.cardTitleHero {
+  font-family: "Bangers", cursive;
+  text-align: center;
+  font-size: 1.5vw;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.card {
+  font-family: "Bangers", cursive;
+  color: #333;
+}
+
+#heroesListSection .card {
+  overflow: hidden;
+}
+
+#heroesListSection .battleCard .card-body {
+  padding-bottom: 0px;
+}
+
+#heroesListSection .heroFrameAngle .card-body {
+  padding: 10px 0 0 0;
+  z-index: 0;
+  display: block;
+  background-color: #fff;
+}
+
+#heroesListSection .list-heroes .card-img-top {
+  transition: transform 0.3s;
+}
+
+#heroesListSection .list-heroes:hover .card-img-top {
+  transform: rotate(10deg) scale(1.4);
+}
+
+#heroesListSection .itemTitleBiography {
+  font-weight: bold;
+}
+
+@media (max-width: 991.98px) {
+  .cardTitleHero {
+    font-size: 2.5vw;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cardTitleHero {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cardTitleHero {
+    font-size: 3.7vw;
+  }
 }

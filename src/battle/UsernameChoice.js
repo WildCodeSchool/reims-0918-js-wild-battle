@@ -1,77 +1,39 @@
-import React, { Component } from "react";
-import { Row, Col, Form, FormGroup, Input, Container } from "reactstrap";
+import React, { Fragment } from "react";
+import ChoiceNickname from "./ChoiceNickname";
+import Countdown from "./Countdown";
+import { Row, Container, Col, Button } from "reactstrap";
 import "./UsernameChoice.css";
+import { Link } from "react-router-dom";
 
-class UsernameChoice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      player_1: "",
-      player_2: ""
-    };
-    this.handleChangeNickname = this.handleChangeNickname.bind(this);
-  }
+import BattleContext from "../battle_context/BattleContext";
 
-  handleChangeNickname(event) {
-    this.setState({
-      [event.target.id]: event.target.value.replace(/[ ]+/, "")
-    });
-  }
-
-  submitCheck(event) {
-    alert("test");
-  }
-
-  render() {
-    return (
-      <Container fluid id="usernameSection">
-        <Row Style="height: 100vh;">
-          <Col xs={{ size: 4, offset: 1 }} className="my-auto">
-            <h3>Player 1: {this.state.player_1}</h3>
-            <div className="d-flex">
-              <Input
-                type="text"
-                name="nickname_player_1"
-                id="player_1"
-                placeholder="Enter Your Nickname"
-                className="mr-2"
-                onChange={this.handleChangeNickname}
-                value={this.state.player_1}
-              />
-              <span
-                className={
-                  this.state.player_1.length > 2 ? "d-inline" : "d-none"
-                }
-              >
-                <i className="far fa-check-circle fa-2x btnNickname" />
-              </span>
-            </div>
-          </Col>
-          <Col xs={{ size: 4, offset: 2 }} className="my-auto">
-            <h3>Player 2: {this.state.player_2}</h3>
-            <div className="d-flex">
-              <Input
-                type="text"
-                name="nickname_player_2"
-                id="player_2"
-                placeholder="Enter Your Nickname"
-                className="mr-2"
-                onChange={this.handleChangeNickname}
-                value={this.state.player_2}
-              />
-              <span
-                className={
-                  this.state.player_2.length > 2 ? "d-inline" : "d-none"
-                }
-              >
-                <i className="far fa-check-circle fa-2x btnNickname" />
-              </span>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+const UsernameChoice = () => (
+  <Container fluid id="usernameSection">
+    <BattleContext.Consumer>
+      {context => (
+        <Fragment>
+          <Row>
+            <Col xs="12" className="pl-5">
+              <Link to="/">
+                <Button className="button-style mt-3 ml-5">
+                  <span>Back</span>
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+          <Row
+            style={{ minHeight: "60vh" }}
+            className={"d-flex justify-content-around"}
+          >
+            <ChoiceNickname name="player_1" title="Player 1" />
+            {context.state.battle.player_1.nicknameChecked &&
+              context.state.battle.player_2.nicknameChecked && <Countdown />}
+            <ChoiceNickname name="player_2" title="Player 2" />
+          </Row>
+        </Fragment>
+      )}
+    </BattleContext.Consumer>
+  </Container >
+);
 
 export default UsernameChoice;

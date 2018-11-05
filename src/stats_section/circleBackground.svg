@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10">
+  <style type="text/css">
+    circle { fill: #e6e6e6; }
+  </style>
+  <circle cx="0" cy="0" r="2"/>
+  <circle cx="10" cy="0" r="2"/>
+  <circle cx="0" cy="10" r="2" />
+  <circle cx="10" cy="10" r="2"/>
+  <circle cx="5" cy="5" r="2"/>
+</svg>
