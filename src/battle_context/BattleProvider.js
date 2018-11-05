@@ -91,6 +91,7 @@ class BattleProvider extends Component {
         selectedCard: {}
       },
       round: {
+        isCardSelected: 0,
         roundFinished: false,
         roundNumber: 0,
         randomStat: 0,
@@ -177,10 +178,13 @@ class BattleProvider extends Component {
             );
 
             if (!heroUsed) {
-              this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
-              setTimeout(() => {
-                this.setState(changePlayer(this.state));
-              }, 1000);
+              if (!this.state.battle.round.isCardSelected) {
+                this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
+                setTimeout(() => {
+                  this.setState(changePlayer(this.state));
+                }, 1000);
+              }
+
             }
           },
 
