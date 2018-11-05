@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BattleContext from "./BattleContext";
 
-import firebase from "../firebase"
+import firebase from "../firebase";
 
 import getRandomNumber from "./getRandomNumber";
 
@@ -16,6 +16,8 @@ import generateDeck from "./generateDeck";
 import changeTransitionRound from "./changeTransitionRound";
 import goToNextRound from "./goToNextRound";
 import hasWonRound from "./hasWonRound";
+import Clement from "../img/Clement.png";
+import Thomas from "../img/Thomas.png";
 
 const listHeroes = [
   18,
@@ -75,7 +77,62 @@ class BattleProvider extends Component {
   state = {
     battle: {
       stats: ["Strength", "Speed", "Intelligence", "Durability"],
-      heroes: [],
+      heroes: [
+        {
+          id: 6553,
+          name: "The Brain",
+          biography: {
+            aliases: ["Clem"],
+            alignment: "good",
+            "alter-egos": "Reactinator",
+            "full-name": "Clément Bechetoille",
+            "place-of-birth": "In our heart ! <3",
+            "first-appearance": "2017",
+            publisher: "Into the Wild 2017"
+          },
+          connections: {
+            "group-affiliation": "Wild Code School",
+            relatives: "Wilders (students)"
+          },
+          powerstats: {
+            durability: "101",
+            intelligence: "101",
+            speed: "101",
+            strength: "101"
+          },
+          image: {
+            url: Clement
+          },
+          collector: true
+        },
+        {
+          id: 6554,
+          name: "Reactinator",
+          biography: {
+            aliases: ["Thom"],
+            alignment: "good",
+            "alter-egos": "The Brain",
+            "full-name": "Thomas Culdaut",
+            "first-appearance": "2017",
+            "place-of-birth": "In our mind ! <3 or nightmares !",
+            publisher: "Into the Wild 2017"
+          },
+          connections: {
+            "group-affiliation": "Wild Code School",
+            relatives: "Wilders (students)"
+          },
+          powerstats: {
+            durability: "999",
+            intelligence: "999",
+            speed: "999",
+            strength: "999"
+          },
+          image: {
+            url: Thomas
+          },
+          collector: true
+        }
+      ],
       player_1: {
         nickname: "",
         nicknameChecked: false,
@@ -124,8 +181,8 @@ class BattleProvider extends Component {
   }
 
   getStorage() {
-    const itemsRef = firebase.database().ref('history');
-    itemsRef.on('value', (snapshot) => {
+    const itemsRef = firebase.database().ref("history");
+    itemsRef.on("value", snapshot => {
       let items = snapshot.val();
       let newState = [];
       for (let item in items) {
@@ -197,9 +254,15 @@ class BattleProvider extends Component {
             this.setState(changeStatForFight(this.state));
           },
           initialisationAndStartCombat: () => {
-            const deckTotal = generateDeck(this.state, 12);
-            const deck_player_1 = deckTotal.slice(0, 6);
-            const deck_player_2 = deckTotal.slice(6, 12);
+            const deckTotal = generateDeck(this.state, 10);
+            const deck_player_1 = deckTotal.slice(0, 5);
+            const deck_player_2 = deckTotal.slice(5, 10);
+            const victor = this.state.battle.heroes.find(id => id.id === 6553);
+            const victoria = this.state.battle.heroes.find(
+              id => id.id === 6554
+            );
+            deck_player_1.push(victor);
+            deck_player_2.push(victoria);
 
             this.setState({
               battle: {
@@ -337,12 +400,12 @@ class BattleProvider extends Component {
               loser: loser,
               date: gameDisplayDate
             };
-            const itemsRef = firebase.database().ref('history');
+            const itemsRef = firebase.database().ref("history");
 
             itemsRef.push(getMatchData);
             this.setState({
-              currentItem: '',
-              username: ''
+              currentItem: "",
+              username: ""
             });
           }
         }}
