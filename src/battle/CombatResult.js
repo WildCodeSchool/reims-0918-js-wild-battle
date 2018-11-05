@@ -18,9 +18,9 @@ const CombatResult = () => (
             >
               {styles => (
                 <h2 className="text-center" style={styles}>
-                  Fight on
-                  <br />
-                  <span className="mr-3">
+                  Fight on {"  "}
+                  <br className="d-sm-none d-md-inline" />
+                  <span className="mr-3 d-sm-none d-md-inline">
                     {battleContext.state.battle.round.randomStat === 0 ? (
                       <i className="fas fa-dumbbell" />
                     ) : battleContext.state.battle.round.randomStat === 1 ? (
@@ -60,7 +60,7 @@ const CombatResult = () => (
             leave={{ opacity: 0 }}
           >
             {styles => (
-              <Col style={styles} className="text-center px-5" xs="3">
+              <Col style={styles} className="text-center px-5" xs="4" lg="3">
                 <h2>{battleContext.state.battle.player_1.nickname}</h2>
                 <HeroCard
                   className="position:relative"
@@ -217,7 +217,7 @@ const CombatResult = () => (
             leave={{ opacity: 0 }}
           >
             {styles => (
-              <Col style={styles} className="text-center px-5" xs="3">
+              <Col style={styles} className="text-center px-5" xs="4" lg="3">
                 <h2>{battleContext.state.battle.player_2.nickname}</h2>
                 <HeroCard
                   className="position:relative"

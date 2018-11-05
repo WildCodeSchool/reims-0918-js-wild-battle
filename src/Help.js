@@ -2,9 +2,12 @@ import React from "react";
 import { Row, Col } from "reactstrap";
 import { Spring } from "react-spring";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Help = () => (
   <div className="help-section">
+    <Header />
     <Spring
       from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
       to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
@@ -115,6 +118,7 @@ const Help = () => (
         </div>
       )}
     </Spring>
+    <Footer />
   </div>
 );
 

@@ -4,10 +4,10 @@ import "./Header.css";
 
 import { Col, Row } from "reactstrap";
 
-const Header = () => (
+const Header = ({ mobileDisplay }) => (
   <header className="container-fluid">
-    <Row>
-      <Col className="logo" xs={{ size: 4, offset: 4 }}>
+    <Row className={mobileDisplay && "d-xs-none d-sm-none d-md-block"}>
+      <Col className="logo" xs="12">
         <img src={logo} className="d-block logo mx-auto" alt="logo" />
       </Col>
     </Row>

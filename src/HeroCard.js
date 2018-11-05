@@ -17,7 +17,7 @@ const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
               : "battleCard p-2"
           }
         >
-          <CardTitle className="text-center battleCardTitle">
+          <CardTitle className="text-center battleCardTitle text-truncate">
             {selectedHeroOfList.name}
           </CardTitle>
 
@@ -30,23 +30,23 @@ const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
           {!(battle === "true") ? (
             <CardBody className="pb-0 pt-2 battleCardBody">
               <Row>
-                <Col className="text-center responsive-card">
+                <Col sm="6" md="3" className="text-center responsive-card">
                   <i className="fas fa-dumbbell" />
                   <p className="mb-0">
                     {selectedHeroOfList.powerstats.strength}
                   </p>
                 </Col>
-                <Col className="text-center responsive-card">
+                <Col sm="6" md="3" className="text-center responsive-card">
                   <i className="fas fa-bolt" />
                   <p className="mb-0">{selectedHeroOfList.powerstats.speed}</p>
                 </Col>
-                <Col className="text-center responsive-card">
+                <Col sm="6" md="3" className="text-center responsive-card">
                   <i className="fas fa-book" />
                   <p className="mb-0">
                     {selectedHeroOfList.powerstats.intelligence}
                   </p>
                 </Col>
-                <Col className="text-center responsive-card">
+                <Col sm="6" md="3" className="text-center responsive-card">
                   <i className="fas fa-shield-alt" />
                   <p className="mb-0">
                     {selectedHeroOfList.powerstats.durability}
