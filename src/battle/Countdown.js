@@ -54,15 +54,7 @@ export class Countdown extends React.Component {
         )}
         {countDown.sec === 0 && (
           <BattleContext>
-            {battleContext => (
-              <h3 className="FontBangers fight">
-                <span
-                  onClick={() => battleContext.initialisationAndStartCombat()}
-                >
-                  FIGHT
-                </span>
-              </h3>
-            )}
+            {battleContext => <h3 className="FontBangers fight">FIGHT</h3>}
           </BattleContext>
         )}
       </Col>
