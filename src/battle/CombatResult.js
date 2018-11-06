@@ -4,6 +4,16 @@ import { Col, Row, Button } from "reactstrap";
 import HeroCard from "../HeroCard";
 import WinOrLose from "./WinOrLose";
 import { Transition, Spring } from "react-spring";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDumbbell,
+  faBolt,
+  faBook,
+  faShieldAlt
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faDumbbell, faBolt, faBook, faShieldAlt);
 
 const CombatResult = () => (
   <BattleContext.Consumer>
@@ -22,13 +32,13 @@ const CombatResult = () => (
                   <br className="d-sm-none d-md-inline" />
                   <span className="mr-3 d-sm-none d-md-inline">
                     {battleContext.state.battle.round.randomStat === 0 ? (
-                      <i className="fas fa-dumbbell" />
+                      <FontAwesomeIcon icon="dumbbell" />
                     ) : battleContext.state.battle.round.randomStat === 1 ? (
-                      <i className="fas fa-bolt" />
+                      <FontAwesomeIcon icon="bolt" />
                     ) : battleContext.state.battle.round.randomStat === 2 ? (
-                      <i className="fas fa-book" />
+                      <FontAwesomeIcon icon="book" />
                     ) : (
-                      <i className="fas fa-shield-alt" />
+                      <FontAwesomeIcon icon="shieldalt" />
                     )}
                   </span>
                   {
