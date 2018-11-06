@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Spring } from "react-spring";
 import BattleContext from "../battle_context/BattleContext";
 import { library } from "@fortawesome/fontawesome-svg-core";
