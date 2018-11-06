@@ -17,8 +17,12 @@ const addSelectedHeroOnSelectedCard = (prevState, idHeroSelected) => {
         selectedCard: prevState.battle[
           prevState.battle.round.currentPlayer
         ].deck.filter(hero => hero.id === idHeroSelected)
+      },
+      round: {
+        ...prevState.battle.round,
+        isCardSelected: 1
       }
-    }
+    },
   };
 };
 export default addSelectedHeroOnSelectedCard;

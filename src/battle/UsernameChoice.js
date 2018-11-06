@@ -33,7 +33,7 @@ const UsernameChoice = () => (
         </Fragment>
       )}
     </BattleContext.Consumer>
-  </Container>
+  </Container >
 );
 
 export default UsernameChoice;

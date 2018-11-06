@@ -26,8 +26,8 @@ export const createRankingObject = history => {
 export const createRankingTable = history => {
   const rankingTable = [];
   const rankingObject = createRankingObject(history);
-  Object.keys(rankingObject).map(function(key, index) {
-    rankingTable.push({
+  Object.keys(rankingObject).map(function (key, index) {
+    return rankingTable.push({
       name: key,
       win: rankingObject[key].win,
       lose: rankingObject[key].lose

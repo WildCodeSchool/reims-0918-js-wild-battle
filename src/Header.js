@@ -7,6 +7,7 @@ import { Col, Row } from "reactstrap";
 const Header = () => (
   <header className="container-fluid">
     <Row>
+
       <Col className="logo" xs={{ size: 4, offset: 4 }}>
         <img src={logo} className="d-block logo mx-auto" alt="logo" />
       </Col>
