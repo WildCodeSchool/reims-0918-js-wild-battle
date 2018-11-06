@@ -153,7 +153,6 @@ class BattleProvider extends Component {
             this.setState(nicknameChecked(this.state, name));
             const otherPlayer = name === "player_1" ? "player_2" : "player_1";
             if (this.state.battle[otherPlayer].nicknameChecked) {
-              console.log("ok");
               setTimeout(() => {
                 const deckTotal = generateDeck(this.state, 12);
                 const deck_player_1 = deckTotal.slice(0, 6);
@@ -187,7 +186,6 @@ class BattleProvider extends Component {
               this.setState(nicknameChecked(this.state, name));
               const otherPlayer = name === "player_1" ? "player_2" : "player_1";
               if (this.state.battle[otherPlayer].nicknameChecked) {
-                console.log("ok");
                 setTimeout(() => {
                   const deckTotal = generateDeck(this.state, 12);
                   const deck_player_1 = deckTotal.slice(0, 6);
@@ -226,6 +224,11 @@ class BattleProvider extends Component {
               collapse: false
             });
           },
+          closeCollapse: () => {
+            this.setState({
+              collapse: false
+            });
+          },
           selectHero: idHero => {
             let heroUsed = 0;
             this.state.battle[this.state.battle.round.currentPlayer].deck.map(
@@ -239,12 +242,13 @@ class BattleProvider extends Component {
 
             if (!heroUsed) {
               if (!this.state.battle.round.isCardSelected) {
-                this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
+                this.setState(
+                  addSelectedHeroOnSelectedCard(this.state, idHero)
+                );
                 setTimeout(() => {
                   this.setState(changePlayer(this.state));
                 }, 1000);
               }
-
             }
           },
 
