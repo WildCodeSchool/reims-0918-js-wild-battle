@@ -75,9 +75,11 @@ class CombatInit extends Component {
                       context.state.battle.round.currentPlayer
                     ].deck.map((hero, index) => styles => (
                       <Col
-                        className="mt-4"
+                        className="mt-5"
                         style={styles}
-                        xs="2"
+                        xs="6"
+                        md="4"
+                        lg="2"
                         onClick={() => {
                           context.selectHero(hero.id);
                         }}
