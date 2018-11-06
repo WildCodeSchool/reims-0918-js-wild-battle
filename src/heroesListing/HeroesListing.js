@@ -100,6 +100,7 @@ class HeroesListing extends Component {
                       imageHero={hero.image.url}
                       nameHero={hero.name}
                       heroData={hero}
+                      collector={hero.collector}
                     />
                   </Col>
                 ))}

@@ -182,9 +182,6 @@ h1 {
 }
 
 .battleCard {
-  background-image: url(./stats_section/circleBackground.svg);
-  background-repeat: repeat;
-  background-blend-mode: multiply;
   border: 1px solid #161616;
   color: #fff;
   border: 1px solid #b6b6b659;

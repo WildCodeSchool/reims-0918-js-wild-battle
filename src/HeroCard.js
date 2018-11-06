@@ -22,7 +22,9 @@ const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
                   ].deck[indexHero].used
                   ? "battleCard p-2 unUsed"
                   : "battleCard p-2"
-              : "battleCard p-2"
+              : selectedHeroOfList.collector
+                ? "battleCard collector p-2 "
+                : "battleCard p-2"
           }
         >
           <CardTitle className="text-center battleCardTitle text-truncate">

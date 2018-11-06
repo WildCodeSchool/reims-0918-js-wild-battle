@@ -255,14 +255,8 @@ class BattleProvider extends Component {
           },
           initialisationAndStartCombat: () => {
             const deckTotal = generateDeck(this.state, 10);
-            const deck_player_1 = deckTotal.slice(0, 5);
-            const deck_player_2 = deckTotal.slice(5, 10);
-            const victor = this.state.battle.heroes.find(id => id.id === 6553);
-            const victoria = this.state.battle.heroes.find(
-              id => id.id === 6554
-            );
-            deck_player_1.push(victor);
-            deck_player_2.push(victoria);
+            const deck_player_1 = deckTotal.slice(0, 6);
+            const deck_player_2 = deckTotal.slice(6, 12);
 
             this.setState({
               battle: {

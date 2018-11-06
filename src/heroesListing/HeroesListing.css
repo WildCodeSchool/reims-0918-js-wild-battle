@@ -45,7 +45,23 @@
   padding: 10px 0 0 0;
   z-index: 0;
   display: block;
-  background-color: #fff;
+  border: 1px solid #b6b6b659;
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #dbdbdb 0%,
+      #cfcfcf 8%,
+      #bebebe 30%,
+      #fff 75%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #f0f0f0 8%,
+      #c7c7c7 25%,
+      #fff 75%,
+      #cfcfcf 100%
+    );
 }
 
 #heroesListSection .list-heroes .card-img-top {
@@ -78,7 +94,8 @@
   }
 }
 
-.collector {
+.collector,
+#heroesListSection .heroFrameAngle .collector .card-body {
   color: #fff;
   border: 1px solid #ffea8959;
   text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.8);
