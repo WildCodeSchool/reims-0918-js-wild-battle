@@ -29,7 +29,7 @@ const Help = () => (
                 className="text-light border p-2 rounded"
                 to="/"
               >
-                <i class="fas fa-arrow-circle-left" /> Back to Home
+                <i className="fas fa-arrow-circle-left" /> Back to Home
               </Link>
             </Col>
             <Col className="p-0" xs={{ size: 8 }}>

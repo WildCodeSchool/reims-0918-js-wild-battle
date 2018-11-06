@@ -179,3 +179,15 @@ h1 {
     font-size: 110px;
   }
 }
+
+.battleCard {
+  background-image: url(./stats_section/circleBackground.svg);
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+  border: 1px solid #161616;
+}
+
+.battleCard h5:before,
+.battleCard h5:after {
+  content: " • ";
+}
