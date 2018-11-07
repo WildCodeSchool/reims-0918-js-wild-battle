@@ -2,9 +2,12 @@ import React from "react";
 import { Row, Col } from "reactstrap";
 import { Spring } from "react-spring";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Help = () => (
   <div className="help-section">
+    <Header />
     <Spring
       from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
       to={{ opacity: 1, transform: "translate3d(0px,0,0)" }}
@@ -26,7 +29,7 @@ const Help = () => (
                 className="text-light border p-2 rounded"
                 to="/"
               >
-                <i class="fas fa-arrow-circle-left" /> Back to Home
+                <i className="fas fa-arrow-circle-left" /> Back to Home
               </Link>
             </Col>
             <Col className="p-0" xs={{ size: 8 }}>
@@ -115,6 +118,7 @@ const Help = () => (
         </div>
       )}
     </Spring>
+    <Footer />
   </div>
 );
 

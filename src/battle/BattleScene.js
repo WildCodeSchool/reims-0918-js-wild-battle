@@ -4,11 +4,14 @@ import CombatScene from "./CombatScene";
 import BattleContext from "../battle_context/BattleContext";
 import CombatResult from "./CombatResult";
 import FinalScore from "./FinalScore";
+import Header from "../Header";
+import Footer from "../Footer";
 
 class BattleScene extends Component {
   render() {
     return (
       <Fragment>
+        <Header mobileDisplay />
         <BattleContext.Consumer>
           {battleContext => (
             <Fragment>
@@ -24,6 +27,7 @@ class BattleScene extends Component {
             </Fragment>
           )}
         </BattleContext.Consumer>
+        <Footer mobileDisplay={true} />
       </Fragment>
     );
   }

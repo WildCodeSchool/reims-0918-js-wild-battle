@@ -12,7 +12,7 @@ class CombatInit extends Component {
         <BattleContext.Consumer>
           {context => (
             <Fragment>
-              <div className="mt-5">
+              <div className="mt-1">
                 <Spring
                   from={{ opacity: 0 }}
                   to={{ opacity: 1 }}
@@ -20,9 +20,9 @@ class CombatInit extends Component {
                 >
                   {styles => (
                     <h2 className="text-center" style={styles}>
-                      Fight on
-                      <br />
-                      <span className="mr-3">
+                      Fight on {"  "}
+                      <br className="d-sm-none d-md-inline" />
+                      <span className="mr-3 d-sm-none d-md-inline">
                         {context.state.battle.round.randomStat === 0 ? (
                           <i className="fas fa-dumbbell" />
                         ) : context.state.battle.round.randomStat === 1 ? (
@@ -30,12 +30,12 @@ class CombatInit extends Component {
                         ) : context.state.battle.round.randomStat === 2 ? (
                           <i className="fas fa-book" />
                         ) : (
-                                <i className="fas fa-shield-alt" />
-                              )}
+                          <i className="fas fa-shield-alt" />
+                        )}
                       </span>
                       {
                         context.state.battle.stats[
-                        context.state.battle.round.randomStat
+                          context.state.battle.round.randomStat
                         ]
                       }
                       <span className="ml-3">
@@ -46,8 +46,8 @@ class CombatInit extends Component {
                         ) : context.state.battle.round.randomStat === 2 ? (
                           <i className="fas fa-book" />
                         ) : (
-                                <i className="fas fa-shield-alt" />
-                              )}
+                          <i className="fas fa-shield-alt" />
+                        )}
                       </span>
                     </h2>
                   )}
@@ -55,42 +55,42 @@ class CombatInit extends Component {
               </div>
               {context.state.battle[context.state.battle.round.currentPlayer]
                 .deck.length > 0 && (
-                  <Row
-                    className="battle-deck justify-content-center"
-                    style={{ minHeight: "80%" }}
+                <Row
+                  className="battle-deck justify-content-center"
+                  style={{ minHeight: "80%" }}
+                >
+                  <Transition
+                    keys={context.state.battle[
+                      context.state.battle.round.currentPlayer
+                    ].deck.map(item => item.id)}
+                    from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
+                    enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+                    leave={{
+                      opacity: 0,
+                      scale: 0
+                    }}
+                    delay={300}
                   >
-                    <Transition
-                      keys={context.state.battle[
-                        context.state.battle.round.currentPlayer
-                      ].deck.map(item => item.id)}
-                      from={{ opacity: 0, transform: "translate3d(-100px,0,0)" }}
-                      enter={{ opacity: 1, transform: "translate3d(0,0,0)" }}
-                      leave={{
-                        opacity: 0,
-                        scale: 0
-                      }}
-                      delay={300}
-                    >
-                      {context.state.battle[
-                        context.state.battle.round.currentPlayer
-                      ].deck.map((hero, index) => styles => (
-                        <Col
-                          className="mt-5"
-                          style={styles}
-                          xs="6"
-                          md="4"
-                          lg="2"
-                          onClick={() => {
-                            context.selectHero(hero.id);
-                          }}
-                          key={hero.id}
-                        >
-                          <HeroCard indexHero={index} selectedHeroOfList={hero} />
-                        </Col>
-                      ))}
-                    </Transition>
-                  </Row>
-                )}
+                    {context.state.battle[
+                      context.state.battle.round.currentPlayer
+                    ].deck.map((hero, index) => styles => (
+                      <Col
+                        className="mt-5"
+                        style={styles}
+                        xs="6"
+                        md="4"
+                        lg="2"
+                        onClick={() => {
+                          context.selectHero(hero.id);
+                        }}
+                        key={hero.id}
+                      >
+                        <HeroCard indexHero={index} selectedHeroOfList={hero} />
+                      </Col>
+                    ))}
+                  </Transition>
+                </Row>
+              )}
             </Fragment>
           )}
         </BattleContext.Consumer>
