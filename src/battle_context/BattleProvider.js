@@ -101,60 +101,64 @@ class BattleProvider extends Component {
   state = {
     battle: {
       stats: ["Strength", "Speed", "Intelligence", "Durability"],
-      heroes: [{
-        id: 6553,
-        name: "The B.R.A.I.N",
-        biography: {
-          aliases: ["Clem"],
-          alignment: "good",
-          "alter-egos": "Reactinator",
-          "full-name": "Clément Bechetoille",
-          "place-of-birth": "In our heart ! <3",
-          "first-appearance": "2017",
-          publisher: "Into the Wild 2017"
+      heroes: [
+        {
+          id: 6553,
+          name: "The B.R.A.I.N",
+          used: false,
+          biography: {
+            aliases: ["Clem"],
+            alignment: "good",
+            "alter-egos": "Reactinator",
+            "full-name": "Clément Bechetoille",
+            "place-of-birth": "In our heart ! <3",
+            "first-appearance": "2017",
+            publisher: "Into the Wild 2017"
+          },
+          connections: {
+            "group-affiliation": "Wild Code School",
+            relatives: "Wilders (students)"
+          },
+          powerstats: {
+            durability: "101",
+            intelligence: "101",
+            speed: "101",
+            strength: "101"
+          },
+          images: {
+            md: Clement
+          },
+          collector: true
         },
-        connections: {
-          "group-affiliation": "Wild Code School",
-          relatives: "Wilders (students)"
-        },
-        powerstats: {
-          durability: "101",
-          intelligence: "101",
-          speed: "101",
-          strength: "101"
-        },
-        images: {
-          md: Clement
-        },
-        collector: true
-      },
-      {
-        id: 6554,
-        name: "Reactinator",
-        biography: {
-          aliases: ["Thom"],
-          alignment: "good",
-          "alter-egos": "The B.R.A.I.N",
-          "full-name": "Thomas Culdaut",
-          "first-appearance": "2017",
-          "place-of-birth": "In our mind ! <3 or nightmares !",
-          publisher: "Into the Wild 2017"
-        },
-        connections: {
-          "group-affiliation": "Wild Code School",
-          relatives: "Wilders (students)"
-        },
-        powerstats: {
-          durability: "999",
-          intelligence: "999",
-          speed: "999",
-          strength: "999"
-        },
-        images: {
-          md: Thomas
-        },
-        collector: true
-      }],
+        {
+          id: 6554,
+          name: "Reactinator",
+          used: false,
+          biography: {
+            aliases: ["Thom"],
+            alignment: "good",
+            "alter-egos": "The B.R.A.I.N",
+            "full-name": "Thomas Culdaut",
+            "first-appearance": "2017",
+            "place-of-birth": "In our mind ! <3 or nightmares !",
+            publisher: "Into the Wild 2017"
+          },
+          connections: {
+            "group-affiliation": "Wild Code School",
+            relatives: "Wilders (students)"
+          },
+          powerstats: {
+            durability: "999",
+            intelligence: "999",
+            speed: "999",
+            strength: "999"
+          },
+          images: {
+            md: Thomas
+          },
+          collector: true
+        }
+      ],
       player_1: {
         nickname: "",
         nicknameChecked: false,
@@ -211,7 +215,7 @@ class BattleProvider extends Component {
     AsyncStorage.getItem("history").then(rank => {
       let history;
       if (rank) {
-        history = JSON.parse(rank); 
+        history = JSON.parse(rank);
       } else {
         history = historyJson;
       }

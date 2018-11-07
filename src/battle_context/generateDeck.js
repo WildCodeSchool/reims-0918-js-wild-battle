@@ -19,8 +19,8 @@ const generateDeck = (prevState, sizeDeck) => {
       i++;
     }
   } // add two collector cards
-  const victor = prevState.battle.heroes.find(id => id.id === 6553);
-  const victoria = prevState.battle.heroes.find(id => id.id === 6554);
+  const victor = { ...prevState.battle.heroes.find(id => id.id === 6553) };
+  const victoria = { ...prevState.battle.heroes.find(id => id.id === 6554) };
   deck.splice(4, 0, victor).join();
   deck.splice(8, 0, victoria).join();
   return deck;
