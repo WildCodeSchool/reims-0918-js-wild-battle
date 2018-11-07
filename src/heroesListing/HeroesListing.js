@@ -32,7 +32,12 @@ class HeroesListing extends Component {
             <Row>
               <Col xs="12">
                 <Link to="/">
-                  <Button className="mt-3 button-style">Back</Button>
+                  <Button
+                    className="mt-3 button-style"
+                    onClick={() => siteContext.closeCollapse()}
+                  >
+                    Back
+                  </Button>
                 </Link>
               </Col>
               <h2 className="mr-3">Heroes List</h2>

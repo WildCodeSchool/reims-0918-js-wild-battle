@@ -4,6 +4,7 @@ import { Col, Row, Button } from "reactstrap";
 import HeroCard from "../HeroCard";
 import WinOrLose from "./WinOrLose";
 import { Transition, Spring } from "react-spring";
+import DisplayCombatStat from "./DisplayCombatStat";
 
 const CombatResult = () => (
   <BattleContext.Consumer>
@@ -11,45 +12,7 @@ const CombatResult = () => (
       <Fragment>
         <Row>
           <Col xs="12">
-            <Spring
-              from={{ opacity: 0 }}
-              to={{ opacity: 1 }}
-              leave={{ opacity: 0 }}
-            >
-              {styles => (
-                <h2 className="text-center" style={styles}>
-                  Fight on {"  "}
-                  <br className="d-sm-none d-md-inline" />
-                  <span className="mr-3 d-sm-none d-md-inline">
-                    {battleContext.state.battle.round.randomStat === 0 ? (
-                      <i className="fas fa-dumbbell" />
-                    ) : battleContext.state.battle.round.randomStat === 1 ? (
-                      <i className="fas fa-bolt" />
-                    ) : battleContext.state.battle.round.randomStat === 2 ? (
-                      <i className="fas fa-book" />
-                    ) : (
-                      <i className="fas fa-shield-alt" />
-                    )}
-                  </span>
-                  {
-                    battleContext.state.battle.stats[
-                      battleContext.state.battle.round.randomStat
-                    ]
-                  }
-                  <span className="ml-3">
-                    {battleContext.state.battle.round.randomStat === 0 ? (
-                      <i className="fas fa-dumbbell" />
-                    ) : battleContext.state.battle.round.randomStat === 1 ? (
-                      <i className="fas fa-bolt" />
-                    ) : battleContext.state.battle.round.randomStat === 2 ? (
-                      <i className="fas fa-book" />
-                    ) : (
-                      <i className="fas fa-shield-alt" />
-                    )}
-                  </span>
-                </h2>
-              )}
-            </Spring>
+            <DisplayCombatStat />
           </Col>
         </Row>
         <Row className="d-flex justify-content-around">
@@ -186,14 +149,8 @@ const CombatResult = () => (
                   >
                     Fight Again
                   </Button>
-                ) : battleContext.state.battle.round.roundNumber !== 5 ? (
-                  <Button
-                    className="button-style"
-                    onClick={() => battleContext.getToNextRound()}
-                  >
-                    Next round
-                  </Button>
-                ) : (
+                ) : battleContext.state.battle.player_1.score === 3 ||
+                battleContext.state.battle.player_2.score === 3 ? (
                   <Button
                     className="button-style"
                     onClick={() => {
@@ -205,6 +162,13 @@ const CombatResult = () => (
                     }}
                   >
                     Final Score
+                  </Button>
+                ) : (
+                  <Button
+                    className="button-style"
+                    onClick={() => battleContext.getToNextRound()}
+                  >
+                    Next round
                   </Button>
                 )}
               </Col>

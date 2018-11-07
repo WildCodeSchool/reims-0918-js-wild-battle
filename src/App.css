@@ -60,7 +60,6 @@ h1 {
   font-family: "Poppins", sans-serif;
   border-radius: 0;
   color: #fff;
-  padding: 6px 20px;
   text-transform: uppercase;
   max-width: 150px;
   font-size: 20px;
@@ -82,9 +81,9 @@ h1 {
   max-width: 350px;
   font-size: 30px;
   margin: 0 auto;
-  padding: 10px 45px;
+  padding: 2px 15px;
   text-decoration: none;
-  font-size: 40px;
+  font-size: 25px;
   color: white;
   background: #6225e6;
   transition: 1s;
@@ -163,6 +162,9 @@ h1 {
   font-size: 150px;
 }
 
+.nicknameTitle {
+  font-size: 150px;
+}
 @media (min-width: 390px) {
   .responsive-card {
     padding: 0;
@@ -178,6 +180,10 @@ h1 {
 @media (max-width: 667.98px) {
   .round-title-transition {
     font-size: 110px;
+  }
+
+  .nicknameTitle {
+    font-size: 75px;
   }
 }
 

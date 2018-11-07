@@ -797,6 +797,7 @@ class BattleProvider extends Component {
         selectedCard: {}
       },
       round: {
+        isCardSelected: 0,
         roundFinished: false,
         roundNumber: 0,
         randomStat: 0,
@@ -861,10 +862,68 @@ class BattleProvider extends Component {
             this.setState(changeNickname(this.state, event, name)),
           submitCheck: name => {
             this.setState(nicknameChecked(this.state, name));
+            const otherPlayer = name === "player_1" ? "player_2" : "player_1";
+            if (this.state.battle[otherPlayer].nicknameChecked) {
+              setTimeout(() => {
+                const deckTotal = generateDeck(this.state, 12);
+                const deck_player_1 = deckTotal.slice(0, 6);
+                const deck_player_2 = deckTotal.slice(6, 12);
+
+                this.setState({
+                  battle: {
+                    ...this.state.battle,
+                    player_1: {
+                      ...this.state.battle.player_1,
+                      deck: deck_player_1
+                    },
+                    player_2: {
+                      ...this.state.battle.player_2,
+                      deck: deck_player_2
+                    },
+                    round: {
+                      ...this.state.battle.round,
+                      roundNumber: 1,
+                      randomStat: getRandomNumber(
+                        this.state.battle.stats.length
+                      )
+                    }
+                  }
+                });
+              }, 4000);
+            }
           },
           onPressEnterNicknameChecked: (event, name, nicknameLength) => {
             if (event.charCode === 13 && nicknameLength > 2) {
               this.setState(nicknameChecked(this.state, name));
+              const otherPlayer = name === "player_1" ? "player_2" : "player_1";
+              if (this.state.battle[otherPlayer].nicknameChecked) {
+                setTimeout(() => {
+                  const deckTotal = generateDeck(this.state, 12);
+                  const deck_player_1 = deckTotal.slice(0, 6);
+                  const deck_player_2 = deckTotal.slice(6, 12);
+
+                  this.setState({
+                    battle: {
+                      ...this.state.battle,
+                      player_1: {
+                        ...this.state.battle.player_1,
+                        deck: deck_player_1
+                      },
+                      player_2: {
+                        ...this.state.battle.player_2,
+                        deck: deck_player_2
+                      },
+                      round: {
+                        ...this.state.battle.round,
+                        roundNumber: 1,
+                        randomStat: getRandomNumber(
+                          this.state.battle.stats.length
+                        )
+                      }
+                    }
+                  });
+                }, 4000);
+              }
             }
           },
           toggle: id => {
@@ -873,6 +932,11 @@ class BattleProvider extends Component {
           handleSearchListChange: event => {
             this.setState({
               searchInputHeroList: event.target.value,
+              collapse: false
+            });
+          },
+          closeCollapse: () => {
+            this.setState({
               collapse: false
             });
           },
@@ -888,10 +952,14 @@ class BattleProvider extends Component {
             );
 
             if (!heroUsed) {
-              this.setState(addSelectedHeroOnSelectedCard(this.state, idHero));
-              setTimeout(() => {
-                this.setState(changePlayer(this.state));
-              }, 1000);
+              if (!this.state.battle.round.isCardSelected) {
+                this.setState(
+                  addSelectedHeroOnSelectedCard(this.state, idHero)
+                );
+                setTimeout(() => {
+                  this.setState(changePlayer(this.state));
+                }, 1000);
+              }
             }
           },
 
