@@ -9,12 +9,22 @@ const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
         <Card
           className={
             indexHero !== undefined
-              ? !siteContext.state.battle[
+              ? siteContext.state.battle[
                   siteContext.state.battle.round.currentPlayer
-                ].deck[indexHero].used
-                ? "battleCard p-2 unUsed"
+                ].deck[indexHero].collector
+                ? !siteContext.state.battle[
+                    siteContext.state.battle.round.currentPlayer
+                  ].deck[indexHero].used
+                  ? "battleCard collector p-2 unUsed"
+                  : "battleCard collector p-2"
+                : !siteContext.state.battle[
+                    siteContext.state.battle.round.currentPlayer
+                  ].deck[indexHero].used
+                  ? "battleCard p-2 unUsed"
+                  : "battleCard p-2"
+              : selectedHeroOfList.collector
+                ? "battleCard collector p-2 "
                 : "battleCard p-2"
-              : "battleCard p-2"
           }
         >
           <CardTitle className="text-center battleCardTitle text-truncate">
