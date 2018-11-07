@@ -18,30 +18,30 @@ import goToNextRound from "./goToNextRound";
 import hasWonRound from "./hasWonRound";
 import Clement from "../img/Victoria/Clement.png";
 import Thomas from "../img/Victoria/Thomas.png";
-import Mathieu from "../img/Victoria/Mathieu400.jpg";
-import Michael from "../img/Victoria/Michael400.jpg";
-import Fabien from "../img/Victoria/Fabien400.jpg";
-import Florentin from "../img/Victoria/Florentin400.jpg";
-import Leuthsouline from "../img/Victoria/Leuthsouline400.jpg";
-import Benoit from "../img/Victoria/Benoit400.jpg";
-import Quentin from "../img/Victoria/Quentin400.jpg";
-import Corentin from "../img/Victoria/Corentin400.jpg";
-import Charles from "../img/Victoria/Charles400.jpg";
-import Robin from "../img/Victoria/Robin400.jpg";
-import Michel from "../img/Victoria/Michel400.jpg";
-import Gautier from "../img/Victoria/Gautier400.jpg";
-import Lucas from "../img/Victoria/lucas-150.jpg";
-import Moka from "../img/Victoria/MohamedK-150.jpg";
-import Mohamed from "../img/Victoria/MohamedL-150.jpg";
-import Justine from "../img/Victoria/Justine-150.jpg";
-import Anabelle from "../img/Victoria/Anabelle-150.jpg";
-import Tantely from "../img/Victoria/Tantely-150.jpg";
-import Erwan from "../img/Victoria/Erwan-150.jpg";
-import Alexis from "../img/Victoria/Alexis-150.jpg";
-import Nicolas from "../img/Victoria/Nicolas-150.jpg";
-import Tony from "../img/Victoria/Tony-150.jpg";
-import Marthe from "../img/Victoria/Marthe-150.jpg";
-import Gaetan from "../img/Victoria/Gaetan-150.jpg";
+// import Mathieu from "../img/Victoria/Mathieu400.jpg";
+// import Michael from "../img/Victoria/Michael400.jpg";
+// import Fabien from "../img/Victoria/Fabien400.jpg";
+// import Florentin from "../img/Victoria/Florentin400.jpg";
+// import Leuthsouline from "../img/Victoria/Leuthsouline400.jpg";
+// import Benoit from "../img/Victoria/Benoit400.jpg";
+// import Quentin from "../img/Victoria/Quentin400.jpg";
+// import Corentin from "../img/Victoria/Corentin400.jpg";
+// import Charles from "../img/Victoria/Charles400.jpg";
+// import Robin from "../img/Victoria/Robin400.jpg";
+// import Michel from "../img/Victoria/Michel400.jpg";
+// import Gautier from "../img/Victoria/Gautier400.jpg";
+// import Lucas from "../img/Victoria/lucas-150.jpg";
+// import Moka from "../img/Victoria/MohamedK-150.jpg";
+// import Mohamed from "../img/Victoria/MohamedL-150.jpg";
+// import Justine from "../img/Victoria/Justine-150.jpg";
+// import Anabelle from "../img/Victoria/Anabelle-150.jpg";
+// import Tantely from "../img/Victoria/Tantely-150.jpg";
+// import Erwan from "../img/Victoria/Erwan-150.jpg";
+// import Alexis from "../img/Victoria/Alexis-150.jpg";
+// import Nicolas from "../img/Victoria/Nicolas-150.jpg";
+// import Tony from "../img/Victoria/Tony-150.jpg";
+// import Marthe from "../img/Victoria/Marthe-150.jpg";
+// import Gaetan from "../img/Victoria/Gaetan-150.jpg";
 
 const listHeroes = [
   18,
@@ -101,7 +101,60 @@ class BattleProvider extends Component {
   state = {
     battle: {
       stats: ["Strength", "Speed", "Intelligence", "Durability"],
-      heroes: [],
+      heroes: [{
+        id: 6553,
+        name: "The B.R.A.I.N",
+        biography: {
+          aliases: ["Clem"],
+          alignment: "good",
+          "alter-egos": "Reactinator",
+          "full-name": "Clément Bechetoille",
+          "place-of-birth": "In our heart ! <3",
+          "first-appearance": "2017",
+          publisher: "Into the Wild 2017"
+        },
+        connections: {
+          "group-affiliation": "Wild Code School",
+          relatives: "Wilders (students)"
+        },
+        powerstats: {
+          durability: "101",
+          intelligence: "101",
+          speed: "101",
+          strength: "101"
+        },
+        images: {
+          md: Clement
+        },
+        collector: true
+      },
+      {
+        id: 6554,
+        name: "Reactinator",
+        biography: {
+          aliases: ["Thom"],
+          alignment: "good",
+          "alter-egos": "The B.R.A.I.N",
+          "full-name": "Thomas Culdaut",
+          "first-appearance": "2017",
+          "place-of-birth": "In our mind ! <3 or nightmares !",
+          publisher: "Into the Wild 2017"
+        },
+        connections: {
+          "group-affiliation": "Wild Code School",
+          relatives: "Wilders (students)"
+        },
+        powerstats: {
+          durability: "999",
+          intelligence: "999",
+          speed: "999",
+          strength: "999"
+        },
+        images: {
+          md: Thomas
+        },
+        collector: true
+      }],
       player_1: {
         nickname: "",
         nicknameChecked: false,
@@ -158,7 +211,7 @@ class BattleProvider extends Component {
     AsyncStorage.getItem("history").then(rank => {
       let history;
       if (rank) {
-        history = JSON.parse(rank);
+        history = JSON.parse(rank); 
       } else {
         history = historyJson;
       }
