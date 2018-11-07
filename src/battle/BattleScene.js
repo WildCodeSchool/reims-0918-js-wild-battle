@@ -11,7 +11,7 @@ class BattleScene extends Component {
   render() {
     return (
       <Fragment>
-        <Header mobileDisplay={true} />
+        <Header mobileDisplay />
         <BattleContext.Consumer>
           {battleContext => (
             <Fragment>

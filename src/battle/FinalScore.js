@@ -15,23 +15,23 @@ const FinalScore = () => (
         {styles => (
           <div style={styles}>
             <div
-              style={{ height: "calc(100vh - 164px)", styles }}
+              style={{ styles }}
               className="battle-transition d-flex flex-column justify-content-center text-align-center"
             >
               <Fragment>
-                <i className="fas fa-trophy fa-10x mx-auto text-light" />
+                <i className="fas fa-trophy fa-10x mx-auto text-light mt-5" />
                 {battleContext.state.battle.player_1.score >
                 battleContext.state.battle.player_2.score ? (
-                  <h2 style={{ fontSize: "150px", textAlign: "center" }}>
+                  <h2 className="nicknameTitle" style={{ textAlign: "center" }}>
                     {battleContext.state.battle.player_1.nickname} WIN
                   </h2>
                 ) : (
-                  <h2 style={{ fontSize: "150px", textAlign: "center" }}>
+                  <h2 className="nicknameTitle" style={{ textAlign: "center" }}>
                     {battleContext.state.battle.player_2.nickname} WIN
                   </h2>
                 )}
                 <Row className="d-flex justify-content-center">
-                  <Col xs="3">
+                  <Col xs="3" className="text-right">
                     <Button
                       className="button-style"
                       onClick={() => battleContext.setRematch()}
