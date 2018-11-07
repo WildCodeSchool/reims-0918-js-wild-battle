@@ -43,745 +43,65 @@ import Tony from "../img/Victoria/Tony-150.jpg";
 import Marthe from "../img/Victoria/Marthe-150.jpg";
 import Gaetan from "../img/Victoria/Gaetan-150.jpg";
 
-// const listHeroes = [
-//   18,
-//   30,
-//   34,
-//   57,
-//   60,
-//   63,
-//   69,
-//   92,
-//   145,
-//   162,
-//   165,
-//   207,
-//   208,
-//   213,
-//   222,
-//   226,
-//   263,
-//   310,
-//   313,
-//   322,
-//   341,
-//   346,
-//   354,
-//   361,
-//   386,
-//   416,
-//   418,
-//   423,
-//   427,
-//   435,
-//   441,
-//   462,
-//   485,
-//   489,
-//   490,
-//   502,
-//   514,
-//   522,
-//   523,
-//   526,
-//   529,
-//   566,
-//   567,
-//   619,
-//   620,
-//   627,
-//   639,
-//   644,
-//   672,
-//   687,
-//   729
-// ];
+const listHeroes = [
+  18,
+  30,
+  34,
+  57,
+  60,
+  63,
+  69,
+  92,
+  145,
+  162,
+  165,
+  207,
+  208,
+  213,
+  222,
+  226,
+  263,
+  310,
+  313,
+  322,
+  341,
+  346,
+  354,
+  361,
+  386,
+  416,
+  418,
+  423,
+  427,
+  435,
+  441,
+  462,
+  485,
+  489,
+  490,
+  502,
+  514,
+  522,
+  523,
+  526,
+  529,
+  566,
+  567,
+  619,
+  620,
+  627,
+  639,
+  644,
+  672,
+  687,
+  729
+];
 
 class BattleProvider extends Component {
   state = {
     battle: {
       stats: ["Strength", "Speed", "Intelligence", "Durability"],
-      heroes: [
-        {
-          id: 6553,
-          name: "The B.R.A.I.N",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "101",
-            intelligence: "101",
-            speed: "101",
-            strength: "101"
-          },
-          image: {
-            url: Clement
-          },
-          collector: true
-        },
-        {
-          id: 6554,
-          name: "Reactinator",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "999",
-            intelligence: "999",
-            speed: "999",
-            strength: "999"
-          },
-          image: {
-            url: Thomas
-          },
-          collector: true
-        },
-        {
-          id: 6500,
-          name: "Mathieu",
-          biography: {
-            aliases: ["Thomas"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "43",
-            intelligence: "73",
-            speed: "100",
-            strength: "18"
-          },
-          image: {
-            url: Mathieu
-          }
-        },
-        {
-          id: 6501,
-          name: "Alexis",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "88",
-            intelligence: "11",
-            speed: "27",
-            strength: "36"
-          },
-          image: {
-            url: Alexis
-          }
-        },
-        {
-          id: 6502,
-          name: "Anabelle",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "32",
-            intelligence: "63",
-            speed: "29",
-            strength: "16"
-          },
-          image: {
-            url: Anabelle
-          }
-        },
-        {
-          id: 6503,
-          name: "Benoit",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "58",
-            intelligence: "96",
-            speed: "83",
-            strength: "98"
-          },
-          image: {
-            url: Benoit
-          }
-        },
-        {
-          id: 6504,
-          name: "Charles",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "61",
-            intelligence: "22",
-            speed: "63",
-            strength: "48"
-          },
-          image: {
-            url: Charles
-          }
-        },
-        {
-          id: 6505,
-          name: "Corentin",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "55",
-            intelligence: "76",
-            speed: "97",
-            strength: "39"
-          },
-          image: {
-            url: Corentin
-          }
-        },
-        {
-          id: 6506,
-          name: "Erwan",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "66",
-            intelligence: "34",
-            speed: "31",
-            strength: "26"
-          },
-          image: {
-            url: Erwan
-          }
-        },
-        {
-          id: 6507,
-          name: "Fabien",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "84",
-            intelligence: "98",
-            speed: "73",
-            strength: "23"
-          },
-          image: {
-            url: Fabien
-          }
-        },
-        {
-          id: 6508,
-          name: "Florentin",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "36",
-            intelligence: "72",
-            speed: "59",
-            strength: "35"
-          },
-          image: {
-            url: Florentin
-          }
-        },
-        {
-          id: 6509,
-          name: "Gaetan",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "31",
-            intelligence: "35",
-            speed: "38",
-            strength: "94"
-          },
-          image: {
-            url: Gaetan
-          }
-        },
-        {
-          id: 6510,
-          name: "Gautier",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "89",
-            intelligence: "91",
-            speed: "15",
-            strength: "19"
-          },
-          image: {
-            url: Gautier
-          }
-        },
-
-        {
-          id: 6511,
-          name: "Justine",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "86",
-            intelligence: "90",
-            speed: "32",
-            strength: "77"
-          },
-          image: {
-            url: Justine
-          }
-        },
-        {
-          id: 6512,
-          name: "Leuthsouline",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "6",
-            intelligence: "42",
-            speed: "77",
-            strength: "89"
-          },
-          image: {
-            url: Leuthsouline
-          }
-        },
-        {
-          id: 6513,
-          name: "Lucas",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "100",
-            intelligence: "75",
-            speed: "79",
-            strength: "53"
-          },
-          image: {
-            url: Lucas
-          }
-        },
-        {
-          id: 6514,
-          name: "Marthe",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "62",
-            intelligence: "49",
-            speed: "99",
-            strength: "51"
-          },
-          image: {
-            url: Marthe
-          }
-        },
-        {
-          id: 6515,
-          name: "Michael",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "35",
-            intelligence: "49",
-            speed: "84",
-            strength: "36"
-          },
-          image: {
-            url: Michael
-          }
-        },
-        {
-          id: 6516,
-          name: "Michel",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "89",
-            intelligence: "85",
-            speed: "82",
-            strength: "61"
-          },
-          image: {
-            url: Michel
-          }
-        },
-        {
-          id: 6517,
-          name: "Moka",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "46",
-            intelligence: "34",
-            speed: "50",
-            strength: "87"
-          },
-          image: {
-            url: Moka
-          }
-        },
-        {
-          id: 6518,
-          name: "Mohamed",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "76",
-            intelligence: "1",
-            speed: "21",
-            strength: "26"
-          },
-          image: {
-            url: Mohamed
-          }
-        },
-        {
-          id: 6519,
-          name: "Nicolas",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "5",
-            intelligence: "20",
-            speed: "36",
-            strength: "43"
-          },
-          image: {
-            url: Nicolas
-          }
-        },
-        {
-          id: 6520,
-          name: "Quentin",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "81",
-            intelligence: "66",
-            speed: "59",
-            strength: "19"
-          },
-          image: {
-            url: Quentin
-          }
-        },
-        {
-          id: 6521,
-          name: "Robin",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "72",
-            intelligence: "41",
-            speed: "1",
-            strength: "11"
-          },
-          image: {
-            url: Robin
-          }
-        },
-        {
-          id: 6522,
-          name: "Tantely",
-          biography: {
-            aliases: ["Thom"],
-            alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "61",
-            intelligence: "99",
-            speed: "69",
-            strength: "13"
-          },
-          image: {
-            url: Tantely
-          }
-        },
-        {
-          id: 6523,
-          name: "Tony",
-          biography: {
-            aliases: ["Clem"],
-            alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
-            publisher: "Into the Wild 2017"
-          },
-          connections: {
-            "group-affiliation": "Wild Code School",
-            relatives: "Wilders (students)"
-          },
-          powerstats: {
-            durability: "52",
-            intelligence: "51",
-            speed: "76",
-            strength: "62"
-          },
-          image: {
-            url: Tony
-          }
-        }
-      ],
+      heroes: [],
       player_1: {
         nickname: "",
         nicknameChecked: false,
@@ -814,21 +134,25 @@ class BattleProvider extends Component {
     history: []
   };
 
-  // callApiSuperHeroes() {
-  //   for (let i = 0; i < listHeroes.length; i++) {
-  //     fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
-  //       .then(results => results.json()) // conversion du résultat en JSON
-  //       .then(data => {
-  //         data.used = false;
-  //         this.setState({
-  //           battle: {
-  //             ...this.state.battle,
-  //             heroes: [...this.state.battle.heroes, data]
-  //           }
-  //         });
-  //       });
-  //   }
-  // }
+  callApiSuperHeroes() {
+    for (let i = 0; i < listHeroes.length; i++) {
+      fetch(
+        `https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/id/${
+          listHeroes[i]
+        }.json`
+      )
+        .then(results => results.json()) // conversion du résultat en JSON
+        .then(data => {
+          data.used = false;
+          this.setState({
+            battle: {
+              ...this.state.battle,
+              heroes: [...this.state.battle.heroes, data]
+            }
+          });
+        });
+    }
+  }
 
   getStorage() {
     AsyncStorage.getItem("history").then(rank => {
@@ -844,7 +168,7 @@ class BattleProvider extends Component {
     });
   }
   componentDidMount() {
-    // this.callApiSuperHeroes();
+    this.callApiSuperHeroes();
     this.getStorage();
   }
 

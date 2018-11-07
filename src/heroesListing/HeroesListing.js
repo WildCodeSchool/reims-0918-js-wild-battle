@@ -102,7 +102,7 @@ class HeroesListing extends Component {
                   >
                     <HeroListFrame
                       heroeId={hero.id}
-                      imageHero={hero.image.url}
+                      imageHero={hero.images.md}
                       nameHero={hero.name}
                       heroData={hero}
                       collector={hero.collector}
