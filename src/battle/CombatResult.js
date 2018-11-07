@@ -149,14 +149,8 @@ const CombatResult = () => (
                   >
                     Fight Again
                   </Button>
-                ) : battleContext.state.battle.round.roundNumber !== 5 ? (
-                  <Button
-                    className="button-style"
-                    onClick={() => battleContext.getToNextRound()}
-                  >
-                    Next round
-                  </Button>
-                ) : (
+                ) : battleContext.state.battle.player_1.score === 3 ||
+                battleContext.state.battle.player_2.score === 3 ? (
                   <Button
                     className="button-style"
                     onClick={() => {
@@ -168,6 +162,13 @@ const CombatResult = () => (
                     }}
                   >
                     Final Score
+                  </Button>
+                ) : (
+                  <Button
+                    className="button-style"
+                    onClick={() => battleContext.getToNextRound()}
+                  >
+                    Next round
                   </Button>
                 )}
               </Col>

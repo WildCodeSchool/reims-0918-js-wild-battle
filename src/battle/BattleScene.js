@@ -27,7 +27,7 @@ class BattleScene extends Component {
             </Fragment>
           )}
         </BattleContext.Consumer>
-        <Footer mobileDisplay={true} />
+        <Footer mobileDisplay />
       </Fragment>
     );
   }

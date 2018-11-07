@@ -5,7 +5,7 @@ import { Col, Row } from "reactstrap";
 
 const Footer = ({ mobileDisplay }) => (
   <footer className="mt-5 container-fluid fixed-bottom">
-    <Row className={mobileDisplay && "d-sm-none d-md-block"}>
+    <Row className={classNames(mobileDisplay, "d-sm-none d-md-block")}>
       <Col className="d-flex justify-content-center">
         <div className="d-flex">
           <a
