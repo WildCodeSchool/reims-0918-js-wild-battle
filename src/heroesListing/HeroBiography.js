@@ -4,17 +4,17 @@ const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
     <h3>{selectedHeroOfList.name}</h3>
 
-    {selectedHeroOfList.biography["full-name"] !== "" && (
+    {selectedHeroOfList.biography["fullName"] !== "" && (
       <p>
         <span className="itemTitleBiography">Full Name</span>:{" "}
-        {selectedHeroOfList.biography["full-name"]}
+        {selectedHeroOfList.biography["fullName"]}
       </p>
     )}
 
-    {selectedHeroOfList.biography["alter-egos"] !== "No alter egos found." && (
+    {selectedHeroOfList.biography["alterEgos"] !== "No alter egos found." && (
       <p>
         <span className="itemTitleBiography">Alter-Egos</span>:{" "}
-        {selectedHeroOfList.biography["alter-egos"]}
+        {selectedHeroOfList.biography["alterEgos"]}
       </p>
     )}
 
@@ -29,17 +29,17 @@ const HeroBiography = ({ selectedHeroOfList }) => (
       </p>
     )}
 
-    {selectedHeroOfList.biography["place-of-birth"] !== "-" && (
+    {selectedHeroOfList.biography["placeOfBirth"] !== "-" && (
       <p>
         <span className="itemTitleBiography">Place of Birth</span>:{" "}
-        {selectedHeroOfList.biography["place-of-birth"]}
+        {selectedHeroOfList.biography["placeOfBirth"]}
       </p>
     )}
 
-    {selectedHeroOfList.biography["first-appearance"] !== "-" && (
+    {selectedHeroOfList.biography["firstAppearance"] !== "-" && (
       <p>
         <span className="itemTitleBiography">First appearance</span>:{" "}
-        {selectedHeroOfList.biography["first-appearance"]}
+        {selectedHeroOfList.biography["firstAppearance"]}
       </p>
     )}
 
@@ -57,10 +57,10 @@ const HeroBiography = ({ selectedHeroOfList }) => (
       </p>
     )}
 
-    {selectedHeroOfList.connections["group-affiliation"] !== "-" && (
+    {selectedHeroOfList.connections["groupAffiliation"] !== "-" && (
       <p>
         <span className="itemTitleBiography">Group affiliation</span>:{" "}
-        {selectedHeroOfList.connections["group-affiliation"]}
+        {selectedHeroOfList.connections["groupAffiliation"]}
       </p>
     )}
 

@@ -109,14 +109,14 @@ class BattleProvider extends Component {
           biography: {
             aliases: ["Clem"],
             alignment: "good",
-            "alter-egos": "Reactinator",
-            "full-name": "Clément Bechetoille",
-            "place-of-birth": "In our heart ! <3",
-            "first-appearance": "2017",
+            alterEgos: "Reactinator",
+            fullName: "Clément Bechetoille",
+            placeOfBirth: "In our heart ! <3",
+            firstAppearance: "2017",
             publisher: "Into the Wild 2017"
           },
           connections: {
-            "group-affiliation": "Wild Code School",
+            groupAffiliation: "Wild Code School",
             relatives: "Wilders (students)"
           },
           powerstats: {
@@ -137,14 +137,14 @@ class BattleProvider extends Component {
           biography: {
             aliases: ["Thom"],
             alignment: "good",
-            "alter-egos": "The B.R.A.I.N",
-            "full-name": "Thomas Culdaut",
-            "first-appearance": "2017",
-            "place-of-birth": "In our mind ! <3 or nightmares !",
+            alterEgos: "The B.R.A.I.N",
+            fullName: "Thomas Culdaut",
+            firstAppearance: "2017",
+            placeOfBirth: "In our mind ! <3 or nightmares !",
             publisher: "Into the Wild 2017"
           },
           connections: {
-            "group-affiliation": "Wild Code School",
+            groupAffiliation: "Wild Code School",
             relatives: "Wilders (students)"
           },
           powerstats: {
