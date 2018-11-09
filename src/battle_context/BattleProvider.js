@@ -232,10 +232,6 @@ class BattleProvider extends Component {
     this.callApiSuperHeroes();
     this.getStorage();
   }
-  componentDidMount() {
-    this.callApiSuperHeroes();
-    this.getStorage();
-  }
 
   render() {
     return (

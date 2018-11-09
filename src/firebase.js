@@ -1,12 +1,13 @@
 import firebase from "firebase/app";
 import "firebase/database";
 const config = {
-  apiKey: "AIzaSyDUKl_fbvJlUqy-RYySiP03jDhKC89QKOo",
-  authDomain: "wildbattle-1e46c.firebaseapp.com",
-  databaseURL: "https://wildbattle-1e46c.firebaseio.com",
-  projectId: "wildbattle-1e46c",
-  storageBucket: "wildbattle-1e46c.appspot.com",
-  messagingSenderId: "340803107917"
+  // Initialize Firebase
+  apiKey: "AIzaSyA5Tg0-5CMd9B1Lvtl2LULLeTzh_Li_lpQ",
+  authDomain: "wild-battle.firebaseapp.com",
+  databaseURL: "https://wild-battle.firebaseio.com",
+  projectId: "wild-battle",
+  storageBucket: "wild-battle.appspot.com",
+  messagingSenderId: "794920044403"
 };
 firebase.initializeApp(config);
 export default firebase;
