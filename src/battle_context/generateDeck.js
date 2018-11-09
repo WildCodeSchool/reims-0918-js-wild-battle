@@ -14,7 +14,6 @@ const generateDeck = (prevState, sizeDeck) => {
       i++;
     }
   }
-
   return deck;
 };
 

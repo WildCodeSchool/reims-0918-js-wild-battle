@@ -188,10 +188,25 @@ h1 {
 }
 
 .battleCard {
-  background-image: url(./stats_section/circleBackground.svg);
-  background-repeat: repeat;
-  background-blend-mode: multiply;
   border: 1px solid #161616;
+  color: #fff;
+  border: 1px solid #b6b6b659;
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #dbdbdb 0%,
+      #cfcfcf 8%,
+      #bebebe 30%,
+      #fff 75%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #f0f0f0 8%,
+      #c7c7c7 25%,
+      #fff 75%,
+      #cfcfcf 100%
+    );
 }
 
 .battleCard h5:before,

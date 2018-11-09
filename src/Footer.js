@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import classNames from "classnames"
 
 import { Col, Row } from "reactstrap";
 
