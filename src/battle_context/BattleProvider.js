@@ -3,6 +3,9 @@ import BattleContext from "./BattleContext";
 import AsyncStorage from "@callstack/async-storage";
 import historyJson from "../stats_section/History.json";
 
+import firebase from "firebase/app";
+import "firebase/database";
+
 import getRandomNumber from "./getRandomNumber";
 
 import changeNickname from "./changeNickname";
@@ -109,14 +112,14 @@ class BattleProvider extends Component {
           biography: {
             aliases: ["Clem"],
             alignment: "good",
-            alterEgos: "Reactinator",
-            fullName: "Clément Bechetoille",
-            placeOfBirth: "In our heart ! <3",
-            firstAppearance: "2017",
+            "alte-egos": "Reactinator",
+            "full-name": "Clément Bechetoille",
+            "place-of-birth": "In our heart ! <3",
+            "first-appearance": "2017",
             publisher: "Into the Wild 2017"
           },
           connections: {
-            groupAffiliation: "Wild Code School",
+            "group-affiliation": "Wild Code School",
             relatives: "Wilders (students)"
           },
           powerstats: {
@@ -125,8 +128,8 @@ class BattleProvider extends Component {
             speed: "101",
             strength: "101"
           },
-          images: {
-            md: Clement
+          image: {
+            url: Clement
           },
           collector: true
         },
@@ -137,14 +140,14 @@ class BattleProvider extends Component {
           biography: {
             aliases: ["Thom"],
             alignment: "good",
-            alterEgos: "The B.R.A.I.N",
-            fullName: "Thomas Culdaut",
-            firstAppearance: "2017",
-            placeOfBirth: "In our mind ! <3 or nightmares !",
+            "alter-egos": "The B.R.A.I.N",
+            "full-name": "Thomas Culdaut",
+            "first-appearance": "2017",
+            "place-of-birth": "In our mind ! <3 or nightmares !",
             publisher: "Into the Wild 2017"
           },
           connections: {
-            groupAffiliation: "Wild Code School",
+            "group-affiliation": "Wild Code School",
             relatives: "Wilders (students)"
           },
           powerstats: {
@@ -153,8 +156,8 @@ class BattleProvider extends Component {
             speed: "999",
             strength: "999"
           },
-          images: {
-            md: Thomas
+          image: {
+            url: Thomas
           },
           collector: true
         }
@@ -193,11 +196,7 @@ class BattleProvider extends Component {
 
   callApiSuperHeroes() {
     for (let i = 0; i < listHeroes.length; i++) {
-      fetch(
-        `https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/id/${
-          listHeroes[i]
-        }.json`
-      )
+      fetch(`http://superheroapi.com/api.php/2368931693133321/${listHeroes[i]}`)
         .then(results => results.json()) // conversion du résultat en JSON
         .then(data => {
           data.used = false;
@@ -212,17 +211,26 @@ class BattleProvider extends Component {
   }
 
   getStorage() {
-    AsyncStorage.getItem("history").then(rank => {
-      let history;
-      if (rank) {
-        history = JSON.parse(rank);
-      } else {
-        history = historyJson;
+    const itemsRef = firebase.database().ref("history");
+    itemsRef.on("value", snapshot => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          winner: items[item].winner,
+          loser: items[item].loser,
+          date: items[item].date
+        });
       }
-      this.setState(() => ({
-        history: history
-      }));
+      this.setState({
+        history: newState
+      });
     });
+  }
+  componentDidMount() {
+    this.callApiSuperHeroes();
+    this.getStorage();
   }
   componentDidMount() {
     this.callApiSuperHeroes();
@@ -475,10 +483,9 @@ class BattleProvider extends Component {
           },
 
           setStorage: (player_1, player_2) => {
-            let prevState = this.state.history;
             const gameCompleteDate = new Date();
-            const gameDisplayDate = `${gameCompleteDate.getMonth() +
-              1}/${gameCompleteDate.getDate()}/${gameCompleteDate.getFullYear()}`;
+            const gameDisplayDate = `${gameCompleteDate.getMonth() + 1}
+          /${gameCompleteDate.getDate()}/${gameCompleteDate.getFullYear()}`;
             const winner =
               player_1.score > player_2.score ? player_1 : player_2;
             const loser = player_1.score > player_2.score ? player_2 : player_1;
@@ -487,11 +494,13 @@ class BattleProvider extends Component {
               loser: loser,
               date: gameDisplayDate
             };
-            prevState.push({ ...getMatchData });
+            const itemsRef = firebase.database().ref("history");
 
-            const stringHistory = JSON.stringify(prevState);
-            this.setState({ ...this.state, history: prevState });
-            AsyncStorage.setItem("history", stringHistory);
+            itemsRef.push(getMatchData);
+            this.setState({
+              currentItem: "",
+              username: ""
+            });
           }
         }}
       >

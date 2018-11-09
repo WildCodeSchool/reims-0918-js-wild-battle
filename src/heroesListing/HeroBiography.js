@@ -4,17 +4,17 @@ const HeroBiography = ({ selectedHeroOfList }) => (
   <div>
     <h3>{selectedHeroOfList.name}</h3>
 
-    {selectedHeroOfList.biography["fullName"] !== "" && (
+    {selectedHeroOfList.biography["full-name"] !== "" && (
       <p>
         <span className="itemTitleBiography">Full Name</span>:{" "}
-        {selectedHeroOfList.biography["fullName"]}
+        {selectedHeroOfList.biography["full-name"]}
       </p>
     )}
 
-    {selectedHeroOfList.biography["alterEgos"] !== "No alter egos found." && (
+    {selectedHeroOfList.biography["alter-egos"] !== "No alter egos found." && (
       <p>
         <span className="itemTitleBiography">Alter-Egos</span>:{" "}
-        {selectedHeroOfList.biography["alterEgos"]}
+        {selectedHeroOfList.biography["alter-egos"]}
       </p>
     )}
 
@@ -29,17 +29,17 @@ const HeroBiography = ({ selectedHeroOfList }) => (
       </p>
     )}
 
-    {selectedHeroOfList.biography["placeOfBirth"] !== "-" && (
+    {selectedHeroOfList.biography["place-of-birth"] !== "-" && (
       <p>
         <span className="itemTitleBiography">Place of Birth</span>:{" "}
-        {selectedHeroOfList.biography["placeOfBirth"]}
+        {selectedHeroOfList.biography["place-of-birth"]}
       </p>
     )}
 
-    {selectedHeroOfList.biography["firstAppearance"] !== "-" && (
+    {selectedHeroOfList.biography["first-appearance"] !== "-" && (
       <p>
         <span className="itemTitleBiography">First appearance</span>:{" "}
-        {selectedHeroOfList.biography["firstAppearance"]}
+        {selectedHeroOfList.biography["first-appearance"]}
       </p>
     )}
 
@@ -57,10 +57,10 @@ const HeroBiography = ({ selectedHeroOfList }) => (
       </p>
     )}
 
-    {selectedHeroOfList.connections["groupAffiliation"] !== "-" && (
+    {selectedHeroOfList.connections["group-affiliation"] !== "-" && (
       <p>
         <span className="itemTitleBiography">Group affiliation</span>:{" "}
-        {selectedHeroOfList.connections["groupAffiliation"]}
+        {selectedHeroOfList.connections["group-affiliation"]}
       </p>
     )}
 

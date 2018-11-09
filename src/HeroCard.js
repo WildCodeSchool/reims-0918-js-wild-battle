@@ -34,7 +34,7 @@ const HeroCard = ({ indexHero, selectedHeroOfList, battle }) => (
           <CardImg
             top
             width="100%"
-            src={selectedHeroOfList.images.md}
+            src={selectedHeroOfList.image.url}
             alt="Card image cap"
           />
           {!(battle === "true") ? (

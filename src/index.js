@@ -6,6 +6,7 @@ import App from "./App";
 import BattleProvider from "./battle_context/BattleProvider";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import "./firebase.js";
 
 ReactDOM.render(
   <BrowserRouter>
