@@ -1,0 +1,66 @@
+h2 {
+  font-family: "Bangers", cursive;
+  font-size: 3rem;
+}
+
+.historic-table .list-group-item {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background: none;
+}
+
+.historic-table .card {
+  border: 3px solid black;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+  -webkit-transform: skew(-5deg);
+  transform: skew(-5deg);
+  background-image: url(circleBackground.svg);
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+}
+
+.historic-table .list-group-item:nth-child(odd) .card {
+  background-color: #ececec;
+}
+
+.historic-table .date {
+  font-family: "Oswald";
+  color: #333;
+}
+
+.historic-table .date:after {
+  display: block;
+  content: "";
+  border-bottom: solid 3px #333;
+  width: 10%;
+  margin: 10px auto 0;
+}
+
+.historic-table .player {
+  font-size: 2rem;
+}
+
+.historic-table .player span {
+  color: #333;
+}
+
+.historic-table ul {
+  background: none;
+}
+
+.historic-table .card div p {
+  margin-bottom: 0;
+}
+
+.historic-table .winner {
+  color: #28a745;
+}
+
+.historic-table .loser {
+  color: #dc3545;
+}
+#statsSection {
+  margin-bottom: 100px;
+}

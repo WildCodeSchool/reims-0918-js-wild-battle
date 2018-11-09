@@ -1,0 +1,15 @@
+.btnNickname {
+  transition: 0.5s;
+  border-radius: 50%;
+  color: green;
+  cursor: pointer;
+}
+.btnNickname:hover {
+  color: white;
+  background-color: green;
+}
+.nickname-choice {
+  font-size: 3rem;
+  transition: 2s;
+  text-align: center;
+}

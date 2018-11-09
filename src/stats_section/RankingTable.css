@@ -1,0 +1,84 @@
+.ranking-table table {
+  transform: skew(-2deg);
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table .table-head {
+  background-color: #000;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.ranking-table .table-head td {
+  border: 0;
+}
+
+.ranking-table .table-head td:first-child {
+  border-left: 0;
+}
+
+.ranking-table .table-head td:last-child {
+  border-right: 0;
+}
+
+.ranking-table tr {
+  padding: 0.5rem;
+  background-color: #fff;
+  background-image: url(circleBackground.svg);
+  background-repeat: repeat;
+  background-blend-mode: multiply;
+}
+
+.ranking-table tr:first-child {
+  background-image: none;
+}
+
+.ranking-table tr:nth-child(odd) {
+  background-color: #ececec;
+}
+
+.ranking-table tr:nth-child(odd).table-head {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+
+.ranking-table td {
+  min-width: 25%;
+  text-align: center;
+  border: 0;
+}
+
+.ranking-table th {
+  padding: 15px;
+}
+
+.ranking-table td {
+  font-family: "Oswald", cursive;
+  font-size: 1.5rem;
+}
+
+.ranking-table td:nth-child(1) {
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+}
+
+.ranking-table p {
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.ranking-table p span {
+  font-family: "Oswald", cursive;
+  font-size: 2rem;
+}
+
+.ranking-table .winNumber {
+  color: #28a745;
+}
+
+.ranking-table .loseNumber {
+  color: #dc3545;
+}

@@ -1,0 +1,31 @@
+.win {
+  transform: rotate(-45deg);
+  top: 50%;
+  font-size: 11vw;
+  position: absolute;
+  left: 28%;
+  color: #28a745;
+  text-shadow: 3px 3px #0f6e25;
+}
+
+.lose {
+  transform: rotate(-45deg);
+  top: 50%;
+  font-size: 11vw;
+  position: absolute;
+  left: 24%;
+  color: #dc3545;
+  text-shadow: 3px 3px #8d121f;
+}
+
+@media (min-width: 992px) {
+  .win {
+    top: 46%;
+    left: 24%;
+  }
+
+  .lose {
+    top: 46%;
+    left: 15%;
+  }
+}
