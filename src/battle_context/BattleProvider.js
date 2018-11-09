@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import BattleContext from "./BattleContext";
-import AsyncStorage from "@callstack/async-storage";
-import historyJson from "../stats_section/History.json";
 
 import firebase from "firebase/app";
 import "firebase/database";
